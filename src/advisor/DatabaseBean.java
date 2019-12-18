@@ -1,8 +1,6 @@
 package advisor;
 
 import java.sql.*;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class DatabaseBean {
 	private static DatabaseBean instance = new DatabaseBean();
@@ -29,27 +27,18 @@ public class DatabaseBean {
 	public void insertStudent(UserVO vo) {  
 		Connection conn=null;
 		PreparedStatement pstmt = null;
-		int seq=0;
-		Calendar cal = new GregorianCalendar();
+		
 		try {
-			conn = getConnection(); 
-			String query = "select userId from hut_user order by userId desc limit 1";
-			ResultSet rs = pstmt.executeQuery(query);
+			conn = getConnection(); 	
+			String query = "insert into hut_user(userType, userName, userPass, Email, Contact, Address) values (?,?,?,?,?,?)";
 			
-			while(rs.next()){
-				seq = rs.getInt(query); 
-
-			}
-			
-			query = "insert into hut_user values(?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1,seq+1);
-			pstmt.setString(2,vo.getUserType());
-			pstmt.setString(3,vo.getUserName());
-			pstmt.setString(4,vo.getUserPass());
-			pstmt.setString(5,vo.getEmail());
+			pstmt.setString(1,vo.getUserType());
+			pstmt.setString(2,vo.getUserName());
+			pstmt.setString(3,vo.getUserPass());
+			pstmt.setString(4,vo.getEmail());
+			pstmt.setString(5,vo.getContact());
 			pstmt.setString(6,vo.getAddress());
-			pstmt.setLong(7, cal.getTimeInMillis());
 			pstmt.executeUpdate(); 
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close(); 
