@@ -14,9 +14,9 @@
 	<jsp:setProperty name="user" property="*"/>
 </jsp:useBean>
 <%
-DatabaseBean USER = DatabaseBean.getInstance(); // 이 두줄로 끝
-USER.insertUser(user); //이 두줄로 끝 
-response.sendRedirect("home.jsp");
+	DatabaseBean USER = DatabaseBean.getInstance(); // 이 두줄로 끝	
+	USER.insertUser(user); //이 두줄로 끝 
+	response.sendRedirect("home.jsp");
 %>
 </body>
 </html>

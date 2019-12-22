@@ -30,7 +30,6 @@ public class DatabaseBean {
 			conn = getConnection(); 	
 			String query = "insert into hut_user(userType, userName, userPass, userEmail, userContact, userAddress) values (?,?,?,?,?,?)";
 
-			System.out.println("contact"+vo.getUserPass());
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1,vo.getUserType());
 			pstmt.setString(2,vo.getUserName());
@@ -46,26 +45,30 @@ public class DatabaseBean {
 		}
 	}
 	
-	/*
-	public int userCheck(String id, String passwd) {
+	
+	public int userCheck(String userName, String userPass) {
 		Connection conn=null;
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
+		String dbpasswd="";
 		int x = -1;
+		
 		try {
 			conn = getConnection();
-			String query = "select userPass from student where id = ?";
+			String query = "select userPass from hut_user where userName = ?";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1,id);
-
+			pstmt.setString(1,userName);
 			rs = pstmt.executeQuery();
-			while(rs.next()){
-				String dbpasswd= rs.getString(1); 
-				if(passwd.equals(dbpasswd))
-					x = 1;
+			
+			if(rs.next()){
+				dbpasswd=rs.getString("userPass");
+				if(dbpasswd.equals(userPass))
+					x=1;//인증 성공
 				else
-					x = 0;
-			}
+					x=0;
+			}else 
+				x=-1;
+			
 			
 			if(rs !=null) rs.close();
 			if(pstmt != null) pstmt.close();
@@ -75,5 +78,5 @@ public class DatabaseBean {
 		}
 		return(x);  
 	}
-	*/	
+	
 }

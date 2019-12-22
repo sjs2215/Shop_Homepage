@@ -995,9 +995,9 @@ input,select,textarea,span{ font-family:open sans; }
 						<li class=""><a href="">헛개의 효능, 헛개 먹는 법</a></li>
 						<li class=""><a href="">장바구니</a></li>
 						<li class=""><a href="">마이 페이지</a></li>
-						<li class=""><a href="/user/signup">회원가입</a></li>
-						<li class=""><a href="/user/signin">로그인</a></li>
-						<li class=""><a href="">관리자 페이지</a></li>
+						<li class=""><a href="/user/registerForm.jsp">회원가입</a></li>
+						<li class=""><a href="/user/signinForm.jsp">로그인</a></li>
+						<li class=""><a href="/signin_adminForm.jsp">관리자 페이지</a></li>
 					</ul>
 				</div>
 			</div>
@@ -1025,7 +1025,7 @@ input,select,textarea,span{ font-family:open sans; }
 							<h1>WELCOME TO OUR 헛개농장</h1>
 							<p>몸에 좋은 헛개! 저희 농장에서는 국산 100% 품질보장된 열매만 판매합니다.</p>
 							<div class="button-list">
-								<a href="/user/signup" class="banner-button btn-blue hidden-xs">사이트 가입하기</a>
+								<a href="/user/registerForm.jsp" class="banner-button btn-blue hidden-xs">사이트 가입하기</a>
 								<a href="" class="banner-button btn-white">헛개 더 알아보기</a> 
 							</div>
 						</div>

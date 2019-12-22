@@ -20,7 +20,7 @@
             <div class="span6">
                 <div class="area">
                     
-                    <form class="form-horizontal" action="registerPro.jsp" method="post">
+                    <form class="form-horizontal" action="/user/registerPro.jsp" method="post">
                         <div class="heading">
                             <h4 class="form-heading">회원가입</h4>
                         </div>
