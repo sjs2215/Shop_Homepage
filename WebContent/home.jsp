@@ -485,7 +485,7 @@ input,select,textarea,span{ font-family:open sans; }
 /*team introduce background image*/
 #team {
     padding: 3% 0;
-    background-image: url(resources/img/img002.jpg);
+    background-image: url(img/img002.jpg);
 }
 #testimonial {
     padding: 3% 0;
@@ -1186,7 +1186,7 @@ input,select,textarea,span{ font-family:open sans; }
 			<div class="col-sm-3">
 				<div class="productw-wrap">
 					<div class="product-image">
-						<img src="resources/img/img999.png" class="img-responsive">
+						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
 						<a href="" class="name">헛개 600g</a>
@@ -1197,7 +1197,7 @@ input,select,textarea,span{ font-family:open sans; }
 			<div class="col-sm-3">
 				<div class="productw-wrap">
 					<div class="product-image">
-						<img src="resources/img/img999.png" class="img-responsive">
+						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
 						<a href="" class="name">헛개 1kg</a>
@@ -1208,7 +1208,7 @@ input,select,textarea,span{ font-family:open sans; }
 			<div class="col-sm-3">
 				<div class="productw-wrap">
 					<div class="product-image">
-						<img src="resources/img/img999.png" class="img-responsive">
+						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
 						<a href="" class="name">헛개 5kg</a>
