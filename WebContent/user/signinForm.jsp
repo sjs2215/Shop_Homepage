@@ -50,8 +50,8 @@
                             <div class="controls">
                                 
                                 <button class="btn btn-success" type=
-                                "submit">Sign In</button> <button class="btn"
-                                type="button">Help</button>
+                                "submit">로그인</button> <button class="btn"
+                                type="button">로그아웃</button>
                             </div>
                         </div>
 

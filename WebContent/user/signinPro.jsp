@@ -29,7 +29,7 @@
 		Cookie cookie = new Cookie("userName", name);
 		cookie.setMaxAge(20*60);
 		response.addCookie(cookie);
-		response.sendRedirect("/home.jsp");
+		response.sendRedirect("/thankyou.html");
 	} else if(check==0) {%>
 	<script>
 	alert("비밀번호가 맞지 않습니다.");
