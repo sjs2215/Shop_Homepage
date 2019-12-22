@@ -35,7 +35,7 @@
                             	<option value = "admin" id = "userType"> 관리자 </option>
                             	<option value = "user" id = "userType"> 일반 회원 </option>
                             	</select> -->
-                            <input id="userType" placeholder=
+                            <input name="userType" placeholder=
                                 "관리자 또는 일반 회원을 입력하세요" type="text">	
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             </label>
 
                             <div class="controls">
-                                <input id="userName" placeholder=
+                                <input name="userName" placeholder=
                                 "아이디를 입력하시오" type="text">
                             </div>
                         </div>
@@ -55,37 +55,37 @@
                             </label>
 
                             <div class="controls">
-                                <input id="userPass" placeholder="비밀번호을 입력하시오"
+                                <input name="userPass" placeholder="비밀번호을 입력하시오"
                                 type="password">
                             </div>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
-                            "Email">Email</label>
+                            "userEmail">Email</label>
 
                             <div class="controls">
-                                <input id="Email" placeholder=
+                                <input name="userEmail" placeholder=
                                 "예시) xxx@xxx.com" type="text">
                             </div>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
-                            "Contact">전화번호</label>
+                            "userContact">전화번호</label>
 
                             <div class="controls">
-                                <input id="Contact" placeholder=
+                                <input name="userContact" placeholder=
                                 "예시) 010-1111-1111" type="text">
                             </div>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
-                            "Address">주소</label>
+                            "userAddress">주소</label>
 
                             <div class="controls">
-                                <input id="Address" placeholder=
+                                <input name="userAddress" placeholder=
                                 "주소를 입력하시오" type="text">
                             </div>
                         </div>
@@ -93,8 +93,8 @@
                         <div class="control-group">
                             <div class="controls">
                                  
-                                <button class="btn btn-success" id="signup_btn" 
-                                name="signup_btn" type="submit">회원 가입하기
+                                <button class="btn btn-success" id="submit" 
+                                name="submit" type="submit">회원 가입하기
                                 </button> 
                             </div>
                         </div>

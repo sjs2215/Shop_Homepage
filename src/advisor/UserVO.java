@@ -8,10 +8,34 @@ public class UserVO {
 	private String userType;
 	private String userName;
 	private String userPass;
-	private String Email;
-	private String Contact;
-	private String Address;
-	private Date regdate;
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+	public String getUserContact() {
+		return userContact;
+	}
+	public void setUserContact(String userContact) {
+		this.userContact = userContact;
+	}
+	public String getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+	public Date getUserRegdate() {
+		return userRegdate;
+	}
+	public void setUserRegdate(Date userRegdate) {
+		this.userRegdate = userRegdate;
+	}
+	private String userEmail;
+	private String userContact;
+	private String userAddress;
+	private Date userRegdate;
 	
 	public Integer getUserId() {
 		return userId;
@@ -37,30 +61,6 @@ public class UserVO {
 	public void setUserPass(String userPass) {
 		this.userPass = userPass;
 	}
-	public String getEmail() {
-		return Email;
-	}
-	public void setEmail(String email) {
-		Email = email;
-	}
-	public String getContact() {
-		return Contact;
-	}
-	public void setContact(String contact) {
-		Contact = contact;
-	}
-	public String getAddress() {
-		return Address;
-	}
-	public void setAddress(String address) {
-		Address = address;
-	}
-	public Date getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
-	}
-	
+
 	
 }

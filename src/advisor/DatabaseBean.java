@@ -7,9 +7,7 @@ public class DatabaseBean {
 	
 	private DatabaseBean() {}  
 	public static DatabaseBean getInstance() {  
-		//�떛湲��넠�씠�뿬�꽌 �븯�굹 媛앹껜 留뚮뱺嫄� �엳�뒗�뜲 洹멸굅瑜� �쇅遺��뿉�꽌 媛��졇媛��빞吏� �굹以묒뿉 jsp�뙆�씪�뿉�꽌 �벐�땲源� �씠 硫붿냼�뱶媛� �븘�슂�븿. 
-		//static�� �솢 �궗�슜�뻽�굹?
-		//getInstance媛�吏�怨� �엳�뵲硫� �뼵�젣�뱺吏� 以꾧퍡~ 
+	
 		return instance;
 	}
 	
@@ -24,21 +22,22 @@ public class DatabaseBean {
 	}
 
 	
-	public void insertStudent(UserVO vo) {  
+	public void insertUser(UserVO vo) {  
 		Connection conn=null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			conn = getConnection(); 	
-			String query = "insert into hut_user(userType, userName, userPass, Email, Contact, Address) values (?,?,?,?,?,?)";
-			
+			String query = "insert into hut_user(userType, userName, userPass, userEmail, userContact, userAddress) values (?,?,?,?,?,?)";
+
+			System.out.println("contact"+vo.getUserPass());
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1,vo.getUserType());
 			pstmt.setString(2,vo.getUserName());
 			pstmt.setString(3,vo.getUserPass());
-			pstmt.setString(4,vo.getEmail());
-			pstmt.setString(5,vo.getContact());
-			pstmt.setString(6,vo.getAddress());
+			pstmt.setString(4,vo.getUserEmail());
+			pstmt.setString(5,vo.getUserContact());
+			pstmt.setString(6,vo.getUserAddress());
 			pstmt.executeUpdate(); 
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close(); 
@@ -47,7 +46,7 @@ public class DatabaseBean {
 		}
 	}
 	
-	
+	/*
 	public int userCheck(String id, String passwd) {
 		Connection conn=null;
 		ResultSet rs = null;
@@ -76,5 +75,5 @@ public class DatabaseBean {
 		}
 		return(x);  
 	}
-		
+	*/	
 }

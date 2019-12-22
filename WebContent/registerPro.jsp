@@ -10,12 +10,12 @@
 </head>
 <body>
 <% request.setCharacterEncoding("utf-8");%>
-<jsp:useBean id="student" class="advisor.UserVO">
-	<jsp:setProperty name="student" property="*"/>
+<jsp:useBean id="user" class="advisor.UserVO">
+	<jsp:setProperty name="user" property="*"/>
 </jsp:useBean>
 <%
-DatabaseBean manager = DatabaseBean.getInstance(); // 이 두줄로 끝
-manager.insertStudent(student); //이 두줄로 끝 
+DatabaseBean USER = DatabaseBean.getInstance(); // 이 두줄로 끝
+USER.insertUser(user); //이 두줄로 끝 
 response.sendRedirect("home.jsp");
 %>
 </body>
