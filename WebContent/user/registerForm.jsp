@@ -30,13 +30,13 @@
                             "userType">회원 종류</label>
 
                             <div class="controls">
-                            <!-- <select name="회원 종류 선택">
-                            	<option value = "selected(user)">선택</option>
-                            	<option value = "admin" id = "userType"> 관리자 </option>
-                            	<option value = "user" id = "userType"> 일반 회원 </option>
-                            	</select> -->
-                            <input name="userType" placeholder=
-                                "관리자 또는 일반 회원을 입력하세요" type="text">	
+                            <select name="userType">
+                            	<option value = "selected">선택</option>
+                            	<option value = "admin" > 관리자 </option>
+                            	<option value = "user" > 일반 회원 </option>
+                            	</select> 
+                            <!--  <input name="userType" placeholder=
+                                "관리자 또는 일반 회원을 입력하세요" type="text">	-->
                             </div>
                         </div>
 
