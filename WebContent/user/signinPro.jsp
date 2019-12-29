@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="advisor.DatabaseBean"%>
+<%@ page import="advisor.UserBean"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +10,14 @@
 <title>login</title>
 </head>
 <body>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <jsp:useBean id="user" class="advisor.UserVO">
 	<jsp:setProperty name="user" property="*"/>
 </jsp:useBean>
 <%
-
-	DatabaseBean USER = DatabaseBean.getInstance(); // 이 두줄로 끝	
+	UserBean USER = UserBean.getInstance(); // 이 두줄로 끝	
 	
 	String name =request.getParameter("userName");
 	String password =request.getParameter("userPass");
@@ -30,7 +31,8 @@
 		cookie.setMaxAge(20*60);
 		response.addCookie(cookie);
 		response.sendRedirect("/thankyou.html");
-	} else if(check==0) {%>
+	} else if(check==0) {
+%>
 	<script>
 	alert("비밀번호가 맞지 않습니다.");
 	history.go(-1);

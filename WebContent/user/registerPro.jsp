@@ -1,7 +1,7 @@
 <%@ page language= "java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="advisor.DatabaseBean" %>
+<%@ page import="advisor.UserBean" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +14,9 @@
 	<jsp:setProperty name="user" property="*"/>
 </jsp:useBean>
 <%
-	DatabaseBean USER = DatabaseBean.getInstance(); // 이 두줄로 끝	
+	UserBean USER = UserBean.getInstance(); // 이 두줄로 끝	
 	USER.insertUser(user); //이 두줄로 끝 
-	response.sendRedirect("home.jsp");
+	response.sendRedirect("/home.jsp");
 %>
 </body>
 </html>

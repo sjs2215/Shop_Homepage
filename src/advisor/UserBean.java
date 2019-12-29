@@ -2,11 +2,11 @@ package advisor;
 
 import java.sql.*;
 
-public class DatabaseBean {
-	private static DatabaseBean instance = new DatabaseBean();
+public class UserBean {
+	private static UserBean instance = new UserBean();
 	
-	private DatabaseBean() {}  
-	public static DatabaseBean getInstance() {  
+	private UserBean() {}  
+	public static UserBean getInstance() {  
 	
 		return instance;
 	}
