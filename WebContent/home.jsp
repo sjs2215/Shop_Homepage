@@ -1,6 +1,7 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -996,8 +997,18 @@ input,select,textarea,span{ font-family:open sans; }
 						<li class=""><a href="">장바구니</a></li>
 						<li class=""><a href="">마이 페이지</a></li>
 						<li class=""><a href="/user/registerForm.jsp">회원가입</a></li>
-						<li class=""><a href="/user/signinForm.jsp">로그인</a></li>
-						<li class=""><a href="/signin_adminForm.jsp">관리자 페이지</a></li>
+						<li class=""><a href="/user/signinForm.jsp">로그인</a></li>						
+						<!--  
+					//						String userType="";
+	
+							userType=(String)session.getAttribute("userType");
+							%>
+						
+						<c:if test="${sessionScope.userType!=null}">
+						${sessionScope.userType}님이 로그인중입니다.
+						<li class=""><a href="/admin/admin.jsp">관리자 페이지</a></li>
+						</c:if>
+						-->
 					</ul>
 				</div>
 			</div>

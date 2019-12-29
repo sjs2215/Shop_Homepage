@@ -21,11 +21,13 @@
 	
 	String name =request.getParameter("userName");
 	String password =request.getParameter("userPass");
+	String userType = request.getParameter("userType");
 	
 	USER.userCheck(name, password); 
 
 	int user_check = USER.userCheck(name, password); //회원 정보 있는지 체크
 	int admin_check = USER.adminCheck(name);//admin인지 체크
+	
 	
 	//user_check 부분
 	if(user_check==1) {
@@ -33,6 +35,7 @@
 		cookie.setMaxAge(20*60);
 		response.addCookie(cookie);
 		if(admin_check==1){
+			session.setAttribute("userType",userType);
 			response.sendRedirect("/admin/admin.jsp");
 		}
 		else{

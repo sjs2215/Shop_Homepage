@@ -93,7 +93,6 @@ public class UserBean {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1,userName);
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()){
 				user_type=rs.getString("userType");
 				if(user_type.equals("admin"))
