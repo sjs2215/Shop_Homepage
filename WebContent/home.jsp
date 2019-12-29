@@ -1070,6 +1070,7 @@ input,select,textarea,span{ font-family:open sans; }
 		</div>
 	</div>
 </section>
+<!-- 
 <section id="men-women">
 	<div class="container-fluid pl-0 pr-0">
 		<div class="row mr-0 ml-0" >
@@ -1095,6 +1096,60 @@ input,select,textarea,span{ font-family:open sans; }
 					<a class="btn-white">Read More</a>
 				</div>
 			</div>
+		</div>
+	</div>
+</section>
+-->
+<section id="product-list">
+	<div class="container">
+		<div class="section-heading text-center">
+			<h1>저희 제품은요...</h1>
+		</div>
+		<div class="row product-list">
+			<div class="col-sm-3">
+				<div class="productw-wrap">
+					<div class="product-image">
+						<img src="img/img999.png" class="img-responsive">
+					</div>
+					<div class="prduct-text">
+						<a href="" class="name">헛개 300g</a>
+						<ins class="price">10000원</ins>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="productw-wrap">
+					<div class="product-image">
+						<img src="img/img999.png" class="img-responsive">
+					</div>
+					<div class="prduct-text">
+						<a href="" class="name">헛개 600g</a>
+						<ins class="price">19000원</ins>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="productw-wrap">
+					<div class="product-image">
+						<img src="img/img999.png" class="img-responsive">
+					</div>
+					<div class="prduct-text">
+						<a href="" class="name">헛개 1kg</a>
+						<ins class="price">25000원</ins>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="productw-wrap">
+					<div class="product-image">
+						<img src="img/img999.png" class="img-responsive">
+					</div>
+					<div class="prduct-text">
+						<a href="" class="name">헛개 5kg</a>
+						<ins class="price">60000원</ins>
+					</div>
+				</div>
+			</div>			
 		</div>
 	</div>
 </section>
@@ -1166,59 +1221,7 @@ input,select,textarea,span{ font-family:open sans; }
 		</div>
 	</div>
 </section>
-<section id="product-list">
-	<div class="container">
-		<div class="section-heading text-center">
-			<h1>저희 제품은요...</h1>
-		</div>
-		<div class="row product-list">
-			<div class="col-sm-3">
-				<div class="productw-wrap">
-					<div class="product-image">
-						<img src="img/img999.png" class="img-responsive">
-					</div>
-					<div class="prduct-text">
-						<a href="" class="name">헛개 300g</a>
-						<ins class="price">10000원</ins>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="productw-wrap">
-					<div class="product-image">
-						<img src="img/img999.png" class="img-responsive">
-					</div>
-					<div class="prduct-text">
-						<a href="" class="name">헛개 600g</a>
-						<ins class="price">19000원</ins>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="productw-wrap">
-					<div class="product-image">
-						<img src="img/img999.png" class="img-responsive">
-					</div>
-					<div class="prduct-text">
-						<a href="" class="name">헛개 1kg</a>
-						<ins class="price">25000원</ins>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="productw-wrap">
-					<div class="product-image">
-						<img src="img/img999.png" class="img-responsive">
-					</div>
-					<div class="prduct-text">
-						<a href="" class="name">헛개 5kg</a>
-						<ins class="price">60000원</ins>
-					</div>
-				</div>
-			</div>			
-		</div>
-	</div>
-</section>
+
 <section id="team">
 	<div class="container">
 		<div class="section-heading dark text-center">
