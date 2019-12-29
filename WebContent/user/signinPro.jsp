@@ -17,21 +17,29 @@
 	<jsp:setProperty name="user" property="*"/>
 </jsp:useBean>
 <%
-	UserBean USER = UserBean.getInstance(); // 이 두줄로 끝	
+	UserBean USER = UserBean.getInstance(); 
 	
 	String name =request.getParameter("userName");
 	String password =request.getParameter("userPass");
 	
-	USER.userCheck(name, password); //이 두줄로 끝 
+	USER.userCheck(name, password); 
 
-	int check = USER.userCheck(name, password); //이 두줄로 끝
+	int user_check = USER.userCheck(name, password); //회원 정보 있는지 체크
+	int admin_check = USER.adminCheck(name);//admin인지 체크
 	
-	if(check==1) {
+	//user_check 부분
+	if(user_check==1) {
 		Cookie cookie = new Cookie("userName", name);
 		cookie.setMaxAge(20*60);
 		response.addCookie(cookie);
-		response.sendRedirect("/thankyou.html");
-	} else if(check==0) {
+		if(admin_check==1){
+			response.sendRedirect("/admin/admin.jsp");
+		}
+		else{
+		response.sendRedirect("/home.jsp");
+		}
+	} 
+	else if(user_check==0) {
 %>
 	<script>
 	alert("비밀번호가 맞지 않습니다.");
@@ -43,5 +51,8 @@
 	history.go(-1);
 	</script>
 <%}%>
+
+
+
 </body>
 </html>

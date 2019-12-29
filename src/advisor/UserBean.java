@@ -21,7 +21,7 @@ public class UserBean {
 		return conn;
 	}
 
-	
+//회원 정보 insert-회원가입	
 	public void insertUser(UserVO vo) {  
 		Connection conn=null;
 		PreparedStatement pstmt = null;
@@ -45,7 +45,7 @@ public class UserBean {
 		}
 	}
 	
-	
+//회원 정보 있는지 체크-로그인	
 	public int userCheck(String userName, String userPass) {
 		Connection conn=null;
 		ResultSet rs = null;
@@ -77,6 +77,40 @@ public class UserBean {
 			e.printStackTrace();
 		}
 		return(x);  
+	}
+
+//admin 유저인지 체크
+	public int adminCheck(String userName) {
+		Connection conn=null;
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		String user_type="";
+		int x = -1;
+		
+		try {
+			conn = getConnection();
+			String query = "select userType from hut_user where userName = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,userName);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				user_type=rs.getString("userType");
+				if(user_type.equals("admin"))
+					x=1;//인증 성공
+				else
+					x=0;
+			}else 
+				x=-1;
+			
+			
+			if(rs !=null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		} catch(Exception e ) {
+			e.printStackTrace();
+		}
+		return(x);
 	}
 	
 }

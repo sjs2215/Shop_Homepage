@@ -16,7 +16,7 @@
 <%
 	UserBean USER = UserBean.getInstance(); // 이 두줄로 끝	
 	USER.insertUser(user); //이 두줄로 끝 
-	response.sendRedirect("/home.jsp");
+	response.sendRedirect("/thankyou.html");
 %>
 </body>
 </html>
