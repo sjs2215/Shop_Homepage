@@ -1037,7 +1037,7 @@ input,select,textarea,span{ font-family:open sans; }
 							<p>몸에 좋은 헛개! 저희 농장에서는 국산 100% 품질보장된 열매만 판매합니다.</p>
 							<div class="button-list">
 								<a href="/user/registerForm.jsp" class="banner-button btn-blue hidden-xs">사이트 가입하기</a>
-								<a href="" class="banner-button btn-white">헛개 더 알아보기</a> 
+								<a href="/product/shoppingcart.jsp" class="banner-button btn-white">헛개 주문하기</a> 
 							</div>
 						</div>
 					</div>
@@ -1123,7 +1123,7 @@ input,select,textarea,span{ font-family:open sans; }
 						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
-						<a href="" class="name">헛개 300g</a>
+						<a href="/product/shoppingcart.jsp" class="name">헛개 300g</a>
 						<ins class="price">10000원</ins>
 					</div>
 				</div>
@@ -1134,7 +1134,7 @@ input,select,textarea,span{ font-family:open sans; }
 						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
-						<a href="" class="name">헛개 600g</a>
+						<a href="/product/shoppingcart.jsp" class="name">헛개 600g</a>
 						<ins class="price">19000원</ins>
 					</div>
 				</div>
@@ -1145,7 +1145,7 @@ input,select,textarea,span{ font-family:open sans; }
 						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
-						<a href="" class="name">헛개 1kg</a>
+						<a href="/product/shoppingcart.jsp" class="name">헛개 1kg</a>
 						<ins class="price">25000원</ins>
 					</div>
 				</div>
@@ -1156,7 +1156,7 @@ input,select,textarea,span{ font-family:open sans; }
 						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
-						<a href="" class="name">헛개 5kg</a>
+						<a href="/product/shoppingcart.jsp" class="name">헛개 5kg</a>
 						<ins class="price">60000원</ins>
 					</div>
 				</div>
@@ -1243,22 +1243,8 @@ input,select,textarea,span{ font-family:open sans; }
 				<!-- Bottom Carousel Indicators -->
 				<ol class="carousel-indicators">
 					<li data-target="#quote-carousel" data-slide-to="0" class="active">
-						<img class="img-responsive " src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="">
-					</li>
-					<li data-target="#quote-carousel" data-slide-to="1">
-						<img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg" alt="">
-					</li>
-					<li data-target="#quote-carousel" data-slide-to="2">
-						<img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg" alt="">
-					</li>
-					<li data-target="#quote-carousel" data-slide-to="3">
-						<img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg" alt="">
-					</li>
-					<li data-target="#quote-carousel" data-slide-to="4">
-						<img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg" alt="">
-					</li>
-					
-					
+						<img class="img-responsive " src="img/theme_pic.jpg" alt="">
+					</li>	
 				</ol>
 				
 				<div class="carousel-inner">
@@ -1267,73 +1253,17 @@ input,select,textarea,span{ font-family:open sans; }
 						<div class="row">	
 							<div class="col-sm-2">
 								<div class="img-wrap">
-									<img src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" class="img-responsive">
+									<img src="img/theme_pic.jpg" class="img-responsive">
 								</div>
 							</div>
 							<div class="col-sm-10">
-								<h2>Very Nice</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. !</p>
-								
+								<h2>Sarah Park</h2>
+								<p>Software Engineer</p>
 							</div>
 						</div>
 					</div>
 					
-					<div class="item">
-						<div class="row">	
-							<div class="col-sm-2">
-								<div class="img-wrap">
-									<img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg" alt="">
-								</div>
-							</div>
-							<div class="col-sm-10">
-								<h2>Kapil Verma</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. !</p>
-								
-							</div>
-						</div>
-					</div>
-					<!-- Quote 3 -->
-					<div class="item">
-						<div class="row">	
-							<div class="col-sm-2">
-								<div class="img-wrap">
-									<img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg" alt="">
-								</div>
-							</div>
-							<div class="col-sm-10">
-								<h2>Kapil Creationz</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. !</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="row">	
-							<div class="col-sm-2">
-								<div class="img-wrap">
-									<img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg" alt="">
-								</div>
-							</div>
-							<div class="col-sm-10">
-								<h2>Kapil Verma</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. !</p>
-								
-							</div>
-						</div>
-					</div>
-					<!-- Quote 3 -->
-					<div class="item">
-						<div class="row">	
-							<div class="col-sm-2">
-								<div class="img-wrap">
-									<img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg" alt="">
-								</div>
-							</div>
-							<div class="col-sm-10">
-								<h2>Kapil Creationz</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. !</p>
-							</div>
-						</div>
-					</div>
+				
 				</div>
 
 				<a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
