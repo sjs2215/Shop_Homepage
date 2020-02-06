@@ -30,7 +30,7 @@
 	
 	
 	//user_check 부분
-	if(user_check==1) {  
+	if(user_check==1) {   
 		Cookie cookie = new Cookie("userName", name);
 		cookie.setMaxAge(20*60);
 		response.addCookie(cookie);
