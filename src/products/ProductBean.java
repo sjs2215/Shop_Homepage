@@ -25,36 +25,28 @@ public class ProductBean {
 		return conn;
 	}
 	
-//	public int productCheck(String userName, String userPass) {
-//		Connection conn=null;
-//		ResultSet rs = null;
-//		PreparedStatement pstmt = null;
-//		String dbpasswd="";
-//		int x = -1;
-//		
-//		try {
-//			conn = getConnection();
-//			String query = "select userPass from hut_user where userName = ?";
-//			pstmt = conn.prepareStatement(query);
-//			pstmt.setString(1,userName);
-//			rs = pstmt.executeQuery();
-//			
-//			if(rs.next()){
-//				dbpasswd=rs.getString("userPass");
-//				if(dbpasswd.equals(userPass))
-//					x=1;//인증 성공
-//				else
-//					x=0;
-//			}else 
-//				x=-1;
-//			
-//			
-//			if(rs !=null) rs.close();
-//			if(pstmt != null) pstmt.close();
-//			if(conn != null) conn.close();
-//		} catch(Exception e ) {
-//			e.printStackTrace();
-//		}
-//		return(x);  
-//	}
+	//product_id를 파라메터로 받아와서 해당 가격,수량 출력
+	public void productInfo(String product_id) {
+		Connection conn=null;
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			String query = "select product_price, product_stock from hut_product where product_id=?";
+			pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				rs.getString("product_price");
+				rs.getString("product_stock");
+			}
+			
+			if(rs !=null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		} catch(Exception e ) {
+			e.printStackTrace();
+		}
+	}
 }
