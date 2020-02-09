@@ -994,7 +994,7 @@ input,select,textarea,span{ font-family:open sans; }
 					<ul class=" nav navbar-nav navbar-right ">
 						<li class="active"><a href="index.html">홈</a></li>
 						<li class=""><a href="">헛개의 효능, 헛개 먹는 법</a></li>
-						<li class=""><a href="">장바구니</a></li>
+						<li class=""><a href="/product/shop.jsp">장바구니</a></li>
 						<li class=""><a href="">마이 페이지</a></li>
 						<li class=""><a href="/user/registerForm.jsp">회원가입</a></li>
 						<li class=""><a href="/user/signinForm.jsp">로그인</a></li>						
@@ -1037,7 +1037,7 @@ input,select,textarea,span{ font-family:open sans; }
 							<p>몸에 좋은 헛개! 저희 농장에서는 국산 100% 품질보장된 열매만 판매합니다.</p>
 							<div class="button-list">
 								<a href="/user/registerForm.jsp" class="banner-button btn-blue hidden-xs">사이트 가입하기</a>
-								<a href="/product/shoppingcart.jsp" class="banner-button btn-white">헛개 주문하기</a> 
+								<a href="/product/shop.jsp" class="banner-button btn-white">헛개 주문하기</a> 
 							</div>
 						</div>
 					</div>
@@ -1123,7 +1123,8 @@ input,select,textarea,span{ font-family:open sans; }
 						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
-						<a href="/product/shoppingcart.jsp" class="name">헛개 300g</a>
+						<a class="name">헛개 300g</a>
+						<a href="/product/shoppingcart.jsp">장바구니로 이동</a>
 						<ins class="price">10000원</ins>
 					</div>
 				</div>
@@ -1134,7 +1135,8 @@ input,select,textarea,span{ font-family:open sans; }
 						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
-						<a href="/product/shoppingcart.jsp" class="name">헛개 600g</a>
+						<a class="name">헛개 600g</a>
+						<a href="/product/shoppingcart.jsp">장바구니로 이동</a>
 						<ins class="price">19000원</ins>
 					</div>
 				</div>
@@ -1145,7 +1147,8 @@ input,select,textarea,span{ font-family:open sans; }
 						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
-						<a href="/product/shoppingcart.jsp" class="name">헛개 1kg</a>
+						<a class="name">헛개 1kg</a>
+						<a href="/product/shoppingcart.jsp">장바구니로 이동</a>
 						<ins class="price">25000원</ins>
 					</div>
 				</div>
@@ -1156,7 +1159,8 @@ input,select,textarea,span{ font-family:open sans; }
 						<img src="img/img999.png" class="img-responsive">
 					</div>
 					<div class="prduct-text">
-						<a href="/product/shoppingcart.jsp" class="name">헛개 5kg</a>
+						<a class="name">헛개 5kg</a>
+						<a href="/product/shoppingcart.jsp">장바구니로 이동</a>
 						<ins class="price">60000원</ins>
 					</div>
 				</div>
