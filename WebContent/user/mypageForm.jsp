@@ -1,6 +1,8 @@
-<%@ page session="false"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language= "java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="advisor.UserBean" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,16 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </head>
+<jsp:useBean id="user" class="advisor.UserVO">
+	<jsp:setProperty name="user" property="*"/>
+</jsp:useBean>
 
+<%
+	UserBean USER = UserBean.getInstance(); 
+	
+	String name = request.getParameter("userName");
+	USER.userEdit(name); 
+%>
 
             <div class="span6">
                 <div class="area">
@@ -27,32 +38,38 @@
 
                         <div class="control-group">
                             <label class="control-label" for=
-                            "userType">회원 종류</label>
+                            "userType" name="userType">회원 종류</label>
+                            <%=user.getUserType()%>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="userName">아이디
+                            <label class="control-label" for="userName" name="userName">아이디
                             </label>
+                            <%=user.getUserName()%>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="userPass">비밀번호
+                            <label class="control-label" for="userPass" name="userPas">비밀번호
                             </label>
+                            <%=user.getUserPass()  %>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
-                            "userEmail">Email</label>
+                            "userEmail" name="userEmail">Email</label>
+                            <%=user.getUserEmail() %>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
-                            "userContact">전화번호</label>
+                            "userContact" name="userContact">전화번호</label>
+                            <%=user.getUserContact() %>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
-                            "userAddress">주소</label>
+                            "userAddress" name="userAddress">주소</label>
+                            <%=user.getUserAddress() %>
                         </div>
 
                         <div class="control-group">

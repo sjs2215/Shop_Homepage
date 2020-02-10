@@ -92,10 +92,16 @@ public class UserBean {
 				pstmt.setString(1,userName);
 				rs = pstmt.executeQuery();
 				
-				if(rs.next()){
+				while(rs.next()){
+					String type = rs.getString("userType");
+					String name = rs.getString("userName");
+					String pass = rs.getString("userPass");
+					String email = rs.getString("userEmail");
+					String contact = rs.getString("userContact");
+					String address = rs.getString("userAddress");
 					//쿼리 결과 받아오기
 					
-				}else 
+				}
 					
 				
 				
