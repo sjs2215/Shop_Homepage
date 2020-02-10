@@ -14,13 +14,42 @@
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+	<script type="text/javascript">
+		$(function() { 
+			$("#registerForm").validate(); 
+			$.extend( $.validator.messages, { 
+				required: "필수 항목입니다.", 
+				remote: "항목을 수정하세요.", 
+				email: "유효하지 않은 E-Mail주소입니다.", 
+				url: "유효하지 않은 URL입니다.", 
+				date: "올바른 날짜를 입력하세요.", 
+				dateISO: "올바른 날짜(ISO)를 입력하세요.", 
+				number: "유효한 숫자가 아닙니다.", 
+				digits: "숫자만 입력 가능합니다.", 
+				creditcard: "신용카드 번호가 바르지 않습니다.", 
+				equalTo: "같은 값을 다시 입력하세요.", 
+				extension: "올바른 확장자가 아닙니다.", 
+				maxlength: $.validator.format( "{0}자를 넘을 수 없습니다. " ), 
+				minlength: $.validator.format( "{0}자 이상 입력하세요." ), 
+				rangelength: $.validator.format( "문자 길이가 {0} 에서 {1} 사이의 값을 입력하세요." ), 
+				range: $.validator.format( "{0} 에서 {1} 사이의 값을 입력하세요." ), 
+				max: $.validator.format( "{0} 이하의 값을 입력하세요." ), 
+				min: $.validator.format( "{0} 이상의 값을 입력하세요." ) 
+				} ); 
+			});
+
+	</script>
 </head>
 
 
             <div class="span6">
                 <div class="area">
                     
-                    <form class="form-horizontal" action="/user/registerPro.jsp" method="post">
+                    <form id="registerForm" class="form-horizontal" action="/user/registerPro.jsp" method="post" onsubmit="return validationCheck();">
                         <div class="heading">
                             <h4 class="form-heading">회원가입</h4>
                         </div>
@@ -30,13 +59,11 @@
                             "userType">회원 종류</label>
 
                             <div class="controls">
-                            <select name="userType">
+                            <select name="userType" >
                             	<option value = "selected">선택</option>
                             	<option value = "admin" > 관리자 </option>
-                            	<option value = "user" > 일반 회원 </option>
+                            	<option value = "user"  > 일반 회원 </option>
                             	</select> 
-                            <!--  <input name="userType" placeholder=
-                                "관리자 또는 일반 회원을 입력하세요" type="text">	-->
                             </div>
                         </div>
 
@@ -46,7 +73,7 @@
 
                             <div class="controls">
                                 <input name="userName" placeholder=
-                                "아이디를 입력하시오" type="text">
+                                "아이디를 입력하시오" type="text" required minlength="4">
                             </div>
                         </div>
 
@@ -56,7 +83,7 @@
 
                             <div class="controls">
                                 <input name="userPass" placeholder="비밀번호을 입력하시오"
-                                type="password">
+                                type="password" required minlength="8">
                             </div>
                         </div>
 
@@ -66,7 +93,7 @@
 
                             <div class="controls">
                                 <input name="userEmail" placeholder=
-                                "예시) xxx@xxx.com" type="text">
+                                "예시) xxx@xxx.com" type="email" required>
                             </div>
                         </div>
 
@@ -76,7 +103,7 @@
 
                             <div class="controls">
                                 <input name="userContact" placeholder=
-                                "예시) 010-1111-1111" type="text">
+                                "예시) 010-1111-1111" type="text" required>
                             </div>
                         </div>
 
@@ -86,7 +113,7 @@
 
                             <div class="controls">
                                 <input name="userAddress" placeholder=
-                                "주소를 입력하시오" type="text">
+                                "주소를 입력하시오" type="text" required>
                             </div>
                         </div>
 
