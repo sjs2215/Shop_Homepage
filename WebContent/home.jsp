@@ -995,7 +995,7 @@ input,select,textarea,span{ font-family:open sans; }
 						<li class="active"><a href="index.html">홈</a></li>
 						<li class=""><a href="#services">헛개의 효능, 헛개 먹는 법</a></li>
 						<li class=""><a href="/product/shoppingcart.jsp">장바구니</a></li>
-						<li class=""><a href="">마이 페이지</a></li>
+						<li class=""><a href="/user/mypageForm.jsp">마이 페이지</a></li>
 						<li class=""><a href="/user/registerForm.jsp">회원가입</a></li>
 						<li class=""><a href="/user/signinForm.jsp">로그인</a></li>						
 						<!--  
