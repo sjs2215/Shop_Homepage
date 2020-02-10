@@ -177,45 +177,9 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<%
-	Class.forName("com.mysql.jdbc.Driver");
-	String jdbcDriver ="jdbc:mysql://localhost:3306/users_info?useSSL=false";
-	String dbUser = "shop";
-	String dbPass = "shop1001!";
-	
-	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs = null;
-	
-	try {
-
-		String query = "select product_price, product_stock from hut_product";
-		
-		conn = DriverManager.getConnection(jdbcDriver,dbUser, dbPass);
-		stmt = conn.createStatement();			
-		rs = stmt.executeQuery(query);
-		
-		while(rs.next()){
-%>
-			<tr>
-				<td><%=rs.getString("product_price")%></td>
-				<td><%=rs.getString("product_stock")%></td>
-			</tr>
-<%
-        }
-  }catch(SQLException ex){
-        out.println(ex.getMessage());
-        ex.printStackTrace();
-  }finally{
-        // 6. »ç¿ëÇÑ Statement Á¾·á
-        if(rs != null) try { rs.close(); } catch(SQLException ex) {}
-        if(stmt != null) try { stmt.close(); } catch(SQLException ex) {}
-
-        // 7. Ä¿³Ø¼Ç Á¾·á
-        if(conn != null) try { conn.close(); } catch(SQLException ex) {}
-  }
-%>
-
+<jsp:useBean id="product" class="products.ProductVO">
+	<jsp:setProperty name="product" property="*"/>
+</jsp:useBean>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">               
 <section class="our-publication pt-100 pb-70">
             <div class="container">
@@ -242,7 +206,7 @@
 
                             <div class="publication-content">
                                 <span class="category">Çê°³</span>
-                                <h3><a href="#" name="1">Çê°³ 300g</a></h3>
+                                <h3><a href="#" name="1"><%= product.getProduct_name() %></a></h3>
                                 <ul>
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
@@ -250,7 +214,8 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price">$119 <span>$299</span></h4>
+                                <h4 class="price"> <%= product.getProduct_stock() %>°³ </h4>
+                                <h4 class="price"> <%= product.getProduct_price() %> ¿ø <span>$299</span></h4>
                             </div>
 
                             <div class="add-to-cart">
@@ -275,7 +240,7 @@
 
                             <div class="publication-content">
                                 <span class="category">Çê°³</span>
-                                <h3><a href="#" name="2">Çê°³ 600g</a></h3>
+                                <h3><a href="#" name="2"><%= product.getProduct_name() %></a></h3>
                                 <ul>
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
@@ -283,7 +248,8 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price">$119</h4>
+                                <h4> <%= product.getProduct_stock() %>°³ </h4>
+                                <h4 class="price"> <%= product.getProduct_price() %> ¿ø <span>$299</span></h4>
                             </div>
 
                             <div class="add-to-cart">
@@ -306,7 +272,7 @@
 
                             <div class="publication-content">
                                 <span class="category">Çê°³</span>
-                                <h3><a href="#" name="3">Çê°³ 1kg</a></h3>
+                                <h3><a href="#" name="3"><%= product.getProduct_name() %></a></h3>
                                 <ul>
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
@@ -314,7 +280,8 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price">$119</h4>
+                                <h4 class="price"> <%= product.getProduct_stock() %>°³ </h4>
+                                <h4 class="price"> <%= product.getProduct_price() %> ¿ø <span>$299</span></h4>
                             </div>
 
                             <div class="add-to-cart">
@@ -337,7 +304,7 @@
 
                             <div class="publication-content">
                                 <span class="category">Çê°³</span>
-                                <h3><a href="#" name="4">Çê°³ 5kg</a></h3>
+                                <h3><a href="#" name="4"><%= product.getProduct_name() %></a></h3>
                                 <ul>
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
@@ -345,7 +312,8 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price">$119</h4>
+                                <h4 class="price"> <%=product.getProduct_stock()%> </h4>
+                                <h4 class="price"> <%= product.getProduct_price() %> ¿ø <span>$299</span></h4>
                             </div>
 
                             <div class="add-to-cart">
