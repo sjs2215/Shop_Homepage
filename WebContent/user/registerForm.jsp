@@ -47,12 +47,18 @@
 		$(document).ready(function(){  
 		    $("#submit").click(function(){  
 		        var value = $("select[name=userType] option:selected").val();  
+
 		        if(value==""){
 			        alert("회원 종류를 선택하세요");  
 			        return false;
 		        }
+		        else if(value=="admin"){
+		        	alert("관리자-회원가입의 경우 담당자 승인 후에 가입신청이 완료됩니다.\n승인 담당자 정보는 아래와 같습니다.\nsoojinsarah@naver.com")
+		        }
 		        else
 		        	return true;
+		        
+		        
 		    });  
 		  });  
 
@@ -75,7 +81,7 @@
                             "userType">회원 종류</label>
 
                             <div class="controls">
-                            <select name="userType" requried >
+                            <select name="userType">
                             	<option> </option>
                             	<option value = "admin" > 관리자 </option>
                             	<option value = "user"  > 일반 회원 </option>

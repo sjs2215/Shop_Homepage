@@ -14,8 +14,8 @@
 	<jsp:setProperty name="user" property="*"/>
 </jsp:useBean>
 <%
-	UserBean USER = UserBean.getInstance(); // 이 두줄로 끝	
-	USER.insertUser(user); //이 두줄로 끝 
+	UserBean USER = UserBean.getInstance(); 
+	USER.insertUser(user); 
 %>
 </body>
 </html>
