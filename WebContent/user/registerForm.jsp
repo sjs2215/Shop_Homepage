@@ -21,6 +21,8 @@
 	<script type="text/javascript">
 		$(function() { 
 			$("#registerForm").validate(); 
+			
+			
 			$.extend( $.validator.messages, { 
 				required: "필수 항목입니다.", 
 				remote: "항목을 수정하세요.", 
@@ -42,6 +44,20 @@
 				} ); 
 			});
 
+		$(document).ready(function(){  
+		    $("#submit").click(function(){  
+		        var value = $("select[name=userType] option:selected").val();  
+		        if(value==""){
+			        alert("회원 종류를 선택하세요");  
+			        return false;
+		        }
+		        else
+		        	return true;
+		    });  
+		  });  
+
+
+		
 	</script>
 </head>
 
@@ -59,8 +75,8 @@
                             "userType">회원 종류</label>
 
                             <div class="controls">
-                            <select name="userType" >
-                            	<option value = "selected">선택</option>
+                            <select name="userType" requried >
+                            	<option> </option>
                             	<option value = "admin" > 관리자 </option>
                             	<option value = "user"  > 일반 회원 </option>
                             	</select> 
