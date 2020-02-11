@@ -14,6 +14,7 @@
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
@@ -44,21 +45,35 @@
 				} ); 
 			});
 
+
+
+		
 		$(document).ready(function(){  
-		    $("#submit").click(function(){  
-		        var value = $("select[name=userType] option:selected").val();  
+			
+			$("select").change(function(){  
+		        var value = $("select[name=userType] option:selected").val(); 
+		        
+		        if(value=="admin"){
+		        	swal({
+	        			title: "관리자 회원 가입 경고",
+	        			text: "담당자 승인 후에 가입신청이 완료됩니다.\n이메일 문의: soojinsarah@naver.com", 
+	        			icon: "warning",
+	        			showCancelButton: true
+	        		});
+		        }
+		        
+		    });  
+			
+		    $("#submit").click(function(){ 
+
+		    	var value = $("select[name=userType] option:selected").val();  
 
 		        if(value==""){
-			        alert("회원 종류를 선택하세요");  
+		        	swal("회원 가입 실패","회원 종류를 선택하세요.", "error");  
 			        return false;
-		        }
-		        else if(value=="admin"){
-		        	alert("관리자-회원가입의 경우 담당자 승인 후에 가입신청이 완료됩니다.\n승인 담당자 정보는 아래와 같습니다.\nsoojinsarah@naver.com")
 		        }
 		        else
 		        	return true;
-		        
-		        
 		    });  
 		  });  
 
