@@ -1,104 +1,77 @@
-<%@ page session="false"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<html>
 <head>
-    <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>Shopping Cart</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-        .table>tbody>tr>td, .table>tfoot>tr>td{
-    vertical-align: middle;
-}
-@media screen and (max-width: 600px) {
-    table#cart tbody td .form-control{
-		width:20%;
-		display: inline !important;
-	}
-	.actions .btn{
-		width:36%;
-		margin:1.5em 0;
-	}
-	
-	.actions .btn-info{
-		float:left;
-	}
-	.actions .btn-danger{
-		float:right;
-	}
-	
-	table#cart thead { display: none; }
-	table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
-	table#cart tbody tr td:first-child { background: #333; color: #fff; }
-	table#cart tbody td:before {
-		content: attr(data-th); font-weight: bold;
-		display: inline-block; width: 8rem;
-	}
-	
-	
-	
-	table#cart tfoot td{display:block; }
-	table#cart tfoot td .btn{display:block;}
-	
-}
-    </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link rel = "stylesheet" type = "text/css" media = "screen" href = "/resources/css/jquery-ui-1.10.3.custom.min.css"/>
+<link rel = "stylesheet" type = "text/css" media = "screen" href = "/resources/css/ui.jqgrid.css"/>
+
+<script src = "/resources/js/jquery-1.9.0.min.js" type = "text/javascript"></script>
+<script src = "/resources/js/i18n/grid.locale-kr.js" type = "text/javascript"></script>
+<script src = "/resources/js/jquery.jqGrid.min.js" type = "text/javascript"></script>
+
+<script>
+    $(window.document).ready(function() {
+        $("#grid").jqGrid({
+            url : 'http://apis.daum.net/socialpick/search?output=json',
+            caption : 'Daum SNS Pic',    // caption : 그리드의 제목을 지정한다.
+            datatype : 'jsonp',               // datatype : 데이터 타입을 지정한다.
+                                                    // (json 으로 외부에 요청을 보내면 보안정책에 위배되어 요청이 나가질 않는다.
+                                                    //  따라서 datatype 을 jsonp로 변경하고 보내야 한다.)
+
+            mtype : 'get',                     // mtype : 데이터 전송방식을 지정한다.
+            height : '500px',                 // height : 그리드의 높이를 지정한다.
+            pager : '#pager',               // pager : 도구 모임이 될 div 태그를 지정한다.
+            rowNum : 3,                      // rowNum : 한 화면에 표시할 행 개수를 지정한다.
+            loadonce : true,                // loadonce : rowNum 설정을 사용하기 위해서 true로 지정한다.
+            rowList : [3, 6, 9, 10],       // rowList : rowNum을 선택할 수 있는 옵션을 지정한다.
+
+            // colNames : 열의 이름을 지정한다.
+            colNames : [ '순위', '소셜픽키워드', '이슈에 대한 링크 URL', '요약문', '검색수', '트윗수', '검색 결과의 페이지 번호', '순위 상승/하락수', '카테고리' ],
+            colModel : [
+                        { name : 'rank',            index : 'rank',                width : 40,        align : 'center' },
+                        { name : 'keyword',         index : 'keyword',            width : 100,    align : 'left'   },
+                        { name : 'link',             index : 'link',                width : 100,    align : 'left'   },
+                        { name : 'content',         index : 'content',            width : 200,    align : 'left'   },
+                        { name : 'count',             index : 'count',            width : 100,    align : 'center' },
+                        { name : 'quotation_cnt',    index : 'quotation_cnt',    width : 100,    align : 'center' },
+                        { name : 'comment_cnt',     index : 'comment_cnt',         width : 100,    align : 'center' },
+                        { name : 'rank_diff',         index : 'rank_diff',         width : 100,    align : 'center' },
+                        { name : 'category',         index : 'category',         width : 100,    align : 'center' }
+                        ],
+           
+            // jqGrid 에서 default 형태의 JSON 이 아닌 소셜픽만의 고유의 json 형태로 날아오기에.
+            // 소셜픽의 API 를 바꿀 순 없어, jqGrid 에서 json을
+            // customizing하여 사용하기 위해 jsonReader를 사용했다.
+            jsonReader : {
+                            repeatitems : false,
+                            id : "rank",
+                            root : function (obj) { return obj.socialpick.item; },
+                            page : function (obj) { return 1; },
+                            total : function (obj) { return 1; },
+                            records : function (obj) {return obj.socialpick.item.length; }
+            }
+
+        // navGrid() 메서드는 검색 및 기타기능을 사용하기위해 사용된다.
+        }).navGrid('#pager', {
+            search : true,
+            edit : true,
+            add : true,
+            del : true
+        });
+    });
+</script>
+<title>jqGrid</title>
 </head>
 <body>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container">
-	<table id="cart" class="table table-hover table-condensed">
-    				<thead>
-						<tr>
-							<th style="width:50%">Product</th>
-							<th style="width:10%">Price</th>
-							<th style="width:8%">Quantity</th>
-							<th style="width:22%" class="text-center">Subtotal</th>
-							<th style="width:10%"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td data-th="Product">
-								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-									<div class="col-sm-10">
-										<h4 class="nomargin">Product 1</h4>
-										<p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
-									</div>
-								</div>
-							</td>
-							<td data-th="Price">$1.99</td>
-							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="1">
-							</td>
-							<td data-th="Subtotal" class="text-center">1.99</td>
-							<td class="actions" data-th="">
-								<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
-							</td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<tr class="visible-xs">
-							<td class="text-center"><strong>Total 1.99</strong></td>
-						</tr>
-						<tr>
-							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
-						</tr>
-					</tfoot>
-				</table>
-</div>
-<script type="text/javascript">
 
-</script>
+     // jqGrid 플러그인을 사하기위한 table 태그와 div태그 사용
+
+    <table id = "grid"></table>
+    <div id = "pager"></div>
 </body>
 </html>
+
+
+
