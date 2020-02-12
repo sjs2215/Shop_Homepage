@@ -1265,6 +1265,8 @@ input,select,textarea,span{ font-family:open sans; }
 							<div class="col-sm-10">
 								<h2>Sarah Park</h2>
 								<p>Software Engineer</p>
+								<p>Created with <i class="fa fa-heart"></i> by <a href="https://github.com/sjs2215">Sarah Park</a></p>
+								
 							</div>
 						</div>
 					</div>
