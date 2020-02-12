@@ -174,8 +174,34 @@
             }
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-</head>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	
+	 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+
+	<script type="text/javascript">
+	$(document).ready(function(){  
+		
+	    /*
+	    -> alert 주고 db에 insert 할 것. 
+	    -> insert 작업은 carbean에 insertProduct에서
+	    */
+	    
+	    $("#add").click(function(e){ 
+	    	e.preventDefault();
+	    	Swal.fire({
+	    		  position: 'top-end',
+	    		  icon: 'success',
+	    		  title: '장바구니에 성공적으로 담겼습니다.',
+	    		  showConfirmButton: false,
+	    		  timer: 1200
+	    		})
+	    		//return false;
+	    });   
+	  
+	});  
+	</script>
+	</head>
 <body>
 <jsp:useBean id="product" class="products.ProductVO">
 	<jsp:setProperty name="product" property="*"/>
@@ -183,11 +209,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">               
 <section class="our-publication pt-100 pb-70">
             <div class="container">
+                <form id="shop" class="form-horizontal" action="/product/shopPro.jsp" method="post" ">
+            
                 <div class="section-header">
                     <i class="fa fa-book"></i>
                     <h2>Our 헛개s</h2>
                     <p>world's best 헛개 you can find</p>
                 </div>
+                
+                <div class="add-to-cart">
+                      <a href="/product/shoppingcart.jsp" class="default-btn">장바구니 페이지로 이동하기</a>
+                </div>
+                
+                <br></br>
                 
                 <div class="row">
                     <div class="col-sm-6 col-lg-3"> 
@@ -219,7 +253,7 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <a href="#" class="default-btn">Add to Cart</a>
+                                <button class="default-btn" id="add">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -248,12 +282,12 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4> <%= product.getProduct_stock() %>개 </h4>
+                                <h4 class="price"> <%= product.getProduct_stock() %>개 </h4>
                                 <h4 class="price"> <%= product.getProduct_price() %> 원 <span>$299</span></h4>
                             </div>
 
                             <div class="add-to-cart">
-                                <a href="#" class="default-btn">Add to Cart</a>
+                                <button class="default-btn" id="add">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -285,7 +319,7 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <a href="#" class="default-btn">Add to Cart</a>
+                                <button class="default-btn" id="add">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -317,11 +351,12 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <a href="#" class="default-btn">Add to Cart</a>
+                                <button class="default-btn" id="add">Add to Cart</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </section>
 <script type="text/javascript">
