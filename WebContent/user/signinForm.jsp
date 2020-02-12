@@ -188,9 +188,10 @@ a{color:inherit;text-decoration:none}
 
   <div class="login-wrap">
 	<div class="login-html">
+	<form class="login-form" action="/user/signinPro.jsp" method="post">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">로그인하기</label>
 		<input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">비밀번호 찾기</label>		
-				    <form class="login-form" action="/user/signinPro.jsp" method="post">
+				    
 		
 		<div class="login-form">
 			<div class="sign-in-htm">
@@ -206,7 +207,7 @@ a{color:inherit;text-decoration:none}
 					 <button type="submit" class="button">로그인</button>
 					
 				</div>
-				</form>
+				
 				
 			</div>
 			<div class="for-pwd-htm">
@@ -220,9 +221,11 @@ a{color:inherit;text-decoration:none}
 				
 			</div>
 							
-		</div>			
+		</div>
+		</form>			
 		</div>
 	
 	</div>
+	
 </body>
 </html>
