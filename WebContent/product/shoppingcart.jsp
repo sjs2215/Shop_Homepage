@@ -32,16 +32,35 @@
 	        footerrow : true,
 	        userDataOnFooter : true,	
 	        multiselect: true,            // 멀티 체크 기능 구현을 위한 체크박스 생성
+	        //multiboxonly:true, //https://stackoverflow.com/questions/6756131/jqgrid-single-select-checkbox
 	        caption: "My 장바구니 목록"   ,     			  // 그리드 제목 설정
 	        colNames:[ '주문번호', '상품번호', '고객 아이디', '수량','주문날짜'],
 	        colModel: [
-						{ label: 'OrderID', name: 'OrderID', key: true, width: 75 },
-	                    { label: 'Customer ID', name: 'CustomerID', width: 150 },
-	                    { label: 'Order Date', name: 'OrderDate', width: 150, editable:true},
-	                    { label: 'Freight', name: 'Freight', width: 150, editable:true },
-	                    { label:'Ship Name', name: 'ShipName', width: 150 }
+						{ name: 'OrderID', key: true, width: 75 },
+	                    { name: 'CustomerID', width: 150 },
+	                    { name: 'OrderDate', width: 150, editable:true, 
+                    		editoptions: { 
+                    			dataEvents: [{ 
+                    				type: 'change', 
+                    				fn: function(e) {
+                    					swal("데이터가 변경되었습니다.","`체크된 행 저장하기` 버튼을 다시 눌러 작업을 완료하세요.", "warning"); 
+                    					} 
+                    			},
+                    			]}
+                    },
+	                    { name: 'Freight', width: 150, editable:true, 
+                    		editoptions: { 
+                    			dataEvents: [{ 
+                    				type: 'change', 
+                    				fn: function(e) {
+                    					swal("데이터가 변경되었습니다.","`체크된 행 저장하기` 버튼을 다시 눌러 작업을 완료하세요.", "warning"); 
+                    					} 
+                    			},
+                    			]}
+                    },
+	                    { name: 'ShipName', width: 150 }
 	         		  ],
-	       
+	         		
 	      
 		    // navGrid() 메서드는 검색 및 기타기능을 사용하기위해 사용된다.
 		    }).navGrid('#pager', {
@@ -54,8 +73,15 @@
 	    var s = jQuery("#grid").jqGrid('getGridParam', 'selarrrow');
 	    
 		    // 체크된 항목의 ROW NUMBER를 alert 해줌
-		    jQuery("#cm1").click( function() {   
-		    	swal("체크된 항목의 ROW NUMBER: ",""+ s, "warning"); 
+		    jQuery("#cm1").click( function() { 
+		    	if(s==""){
+		    		swal("체크된 행이 없습니다.","", "error");
+		    		//alert("체크된 행이 없습니다.");
+		    		return false;
+		    	}
+		    	else{
+		    		swal("체크된 항목의 ROW NUMBER: ",""+ s, "warning"); 
+		    	}
 		    });
 		   
 		    // 특정행 자동 체크 On/Off
@@ -84,6 +110,7 @@
 		    	jQuery("#grid").jqGrid('saveRow',s);
 		    	jQuery("#sved1,#cned1").attr("disabled",true);
 		    	jQuery("#ed1").attr("disabled",false);
+		    	swal("데이터가 저장되었습니다.",s+"데이터가 저장되었습니다.", "success");
 		    });
 		    
 		  //수정 취소
@@ -91,6 +118,16 @@
 		    	jQuery("#grid").jqGrid('restoreRow',"13");
 		    	jQuery("#sved1,#cned1").attr("disabled",true);
 		    	jQuery("#ed1").attr("disabled",false);
+		    });
+		  
+		  //get data from selected row
+		    jQuery("#changed_print").click( function(){
+		    	var id = jQuery("#grid").jqGrid('getGridParam','selrow');
+		    	if (id)	{
+		    		var ret = jQuery("#grid").jqGrid('getRowData',id);
+		    		//alert("id="+ret.OrderID+" OrderDate="+ret.OrderDate+"이하 생략");
+		    		$("#multiPrint").text("id="+ret.OrderID+" OrderDate="+ret.OrderDate+"이하 생략");
+		    	} else { swal("체크된 행이 없습니다.","", "error");}
 		    });
 	});
 	
@@ -106,6 +143,10 @@
 		<br>
 		<br>
 	    <h1>
+	    	<a href="#" id="changed_print">수정된 데이터 출력하기(미리보기)</a>
+	    	check된 데이터들 : 
+		<span id="multiPrint"></span><br/>
+	    	<br>
 	        <a href="javascript:void(0)" id="cm1">체크된 Row Number(행) 확인</a><br/><br/>
 	        <br>
 	        <a href="javascript:void(0)" id="cm1s">특정 행 체크 Off</a>
@@ -116,6 +157,9 @@
 	    <input type="BUTTON" id="ed1" value="체크된 행 수정하기" />
 		<input type="BUTTON" id="sved1" disabled='true' value="체크된 행 저장하기" />
 		<input type="BUTTON" id="cned1" disabled='true' value="저장 취소" />
+		<br>
+		
+		
 		
 	</body>
 
