@@ -32,7 +32,7 @@
 	        footerrow : true,
 	        userDataOnFooter : true,	
 	        multiselect: true,            // 멀티 체크 기능 구현을 위한 체크박스 생성
-	        //multiboxonly:true, //https://stackoverflow.com/questions/6756131/jqgrid-single-select-checkbox
+	        
 	        caption: "My 장바구니 목록"   ,     			  // 그리드 제목 설정
 	        colNames:[ '주문번호', '상품번호', '고객 아이디', '수량','주문날짜'],
 	        colModel: [
@@ -129,6 +129,11 @@
 		    		$("#multiPrint").text("id="+ret.OrderID+" OrderDate="+ret.OrderDate+"이하 생략");
 		    	} else { swal("체크된 행이 없습니다.","", "error");}
 		    });
+		  
+		  //reset checked data
+		    jQuery("#reset").click( function(){
+		    	jQuery("#grid").jqGrid('resetSelection');
+		    });
 	});
 	
 </script>
@@ -157,9 +162,8 @@
 	    <input type="BUTTON" id="ed1" value="체크된 행 수정하기" />
 		<input type="BUTTON" id="sved1" disabled='true' value="체크된 행 저장하기" />
 		<input type="BUTTON" id="cned1" disabled='true' value="저장 취소" />
+		<input type="BUTTON" id="reset" value="체크된 항목 초기화" />
 		<br>
-		
-		
 		
 	</body>
 
