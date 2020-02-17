@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-<link rel = "stylesheet" type = "text/css" media = "screen" href = "/resources/css/jquery-ui-1.10.3.custom.min.css"/>
+<link rel = "stylesheet" type = "text/css" media = "screen" href = "/resources/css/jquery-ui.min.css"/>
 <link rel = "stylesheet" type = "text/css" media = "screen" href = "/resources/css/ui.jqgrid.css"/>
 
 <script src = "/resources/js/jquery-1.9.0.min.js" type = "text/javascript"></script>
@@ -115,7 +115,7 @@
 		    
 		  //수정 취소
 		    jQuery("#cned1").click( function() {
-		    	jQuery("#grid").jqGrid('restoreRow',"13");
+		    	jQuery("#grid").jqGrid('restoreRow',s);
 		    	jQuery("#sved1,#cned1").attr("disabled",true);
 		    	jQuery("#ed1").attr("disabled",false);
 		    });
@@ -131,7 +131,12 @@
 		    });
 		  
 		  //reset checked data
+		  //체크 -> 초기화 -> 수정할때 전 항목 체크되는 거  해결해야됨
 		    jQuery("#reset").click( function(){
+		    	
+		    	jQuery("#grid").jqGrid('restoreRow',s);
+		    	jQuery("#sved1,#cned1").attr("disabled",true);
+		    	jQuery("#ed1").attr("disabled",false);
 		    	jQuery("#grid").jqGrid('resetSelection');
 		    });
 	});
