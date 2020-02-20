@@ -184,10 +184,10 @@
 		
 	    /*
 	    -> alert 주고 db에 insert 할 것. 
-	    -> insert 작업은 carbean에 insertProduct에서
+	    -> insert 작업은 cartbean - insertProduct에서
 	    */
 	    
-	    $("#add").click(function(e){ 
+	    $("#add1, #add2, #add3, #add4").click(function(e){ 
 	    	e.preventDefault();
 	    	Swal.fire({
 	    		  position: 'top-end',
@@ -196,6 +196,7 @@
 	    		  showConfirmButton: false,
 	    		  timer: 1200
 	    		})
+	    		//alert("ASDfasdf");
 	    		//return false;
 	    });   
 	  
@@ -253,10 +254,11 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <button class="default-btn" id="add">Add to Cart</button>
+                                <button class="default-btn" id="add1">Add to Cart</button>
                             </div>
                         </div>
                     </div>
+                    
                     
                     <div class="col-sm-6 col-lg-3"> 
                         <div class="single-publication">
@@ -287,7 +289,7 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <button class="default-btn" id="add">Add to Cart</button>
+                                <button class="default-btn" id="add2">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -319,7 +321,7 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <button class="default-btn" id="add">Add to Cart</button>
+                                <button class="default-btn" id="add3">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -351,7 +353,7 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <button class="default-btn" id="add">Add to Cart</button>
+                                <button class="default-btn" id="add4">Add to Cart</button>
                             </div>
                         </div>
                     </div>
