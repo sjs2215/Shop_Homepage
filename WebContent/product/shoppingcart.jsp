@@ -6,14 +6,29 @@
 
 <link rel = "stylesheet" type = "text/css" media = "screen" href = "/resources/css/jquery-ui.min.css"/>
 <link rel = "stylesheet" type = "text/css" media = "screen" href = "/resources/css/ui.jqgrid.css"/>
+<!--<link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">-->
 
 <script src = "/resources/js/jquery-1.9.0.min.js" type = "text/javascript"></script>
 <script src = "/resources/js/i18n/grid.locale-kr.js" type = "text/javascript"></script>
 <script src = "/resources/js/jquery.jqGrid.min.js" type = "text/javascript"></script>
+<!--  <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>-->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<style>
+#overflowTest {
+  background: #4CAF50;
+  color: white;
+  padding: 15px;
+  width: 50%;
+  height: 100px;
+  overflow: auto;
+  border: 1px solid #ccc;
+}
+</style>
 
 <script > 
 	$(window.document).ready(function() {
+		
 	    $("#grid").jqGrid({
 	    	url: 'http://trirand.com/blog/phpjqgrid/examples/jsonp/getjsonp.php?callback=?&qwery=longorders',
 	        mtype: "GET",
@@ -44,6 +59,7 @@
                     				type: 'change', 
                     				fn: function(e) {
                     					swal("데이터가 변경되었습니다.","`체크된 행 저장하기` 버튼을 다시 눌러 작업을 완료하세요.", "warning"); 
+                    					flag=1; //값 변경되면 flag=1로 지정
                     					} 
                     			},
                     			]}
@@ -54,6 +70,7 @@
                     				type: 'change', 
                     				fn: function(e) {
                     					swal("데이터가 변경되었습니다.","`체크된 행 저장하기` 버튼을 다시 눌러 작업을 완료하세요.", "warning"); 
+                    					flag=1; //값 변경되면 flag=1로 지정
                     					} 
                     			},
                     			]}
@@ -71,6 +88,8 @@
 		    });
 		   
 	    var s = jQuery("#grid").jqGrid('getGridParam', 'selarrrow');
+	    var flag=0;
+			 
 	    
 		    // 체크된 항목의 ROW NUMBER를 alert 해줌
 		    jQuery("#cm1").click( function() { 
@@ -106,11 +125,28 @@
 		    
 		    // 체크된 ROW 저장 기능
 		    // 여러 행일 경우 어떻게...
+		    var checkScanItemsStr = "";
 		    jQuery("#sved1").click( function() {
 		    	jQuery("#grid").jqGrid('saveRow',s);
 		    	jQuery("#sved1,#cned1").attr("disabled",true);
 		    	jQuery("#ed1").attr("disabled",false);
 		    	swal("데이터가 저장되었습니다.",s+"데이터가 저장되었습니다.", "success");
+		    	
+		    	//수정되었다면 출력. (수정된 경우 flag:1 아니라면 flag:) 
+		    	if(flag==1){
+			    	for( var i=0; i<s.length; i++ ) {
+			    	    var scanItemInfo = $("#grid").getRowData( s[i] );
+			    	    checkScanItemsStr +=  
+			    		  "주문번호: "+scanItemInfo.OrderID +", 상품번호: "+ scanItemInfo.CustomerID +", 고객아이디: "+ scanItemInfo.OrderDate + ", 수량: "+ scanItemInfo.Freight;
+			    	}
+			    	
+			    	$("#multiPrint").text(checkScanItemsStr);
+				    	checkScanItemsStr += "\n";
+				    	
+				    //flag 값은 다시 0으로 초기화
+				    flag=0;
+		    	}	
+			    	
 		    });
 		    
 		  //수정 취소
@@ -120,24 +156,12 @@
 		    	jQuery("#ed1").attr("disabled",false);
 		    });
 		  
-		  //get data from selected row
-		    jQuery("#changed_print").click( function(){
-		    	var id = jQuery("#grid").jqGrid('getGridParam','selrow');
-		    	if (id)	{
-		    		var ret = jQuery("#grid").jqGrid('getRowData',id);
-		    		//alert("id="+ret.OrderID+" OrderDate="+ret.OrderDate+"이하 생략");
-		    		$("#multiPrint").text("id="+ret.OrderID+" OrderDate="+ret.OrderDate+"이하 생략");
-		    	} else { swal("체크된 행이 없습니다.","", "error");}
-		    });
-		  
 		  //reset checked data
 		  //체크 -> 초기화 -> 수정할때 전 항목 체크되는 거  해결해야됨
-		    jQuery("#reset").click( function(){
-		    	
-		    	jQuery("#grid").jqGrid('restoreRow',s);
+		    jQuery("#reset").click( function(){ 
+		    	jQuery("#grid").jqGrid('resetSelection');
 		    	jQuery("#sved1,#cned1").attr("disabled",true);
 		    	jQuery("#ed1").attr("disabled",false);
-		    	jQuery("#grid").jqGrid('resetSelection');
 		    });
 	});
 	
@@ -147,30 +171,35 @@
 
 </head>
 
-	<body style = "font-size:62.5%;">
-	    <table id = "grid"></table>
-	    <div id = "pager"></div>
-		<br>
-		<br>
-	    <h1>
-	    	<a href="#" id="changed_print">수정된 데이터 출력하기(미리보기)</a>
-	    	check된 데이터들 : 
-		<span id="multiPrint"></span><br/>
-	    	<br>
-	        <a href="javascript:void(0)" id="cm1">체크된 Row Number(행) 확인</a><br/><br/>
-	        <br>
-	        <a href="javascript:void(0)" id="cm1s">특정 행 체크 Off</a>
-	    </h1>
-	    <br>
-	    <br>
-	    <br>
-	    <input type="BUTTON" id="ed1" value="체크된 행 수정하기" />
-		<input type="BUTTON" id="sved1" disabled='true' value="체크된 행 저장하기" />
-		<input type="BUTTON" id="cned1" disabled='true' value="저장 취소" />
-		<input type="BUTTON" id="reset" value="체크된 항목 초기화" />
-		<br>
-		
-	</body>
+			<body style = "font-size:70.5%;">
+			    <table id = "grid"></table>
+			    <div id = "pager"></div>
+			    <h1>
+			    	
+			   <div align="right">
+				    <input type="BUTTON" id="ed1" value="체크된 행 수정하기" />
+					<input type="BUTTON" id="sved1" disabled='true' value="체크된 행 저장하기" />
+					<input type="BUTTON" id="cned1" disabled='true' value="저장 취소" />
+					<input type="BUTTON" id="reset" value="체크된 항목 초기화" />
+					<br>
+					<input type="submit" id="submit" name="submit" value="주문 완료하기" />
+				</div>
+			    	
+			    수정된 데이터 history : <br>
+			    <div id="overflowTest"> 
+			    	<span id="multiPrint"></span>
+			    	<br/> 
+			    </div>
+				
+			    <br>
+			    	
+			    	<a href="javascript:void(0)" id="cm1">체크된 Row Number(행) 확인</a>
+			        
+			    <br>
+			        
+			    	<a href="javascript:void(0)" id="cm1s">특정 행 체크 Off</a>
+			    </h1>
+			</body>
 
 </html>
 
