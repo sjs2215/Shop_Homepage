@@ -249,7 +249,7 @@
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
                                 <h4 class="price"> <%= product.getProduct_stock() %>개 </h4>
-                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>$299</span></h4>
+                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
                             <div class="add-to-cart">
@@ -283,7 +283,7 @@
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
                                 <h4 class="price"> <%= product.getProduct_stock() %>개 </h4>
-                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>$299</span></h4>
+                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
                             <div class="add-to-cart">
@@ -315,7 +315,7 @@
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
                                 <h4 class="price"> <%= product.getProduct_stock() %>개 </h4>
-                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>$299</span></h4>
+                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
                             <div class="add-to-cart">
@@ -347,7 +347,7 @@
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
                                 <h4 class="price"> <%=product.getProduct_stock()%> </h4>
-                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>$299</span></h4>
+                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
                             <div class="add-to-cart">
