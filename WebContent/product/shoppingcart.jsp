@@ -34,7 +34,7 @@
 	        mtype: "GET",
 	        datatype : 'jsonp',     
 	        pager : '#pager',            // pager : 도구 모임이 될 div 태그를 지정한다.
-	        loadonce : true,            // loadonce : rowNum 설정을 사용하기 위해서 true로 지정한다.
+	        loadonce : false,            
 	        autowidth : true,            // When autowidth is set to true the grid fits to the width of the parent container.
 	        rownumbers : true,           // rownumbers add additional column which count the rows
 	        height : '400px',            // height : 그리드의 높이를 지정한다.	
@@ -47,7 +47,11 @@
 	        footerrow : true,
 	        userDataOnFooter : true,	
 	        multiselect: true,            // 멀티 체크 기능 구현을 위한 체크박스 생성
-	        
+	        loadComplete: function () {
+	        	var moneySum = $("#grid").jqGrid('getCol','Freight', false, 'sum');
+                $('#grid').jqGrid('footerData', 'set', { crateName:'합계', Freight:moneySum });
+              
+        	},
 	        caption: "My 장바구니 목록"   ,     			  // 그리드 제목 설정
 	        colNames:[ '주문번호', '상품번호', '고객 아이디', '수량','주문날짜'],
 	        colModel: [
@@ -58,26 +62,29 @@
                     			dataEvents: [{ 
                     				type: 'change', 
                     				fn: function(e) {
-                    					swal("데이터가 변경되었습니다.","`체크된 행 저장하기` 버튼을 다시 눌러 작업을 완료하세요.", "warning"); 
+                    					swal("데이터 변경 감지","`체크된 행 저장하기` 버튼을 눌러 작업을 완료하세요.", "warning"); 
                     					flag=1; //값 변경되면 flag=1로 지정
                     					} 
                     			},
                     			]}
                     },
-	                    { name: 'Freight', width: 150, editable:true, 
+	                    { name: 'ShipName', width: 150, editable:true, 
                     		editoptions: { 
                     			dataEvents: [{ 
                     				type: 'change', 
                     				fn: function(e) {
-                    					swal("데이터가 변경되었습니다.","`체크된 행 저장하기` 버튼을 다시 눌러 작업을 완료하세요.", "warning"); 
+                    					swal("데이터 변경 감지","`체크된 행 저장하기` 버튼을 눌러 작업을 완료하세요.", "warning"); 
                     					flag=1; //값 변경되면 flag=1로 지정
                     					} 
                     			},
                     			]}
                     },
-	                    { name: 'ShipName', width: 150 }
+	                    { name: 'Freight',index: 'Freight', width: 150, formatter: 'integer', formatoptions:{thousandsSeparator:","}, summaryType:'sum', summaryTpl: 'Totals :'}
+                    
+                    
+                    	
+
 	         		  ],
-	         		
 	      
 		    // navGrid() 메서드는 검색 및 기타기능을 사용하기위해 사용된다.
 		    }).navGrid('#pager', {
@@ -87,12 +94,11 @@
 		        del : false,
 		    });
 		   
-	    var s = jQuery("#grid").jqGrid('getGridParam', 'selarrrow');
-	    var flag=0;
+	   		 var flag=0; //데이터 수정 여부를 알기 위한 변수
 			 
-	    
 		    // 체크된 항목의 ROW NUMBER를 alert 해줌
 		    jQuery("#cm1").click( function() { 
+		    	var s = jQuery("#grid").jqGrid('getGridParam', 'selarrrow');
 		    	if(s==""){
 		    		swal("체크된 행이 없습니다.","", "error");
 		    		//alert("체크된 행이 없습니다.");
@@ -103,23 +109,30 @@
 		    	}
 		    });
 		   
-		    // 특정행 자동 체크 On/Off
+			// 장바구니 비우기
 		    // 여러 행일 경우 어떻게...
-		    jQuery("#cm1s").click( function() {
-		        jQuery("#grid").jqGrid('setSelection', s);
+		    jQuery("#clear").click( function() {
+			        jQuery("#grid").jqGrid('clearGridData');
+			        swal("데이터 변경 감지","`주문 완료하기` 버튼을 눌러 작업을 완료하세요.", "warning"); 
 		    });
 		    
-		    // 체크된 ROW EDIT 기능
+		    // 체크된 ROW 수정 기능
 		    jQuery("#ed1").click( function() {
+		    	var s = jQuery("#grid").jqGrid('getGridParam', 'selarrrow');
 		    	if(s==""){
 		    		swal("체크된 행이 없습니다.","", "error");
 		    		//alert("체크된 행이 없습니다.");
 		    		return false;
 		    	}
 		    	else{
-			    	jQuery("#grid").jqGrid('editRow',s);
-			    	this.disabled = 'true';
-			    	jQuery("#sved1,#cned1").attr("disabled",false);
+		    		if(s.length>1) { //체크된 데이터 1개 이상이면 수정이 안되서 if-else문 분기
+		    			swal("데이터 한 개만 선택해주세요","초기화 버튼 클릭 후 선택해주세요", "error");
+		    		}
+		    		else{
+				    	jQuery("#grid").jqGrid('editRow',s);
+				    	this.disabled = 'true';
+				    	jQuery("#sved1,#cned1").attr("disabled",false);
+		    		}
 		    	}
 		    });
 		    
@@ -127,6 +140,7 @@
 		    // 여러 행일 경우 어떻게...
 		    var checkScanItemsStr = "";
 		    jQuery("#sved1").click( function() {
+		    	var s = jQuery("#grid").jqGrid('getGridParam', 'selarrrow');
 		    	jQuery("#grid").jqGrid('saveRow',s);
 		    	jQuery("#sved1,#cned1").attr("disabled",true);
 		    	jQuery("#ed1").attr("disabled",false);
@@ -151,17 +165,18 @@
 		    
 		  //수정 취소
 		    jQuery("#cned1").click( function() {
+		    	var s = jQuery("#grid").jqGrid('getGridParam', 'selarrrow');
 		    	jQuery("#grid").jqGrid('restoreRow',s);
 		    	jQuery("#sved1,#cned1").attr("disabled",true);
 		    	jQuery("#ed1").attr("disabled",false);
 		    });
 		  
-		  //reset checked data
-		  //체크 -> 초기화 -> 수정할때 전 항목 체크되는 거  해결해야됨
+		  //데이터 초기화
 		    jQuery("#reset").click( function(){ 
 		    	jQuery("#grid").jqGrid('resetSelection');
 		    	jQuery("#sved1,#cned1").attr("disabled",true);
 		    	jQuery("#ed1").attr("disabled",false);
+		    	
 		    });
 	});
 	
@@ -194,10 +209,10 @@
 			    <br>
 			    	
 			    	<a href="javascript:void(0)" id="cm1">체크된 Row Number(행) 확인</a>
-			        
-			    <br>
-			        
-			    	<a href="javascript:void(0)" id="cm1s">특정 행 체크 Off</a>
+			    	
+			    <div align="right">
+					<input type="BUTTON" id="clear" value="장바구니 비우기" />
+				</div>
 			    </h1>
 			</body>
 
