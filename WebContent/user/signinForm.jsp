@@ -224,9 +224,19 @@ a{color:inherit;text-decoration:none}
 				</div>
 				<div class="group">
 					 <button type="submit" class="button">로그인</button>
+					 
 				</div>
-				<div class="g-signin2" data-onsuccess="onSignIn"></div>
-				<button type="button" onclick="signOut();">로그아웃</button>
+				<div class="group">
+					 <button type="button" class="button" onclick="signOut();">로그아웃</button>
+					 
+				</div>
+				<br><br>
+				<div class="container">
+					<h3 class="bg-warning" TEXT-ALIGN=center>구글 계정으로 로그인하기</h3>
+					<div class="g-signin2" data-onsuccess="onSignIn"  align=center style="height:45px"></div>
+				</div>
+				
+				
 				
 			</div>
 			<div class="for-pwd-htm">
