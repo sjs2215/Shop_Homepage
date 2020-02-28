@@ -126,7 +126,7 @@
 		    	}
 		    	else{
 		    		if(s.length>1) { //체크된 데이터 1개 이상이면 수정이 안되서 if-else문 분기
-		    			swal("데이터 한 개만 선택해주세요","초기화 버튼 클릭 후 선택해주세요", "error");
+		    			swal("데이터 한 개만 선택해주세요","초기화 버튼 클릭 후 다시 선택해주세요", "error");
 		    		}
 		    		else{
 				    	jQuery("#grid").jqGrid('editRow',s);
