@@ -24,6 +24,13 @@
   overflow: auto;
   border: 1px solid #ccc;
 }
+ 
+th.ui-th-column div {
+   white-space:normal !important;
+   height:auto !important;
+}
+
+
 </style>
 
 <script > 
@@ -53,9 +60,9 @@
               
         	},
 	        caption: "My 장바구니 목록"   ,     			  // 그리드 제목 설정
-	        colNames:[ '주문번호', '상품번호', '고객 아이디', '수량','주문날짜'],
+	        colNames:[ '주문번호', '상품번호', '주문한 날짜', '주문자','주문금액'],
 	        colModel: [
-						{ name: 'OrderID', key: true, width: 75 },
+						{ name: 'OrderID', key: true, width: 75},
 	                    { name: 'CustomerID', width: 150 },
 	                    { name: 'OrderDate', width: 150, editable:true, 
                     		editoptions: { 
@@ -92,7 +99,8 @@
 		        edit : false,
 		        add : false,
 		        del : false,
-		    });
+		    })
+		    ;
 		   
 	   		 var flag=0; //데이터 수정 여부를 알기 위한 변수
 			 
