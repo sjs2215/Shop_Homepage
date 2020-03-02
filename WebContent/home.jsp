@@ -2,14 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% 
-
-//request.setCharacterEncoding("UTF-8");
-
-//String programmer = request.getParameter("google_name");
-
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -960,38 +952,37 @@ input,select,textarea,span{ font-family:open sans; }
 
 /******Responsive ends Here******/
     </style>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	    <meta name="google-signin-client_id" content="155546141913-13aaj59tmbnvdhl498otaq3jogvfpseg.apps.googleusercontent.com">
-		<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-	<title>Home</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="css/style.css" rel="stylesheet" media="all" type="text/css">
-	<link href="css/responsive.css" rel="stylesheet" media="all" type="text/css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
-	
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script>
     function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log('User signed out.');
-        });
-        auth2.disconnect();
-      }
-    
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    }
+
     function onLoad() {
-        gapi.load('auth2', function() {
-          gapi.auth2.init();
-        });
-      }
-    </script>
-   
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
+ 	</script>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+    <meta name="google-signin-client_id" content="155546141913-13aaj59tmbnvdhl498otaq3jogvfpseg.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+<title>Home</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="css/style.css" rel="stylesheet" media="all" type="text/css">
+<link href="css/responsive.css" rel="stylesheet" media="all" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
 </head>
 <body>
 <header id="main-head">
@@ -1000,7 +991,6 @@ input,select,textarea,span{ font-family:open sans; }
 			<div class="bot-head">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class=" navbar-header ">
-				
 					<button type="button" class=" navbar-toggle " data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						<span class=" sr-only ">Toggle navigation</span>
 						<span class=" icon-bar "></span>
@@ -1012,16 +1002,15 @@ input,select,textarea,span{ font-family:open sans; }
 					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				
 				<div class=" collapse navbar-collapse " id="bs-example-navbar-collapse-1">
 					<ul class=" nav navbar-nav navbar-right ">
 						<li class="active"><a href="index.html">홈</a></li>
-						<li class=""><a href="#services">헛개의 효능</a></li>
+						<li class=""><a href="#services">헛개의 효능, 헛개 먹는 법</a></li>
 						<li class=""><a href="/product/shoppingcart.jsp">장바구니</a></li>
-						<li class="" ><a href="/user/mypageForm.jsp">마이 페이지</a></li>
+						<li class=""><a href="/user/mypageForm.jsp">마이 페이지</a></li>
 						<li class=""><a href="/user/registerForm.jsp">회원가입</a></li>
 						<li class=""><a href="/user/signinForm.jsp">로그인</a></li>
-						<li class=""><a href="#" id="logout" onclick="signOut();">로그아웃</a></li>							
+						<li class=""><a href="#" onClick="signOut()">로그아웃</a></li>						
 						<!--  
 					//						String userType="";
 	
@@ -1056,7 +1045,7 @@ input,select,textarea,span{ font-family:open sans; }
 							<img src="img/img001.jpg" class="img-responsive"/>
 						</div>
 						<div class="text-wrap ">
-							<h2>Discover The Best</h2> 
+							<h2>Discover The Best</h2>
 							<h1>WELCOME TO OUR 헛개농장</h1>
 							<p>몸에 좋은 헛개! 저희 농장에서는 국산 100% 품질보장된 열매만 판매합니다.</p>
 							<div class="button-list">
