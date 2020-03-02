@@ -954,11 +954,15 @@ input,select,textarea,span{ font-family:open sans; }
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script>
+    <script type="text/javascript">
+    var login_check=0;//로그아웃할때마다 1씩 증가
+    
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(function () {
         console.log('User signed out.');
+        login_check++;
+        console.log(login_check);
       });
     }
 
@@ -967,6 +971,18 @@ input,select,textarea,span{ font-family:open sans; }
         gapi.auth2.init();
       });
     }
+    
+     function mypage_check(){ 
+    	console.log(login_check);
+	   if(login_check==0){
+		   location.replace("/user/mypageForm.jsp");
+	   }
+	   else{
+		   alert("로그인 필요");
+		   
+	   }
+    	
+    }   
  	</script>
 
 <meta charset="utf-8">
@@ -998,7 +1014,7 @@ input,select,textarea,span{ font-family:open sans; }
 						<span class=" icon-bar "></span>
 					</button>
 					<div class="brand ">
-						<a class=" navbar-brand" href="#"><img src="http://via.placeholder.com/200x70" class="img-responsive"/></a>
+						<a class=" navbar-brand" href="#"><img src="img/main_logo.png" class="img-responsive"/></a>
 					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -1007,10 +1023,10 @@ input,select,textarea,span{ font-family:open sans; }
 						<li class="active"><a href="index.html">홈</a></li>
 						<li class=""><a href="#services">헛개의 효능, 헛개 먹는 법</a></li>
 						<li class=""><a href="/product/shoppingcart.jsp">장바구니</a></li>
-						<li class=""><a href="/user/mypageForm.jsp">마이 페이지</a></li>
+						<li class="" id="mypage"><a href="#" onClick="mypage_check();">마이 페이지</a></li>
 						<li class=""><a href="/user/registerForm.jsp">회원가입</a></li>
 						<li class=""><a href="/user/signinForm.jsp">로그인</a></li>
-						<li class=""><a href="#" onClick="signOut()">로그아웃</a></li>						
+						<li class=""><a href="#" onClick="signOut();">로그아웃</a></li>						
 						<!--  
 					//						String userType="";
 	
