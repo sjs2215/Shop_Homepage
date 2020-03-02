@@ -6,6 +6,7 @@
 <head>
     <meta charset="utf-8">
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <meta name="google-signin-client_id" content="155546141913-13aaj59tmbnvdhl498otaq3jogvfpseg.apps.googleusercontent.com">
     <title>헛개농장-로그인 페이지</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -179,6 +180,30 @@ a{color:inherit;text-decoration:none}
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+    function onSignIn(googleUser) {
+    	  var profile = googleUser.getBasicProfile();
+    	  var google_name = profile.getName();
+    	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    	  console.log('Name: ' + profile.getName());
+    	  console.log('Image URL: ' + profile.getImageUrl());
+    	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    	  
+    	  alert(google_name+"님, 로그인 완료"); 
+    	  location.replace("/home.jsp");
+    	}
+    
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+        });
+        auth2.disconnect();
+      }
+    
+    
+    </script>
 
 </head>
 <body>
@@ -205,6 +230,17 @@ a{color:inherit;text-decoration:none}
 				</div>
 				<div class="group">
 					 <button type="submit" class="button">로그인</button>
+					 
+				</div>
+				<div class="group">
+					 <button type="button" class="button" onclick="signOut();">로그아웃</button>
+					 
+				</div>
+				<br><br>
+				<div class="container">
+					<h3 class="bg-warning" TEXT-ALIGN=center>구글 계정으로 로그인하기</h3>
+					<div class="g-signin2" type="submit" id="google-submit" data-onsuccess="onSignIn"  align=center style="height:45px"></div>
+					<h1 id="name"></h1>
 					
 				</div>
 				
