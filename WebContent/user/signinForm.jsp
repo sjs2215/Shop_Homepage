@@ -184,10 +184,14 @@ a{color:inherit;text-decoration:none}
     <script>
     function onSignIn(googleUser) {
     	  var profile = googleUser.getBasicProfile();
+    	  var google_name = profile.getName();
     	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     	  console.log('Name: ' + profile.getName());
     	  console.log('Image URL: ' + profile.getImageUrl());
     	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    	  
+    	  alert(google_name+"님, 로그인 완료"); 
+    	  location.replace("/home.jsp");
     	}
     
     function signOut() {
@@ -197,6 +201,8 @@ a{color:inherit;text-decoration:none}
         });
         auth2.disconnect();
       }
+    
+    
     </script>
 
 </head>
@@ -233,9 +239,10 @@ a{color:inherit;text-decoration:none}
 				<br><br>
 				<div class="container">
 					<h3 class="bg-warning" TEXT-ALIGN=center>구글 계정으로 로그인하기</h3>
-					<div class="g-signin2" data-onsuccess="onSignIn"  align=center style="height:45px"></div>
+					<div class="g-signin2" type="submit" id="google-submit" data-onsuccess="onSignIn"  align=center style="height:45px"></div>
+					<h1 id="name"></h1>
+					
 				</div>
-				
 				
 				
 			</div>

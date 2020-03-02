@@ -17,6 +17,9 @@
 	<jsp:setProperty name="user" property="*"/>
 </jsp:useBean>
 <%
+
+   String google_name = request.getParameter("google_name");
+
 	UserBean USER = UserBean.getInstance(); 
 	
 	String name =request.getParameter("userName");
@@ -38,8 +41,10 @@
 			session.setAttribute("userType",userType);
 			response.sendRedirect("/admin/admin.jsp");
 		}
-		else{
-		response.sendRedirect("/home.jsp");
+		else{ %>
+			<script> alert(name+"님, 로그인 완료!"); </script>
+			<% 
+			response.sendRedirect("/home.jsp");
 		}
 	} 
 	else if(user_check==0) {
