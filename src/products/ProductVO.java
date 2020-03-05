@@ -4,6 +4,13 @@ import java.util.Date;
 
 public class ProductVO {
 
+	private Integer product_id;
+	private String product_name;
+	private Integer product_price;
+	private Integer product_stock;
+	private String product_desc;
+	private Date product_cre_date;
+	
 	public Integer getProduct_id() {
 		return product_id;
 	}
@@ -34,18 +41,12 @@ public class ProductVO {
 	public void setProduct_desc(String product_desc) {
 		this.product_desc = product_desc;
 	}
-	public Date getProdcut_cre_date() {
-		return prodcut_cre_date;
+	public Date getProduct_cre_date() {
+		return product_cre_date;
 	}
-	public void setProdcut_cre_date(Date prodcut_cre_date) {
-		this.prodcut_cre_date = prodcut_cre_date;
+	public void setProduct_cre_date(Date product_cre_date) {
+		this.product_cre_date = product_cre_date;
 	}
-	private Integer product_id;
-	private String product_name;
-	private Integer product_price;
-	private Integer product_stock;
-	private String product_desc;
-	private Date prodcut_cre_date;
 	
 }
 
