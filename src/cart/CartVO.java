@@ -5,8 +5,8 @@ import java.util.Date;
 public class CartVO {
 	
 	private Integer orderId; //auto-increment. PK
-	private String product_id; //product테이블. FK
-	private String userName; //user테이블. FK
+	private String product_id; //product테이블. FK -> product_price 참조 가능.
+	private String userId; //user테이블. FK
 	private Integer how_many; // order할 수량
 	private Date order_Credate; //sysdate. timestamp
 	
@@ -22,12 +22,14 @@ public class CartVO {
 	public void setProduct_id(String product_id) {
 		this.product_id = product_id;
 	}
-	public String getUserName() {
-		return userName;
+
+	public String getUserId() {
+		return userId;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
+	
 	public Integer getHow_many() {
 		return how_many;
 	}

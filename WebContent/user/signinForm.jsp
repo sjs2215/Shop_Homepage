@@ -190,7 +190,7 @@ a{color:inherit;text-decoration:none}
     	  console.log('Image URL: ' + profile.getImageUrl());
     	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
     	  
-    	  alert(google_name+"님, 로그인 완료"); 
+    	  //alert(google_name+"님, 로그인 완료"); 
     	  location.replace("/home.jsp");
     	}
     

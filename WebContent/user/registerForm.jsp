@@ -268,7 +268,7 @@ a{color:inherit;text-decoration:none}
                             "userType">회원 종류</label>
 
                             <div class="controls">
-                            <select name="userType">
+                            <select class="form-control" name="userType">
                             	<option> </option>
                             	<option value = "admin" > 관리자 </option>
                             	<option value = "user"  > 일반 회원 </option>
@@ -278,7 +278,7 @@ a{color:inherit;text-decoration:none}
 				<div class="group">
 					<label class="label" for="userName">아이디
                             </label>
-    				<input name="userName" placeholder=
+    				<input class="form-control" name="userName" placeholder=
                                 "아이디를 입력하시오 " type="text" required minlength="4">
                             
 				</div>
@@ -286,14 +286,14 @@ a{color:inherit;text-decoration:none}
 				<div class="group">
 					<label class="label" for="userPass">비밀번호
                             </label>
-					<input name="userPass" placeholder="비밀번호을 입력하시오"
+					<input class="form-control" name="userPass" placeholder="비밀번호을 입력하시오"
                                 type="password" required minlength="8">
                 </div>
                 
                 <div class="group">
 					<label class="label" for=
                             "userEmail">Email</label>
-					<input name="userEmail" placeholder=
+					<input class="form-control" name="userEmail" placeholder=
                                 "예시) xxx@xxx.com" type="email" required>
                 </div>
                 
@@ -302,7 +302,7 @@ a{color:inherit;text-decoration:none}
                             "userContact">전화번호</label>
 
                             <div class="controls">
-                                <input name="userContact" placeholder=
+                                <input class="form-control" name="userContact" placeholder=
                                 "예시) 010-1111-1111" type="text" required>
                             </div>
                 </div>
@@ -312,11 +312,11 @@ a{color:inherit;text-decoration:none}
                             "userAddress">주소</label>
 
                             <div class="controls">
-                                <input name="userAddress" placeholder=
+                                <input  class="form-control" name="userAddress" placeholder=
                                 "주소를 입력하시오" type="text" required>
                             </div>
                 </div>
-                
+                <br>
 				<div class="group">
 					 <button class="btn btn-success" id="submit" 
                                 name="submit" type="submit">회원 가입하기

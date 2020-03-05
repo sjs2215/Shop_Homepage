@@ -19,13 +19,13 @@ public class ProductBean {
 	
 	private Connection getConnection() throws Exception { 
 		String jdbcUrl ="jdbc:mysql://localhost:3306/users_info?useSSL=false";
-		String dbUser = "shop";
-		String dbPass = "shop1001!";
+		String dbUser = "root";
+		String dbPass = "park1001!";
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
 		return conn;
 	}
 	
-	
+	//HUT_PRODUCT
 }
