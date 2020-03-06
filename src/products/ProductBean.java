@@ -2,6 +2,8 @@ package products;
 
 import java.sql.*;
 
+import advisor.*;
+
 //import products.ProductVO;
 
 public class ProductBean {
@@ -22,6 +24,37 @@ public class ProductBean {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
 		return conn;
+	}
+	
+	//회원 정보 조회	
+	public ProductVO userEdit(String id) throws Exception {
+		
+		Connection conn=null;
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		ProductVO productvo = null;
+		
+		try {
+			conn = getConnection();
+			String query = "select * from hut_product where product = ?";
+
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,  id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				productvo = new ProductVO();
+				productvo.setProduct_name(rs.getString("product_name"));
+				productvo.setProduct_price(rs.getString("product_price"));
+				productvo.setProduct_stock(rs.getInt("product_stock"));
+			}
+			if(rs !=null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		} catch(Exception e ) {
+			e.printStackTrace();
+		}  
+		return productvo;
 	}
 	
 	public int ProductData(String userName, String userPass) {

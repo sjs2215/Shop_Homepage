@@ -35,17 +35,12 @@
 		if(admin_check==1){
 			UserVO uservo = USER.userEdit(name);
 			session.setAttribute("uid", name);
-			session.setAttribute("upw", password);
-			session.setAttribute("utp", userType);
 			//out.println("<script>alert('userType" + userType + "');</script>");
 			response.sendRedirect("/admin/admin.jsp");
 		}
 		else{ 
 			UserVO uservo = USER.userEdit(name);
 			session.setAttribute("uid", name);
-			session.setAttribute("upw", password);
-			session.setAttribute("utp", userType);
-			
 			//out.println("<script>alert('수진" + name + "');</script>");
 			response.sendRedirect("/home.jsp");
 		}

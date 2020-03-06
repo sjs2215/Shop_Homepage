@@ -1,7 +1,7 @@
 <%@ page language="java" contentType = "text/html; charset=euc-kr"
     pageEncoding="EUC-KR" import="java.sql.*"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="products.ProductBean"%>
+<%@ page import="products.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

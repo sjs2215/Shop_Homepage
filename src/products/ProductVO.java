@@ -6,7 +6,7 @@ public class ProductVO {
 
 	private Integer product_id;
 	private String product_name;
-	private Integer product_price;
+	private String product_price;
 	private Integer product_stock;
 	private String product_desc;
 	private Date product_cre_date;
@@ -23,10 +23,10 @@ public class ProductVO {
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
-	public Integer getProduct_price() {
+	public String getProduct_price() {
 		return product_price;
 	}
-	public void setProduct_price(Integer product_price) {
+	public void setProduct_price(String product_price) {
 		this.product_price = product_price;
 	}
 	public Integer getProduct_stock() {
