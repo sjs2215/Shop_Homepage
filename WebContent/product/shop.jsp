@@ -1,6 +1,7 @@
 <%@ page language="java" contentType = "text/html; charset=euc-kr"
     pageEncoding="EUC-KR" import="java.sql.*"%>
-
+<%@ page import="java.sql.*"%>
+<%@ page import="products.ProductBean"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -204,9 +205,21 @@
 	</script>
 	</head>
 <body>
+<body>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <jsp:useBean id="product" class="products.ProductVO">
 	<jsp:setProperty name="product" property="*"/>
 </jsp:useBean>
+<% 
+	ProductBean PRODUCT = ProductBean.getInstance();
+
+	String product_name =request.getParameter("product_name");
+	String product_stock =request.getParameter("product_stock");
+	String product_price = request.getParameter("product_price");	
+%>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">               
 <section class="our-publication pt-100 pb-70">
             <div class="container">
@@ -217,6 +230,10 @@
                     <h2>Our 헛개s</h2>
                     <p>world's best 헛개 you can find</p>
                 </div>
+                
+                <!-- DB 연결 테스트 중 -->
+                <%out.println("<script>alert('userType" + product_name + "');</script>"); %>
+                
                 
                 <div class="add-to-cart">
                       <a href="/product/shoppingcart.jsp" class="default-btn">장바구니 페이지로 이동하기</a>
@@ -241,7 +258,7 @@
 
                             <div class="publication-content">
                                 <span class="category">헛개</span>
-                                <h3><a href="#" name="1"><%= product.getProduct_name() %></a></h3>
+                                <h3><a href="#" name="1"><%= product_name %></a></h3>
                                 <ul>
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>

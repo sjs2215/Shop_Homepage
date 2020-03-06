@@ -18,8 +18,6 @@
 </jsp:useBean>
 <%
 
-   String google_name = request.getParameter("google_name");
-
 	UserBean USER = UserBean.getInstance(); 
 	
 	String name =request.getParameter("userName");
@@ -34,16 +32,12 @@
 	
 	//user_check 부분
 	if(user_check==1) {   
-		Cookie cookie = new Cookie("userName", name);
-		cookie.setMaxAge(20*60);
-		response.addCookie(cookie);
 		if(admin_check==1){
-			session.setAttribute("userType",userType);
+			//out.println("<script>alert('userType" + userType + "');</script>");
 			response.sendRedirect("/admin/admin.jsp");
 		}
-		else{ %>
-			<script> alert(name+"님, 로그인 완료!"); </script>
-			<% 
+		else{ 
+			//out.println("<script>alert('수진" + name + "');</script>");
 			response.sendRedirect("/home.jsp");
 		}
 	} 

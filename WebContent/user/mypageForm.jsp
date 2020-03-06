@@ -1,7 +1,7 @@
 <%@ page language= "java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="advisor.UserBean" %>
+<%@ page import="advisor.*" %>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -40,8 +40,7 @@
 <%
 	UserBean USER = UserBean.getInstance(); 
 	
-	String name = request.getParameter("userName");
-	USER.userEdit(name); 
+	UserVO uservo = USER.userEdit("1"); 
 %>
 
             <div class="span6">
@@ -55,20 +54,20 @@
                         <div class="control-group">
                             <label class="control-label" for="userType" name="userType">회원 종류: </label>
                             <input name="userName" placeholder=
-                                "<%=user.getUserType()%>" type="text" required minlength="4" readonly>
+                                "<%=uservo.getUserType()%>" type="text" required minlength="4" readonly>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for="userName" name="userName">아이디: 
                             </label>
                             <input name="userName" placeholder=
-                                "<%=user.getUserName()%>" type="text" id="userName" required minlength="4" readonly>
+                                "<%=uservo.getUserName()%>" type="text" id="userName" required minlength="4" readonly>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for="userPass" name="userPass">비밀번호: 
                             </label>
-                            <input name="userPass" placeholder="<%=user.getUserPass()  %>"
+                            <input name="userPass" placeholder="<%=uservo.getUserPass()  %>"
                                 type="password" id="userPass" required minlength="8" readonly>
                         </div>
 
@@ -76,21 +75,21 @@
                             <label class="control-label" for=
                             "userEmail" name="userEmail">Email: </label>
                             <input name="userEmail" placeholder=
-                                "<%=user.getUserEmail() %>" type="email" id="userEmail" required readonly>
+                                "<%=uservo.getUserEmail() %>" type="email" id="userEmail" required readonly>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
                             "userContact" name="userContact">전화번호: </label>
                             <input name="userContact" placeholder=
-                                "<%=user.getUserContact() %>" type="text" id="userContact" required readonly>
+                                "<%=uservo.getUserContact() %>" type="text" id="userContact" required readonly>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
                             "userAddress" name="userAddress">주소: </label>
                             <input name="userAddress" placeholder=
-                                "<%=user.getUserAddress() %>" type="text" id="userAddress" required readonly>
+                                "<%=uservo.getUserAddress() %>" type="text" id="userAddress" required readonly>
                         </div>
 
                         <div class="control-group">

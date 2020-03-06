@@ -80,37 +80,37 @@ public class UserBean {
 	}
 	
 	//회원 정보 조회	
-		public void userEdit(String userName) {
+		public UserVO userEdit(String id) throws Exception {
+			
 			Connection conn=null;
 			ResultSet rs = null;
 			PreparedStatement pstmt = null;
+			UserVO uservo = null;
 			
 			try {
 				conn = getConnection();
-				String query = "select * from hut_user where userName = ?";
+				String query = "select * from hut_user where userName = 'hellohello'";
+
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1,userName);
 				rs = pstmt.executeQuery();
 				
-				while(rs.next()){
-					String type = rs.getString("userType");
-					String name = rs.getString("userName");
-					String pass = rs.getString("userPass");
-					String email = rs.getString("userEmail");
-					String contact = rs.getString("userContact");
-					String address = rs.getString("userAddress");
-					//쿼리 결과 받아오기
+				if(rs.next()){
+					uservo = new UserVO();
+					uservo.setUserType(rs.getString("userType"));
+					uservo.setUserName(rs.getString("userName"));
+					uservo.setUserPass(rs.getString("userPass"));
+					uservo.setUserEmail(rs.getString("userEmail"));
+					uservo.setUserContact(rs.getString("userContact"));
+					uservo.setUserAddress(rs.getString("userAddress"));
 					
 				}
-					
-				
-				
 				if(rs !=null) rs.close();
 				if(pstmt != null) pstmt.close();
 				if(conn != null) conn.close();
 			} catch(Exception e ) {
 				e.printStackTrace();
 			}  
+			return uservo;
 		}
 
 
