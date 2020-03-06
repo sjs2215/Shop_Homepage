@@ -1,15 +1,30 @@
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+    <meta name="google-signin-client_id" content="155546141913-13aaj59tmbnvdhl498otaq3jogvfpseg.apps.googleusercontent.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>양주 하패리 헛개 농장</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="css/style.css" rel="stylesheet" media="all" type="text/css">
+	<link href="css/responsive.css" rel="stylesheet" media="all" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"> 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    
+		<title>Home</title>
+
     <style type="text/css">
         /*****Reset css********/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; color:#101010; }
@@ -954,16 +969,17 @@ input,select,textarea,span{ font-family:open sans; }
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-    var login_check=0;//로그아웃할때마다 1씩 증가
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <script type="text/javascript"> 
     
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
+      //google log out
       auth2.signOut().then(function () {
-        console.log('User signed out.');
-        login_check++;
-        console.log(login_check);
+        console.log('(google)User signed out.');
       });
+      //db log out
+      location.replace("/user/logOut.jsp");
     }
 
     function onLoad() {
@@ -973,33 +989,24 @@ input,select,textarea,span{ font-family:open sans; }
     }
     
      function mypage_check(){ 
-    	console.log(login_check);
-	   if(login_check==0){
-		   location.replace("/user/mypageForm.jsp");
-	   }
-	   else{
-		   alert("로그인 필요");
-		   
-	   }
-    	
+    	 location.replace("/user/mypageForm.jsp");
     }   
  	</script>
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-    <meta name="google-signin-client_id" content="155546141913-13aaj59tmbnvdhl498otaq3jogvfpseg.apps.googleusercontent.com">
-	<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-<title>Home</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="css/style.css" rel="stylesheet" media="all" type="text/css">
-<link href="css/responsive.css" rel="stylesheet" media="all" type="text/css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
-
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
+ 
 </head>
+
+<%
+	String uid = (String)session.getAttribute("uid");
+	if(uid!=null){
+		uid=", "+uid+"님";
+	}
+	else{
+		uid="";
+	}
+
+%>
+
 <body>
 <header id="main-head">
 	<nav class=" navbar  navbar-bootsnipp " role="navigation">
@@ -1051,7 +1058,7 @@ input,select,textarea,span{ font-family:open sans; }
 							<img src="img/img001.jpg" class="img-responsive"/>
 						</div>
 						<div class="text-wrap ">
-							<h2>Discover The Best</h2>
+							<h2 id="change_name">Discover The Best<%=uid %></h2> 
 							<h1>WELCOME TO OUR 헛개농장</h1>
 							<p>몸에 좋은 헛개! 저희 농장에서는 국산 100% 품질보장된 열매만 판매합니다.</p>
 							<div class="button-list">
@@ -1065,7 +1072,7 @@ input,select,textarea,span{ font-family:open sans; }
 							<img src="img/img002.jpg" class="img-responsive"/>
 						</div>
 						<div class="text-wrap ">
-							<h2>Discover The Best</h2>
+							<h2 id="change_name">Discover The Best<%=uid %></h2>
 							<h1>WELCOME TO OUR 헛개농장</h1>
 							<p>몸에 좋은 헛개! 저희 농장에서는 국산 100% 품질보장된 열매만 판매합니다.</p>
 							<div class="button-list">
@@ -1079,7 +1086,7 @@ input,select,textarea,span{ font-family:open sans; }
 							<img src="img/img003.jpg" class="img-responsive"/>
 						</div>
 						<div class="text-wrap ">
-							<h2>Discover The Best</h2>
+							<h2 id="change_name">Discover The Best<%=uid %></h2>
 							<h1>WELCOME TO OUR 헛개농장</h1>
 							<p>몸에 좋은 헛개! 저희 농장에서는 국산 100% 품질보장된 열매만 판매합니다.</p>
 							<div class="button-list">
