@@ -22,6 +22,7 @@
 	<link href="css/responsive.css" rel="stylesheet" media="all" type="text/css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"> 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
 		<title>Home</title>
 
@@ -989,7 +990,14 @@ input,select,textarea,span{ font-family:open sans; }
     }
     
      function mypage_check(){ 
-    	 location.replace("/user/mypageForm.jsp");
+    	 var uid = '<%=(String)session.getAttribute("uid")%>';
+    	 
+     	 if(uid=="null"){ //jsp 표현식 써서 그런지 진짜 literal하게 null이라는 문자와 비교해야 if문에 들어가는 아주 황당한 사례
+     		swal("로그인이 필요한 항목입니다.","회원 가입 또는 로그인을 해주세요", "error"); 
+     	 }
+     	 else{
+     		location.replace("/user/mypageForm.jsp");
+     	 }
     }   
  	</script>
 
