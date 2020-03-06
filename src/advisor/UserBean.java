@@ -69,7 +69,6 @@ public class UserBean {
 				}else 
 					x=-1;
 				
-				
 				if(rs !=null) rs.close();
 				if(pstmt != null) pstmt.close();
 				if(conn != null) conn.close();
@@ -89,9 +88,10 @@ public class UserBean {
 			
 			try {
 				conn = getConnection();
-				String query = "select * from hut_user where userName = 'hellohello'";
+				String query = "select * from hut_user where userName = ?";
 
 				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1,  id);
 				rs = pstmt.executeQuery();
 				
 				if(rs.next()){

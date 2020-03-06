@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="advisor.UserBean"%>
+<%@ page import="advisor.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,10 +33,19 @@
 	//user_check 부분
 	if(user_check==1) {   
 		if(admin_check==1){
+			UserVO uservo = USER.userEdit(name);
+			session.setAttribute("uid", name);
+			session.setAttribute("upw", password);
+			session.setAttribute("utp", userType);
 			//out.println("<script>alert('userType" + userType + "');</script>");
 			response.sendRedirect("/admin/admin.jsp");
 		}
 		else{ 
+			UserVO uservo = USER.userEdit(name);
+			session.setAttribute("uid", name);
+			session.setAttribute("upw", password);
+			session.setAttribute("utp", userType);
+			
 			//out.println("<script>alert('수진" + name + "');</script>");
 			response.sendRedirect("/home.jsp");
 		}

@@ -38,9 +38,9 @@
 </jsp:useBean>
 
 <%
+	String uid = (String)session.getAttribute("uid");
 	UserBean USER = UserBean.getInstance(); 
-	
-	UserVO uservo = USER.userEdit("1"); 
+	UserVO uservo = USER.userEdit(uid); 
 %>
 
             <div class="span6">

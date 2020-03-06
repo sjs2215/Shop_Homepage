@@ -1027,17 +1027,7 @@ input,select,textarea,span{ font-family:open sans; }
 						<li class=""><a href="/user/registerForm.jsp">회원가입</a></li>
 						<li class=""><a href="/user/signinForm.jsp">로그인</a></li>
 						<li class=""><a href="#" onClick="signOut();">로그아웃</a></li>						
-						<!--  
-					//						String userType="";
-	
-							userType=(String)session.getAttribute("userType");
-							%>
-						
-						<c:if test="${sessionScope.userType!=null}">
-						${sessionScope.userType}님이 로그인중입니다.
-						<li class=""><a href="/admin/admin.jsp">관리자 페이지</a></li>
-						</c:if>
-						-->
+					
 					</ul>
 				</div>
 			</div>
