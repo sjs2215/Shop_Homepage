@@ -13,8 +13,8 @@ public class UserBean {
 	
 	private Connection getConnection() throws Exception { 
 		String jdbcUrl ="jdbc:mysql://localhost:3306/users_info?useSSL=false";
-		String dbUser = "root";
-		String dbPass = "park1001!";
+		String dbUser = "shop"; //root
+		String dbPass = "shop1001!"; //park1001!
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);

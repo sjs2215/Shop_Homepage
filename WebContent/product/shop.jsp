@@ -214,10 +214,10 @@
 </jsp:useBean>
 <% 
 	ProductBean PRODUCT = ProductBean.getInstance();
-
-	String product_name =request.getParameter("product_name");
-	String product_stock =request.getParameter("product_stock");
-	String product_price = request.getParameter("product_price");	
+	ProductVO productvo1 = PRODUCT.productEdit(1);
+	ProductVO productvo2 = PRODUCT.productEdit(2);
+	ProductVO productvo3 = PRODUCT.productEdit(3);
+	ProductVO productvo4 = PRODUCT.productEdit(4);
 %>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">               
@@ -230,10 +230,6 @@
                     <h2>Our 헛개s</h2>
                     <p>world's best 헛개 you can find</p>
                 </div>
-                
-                <!-- DB 연결 테스트 중 -->
-                <%out.println("<script>alert('userType" + product_name + "');</script>"); %>
-                
                 
                 <div class="add-to-cart">
                       <a href="/product/shoppingcart.jsp" class="default-btn">장바구니 페이지로 이동하기</a>
@@ -258,7 +254,7 @@
 
                             <div class="publication-content">
                                 <span class="category">헛개</span>
-                                <h3><a href="#" name="1"><%= product_name %></a></h3>
+                                <h3><a href="#" name="1"><%= productvo1.getProduct_name() %></a></h3>
                                 <ul>
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
@@ -266,8 +262,8 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price"> <%= product.getProduct_stock() %>개 </h4>
-                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>9억</span></h4>
+                                <h4 class="price"> <%= productvo1.getProduct_stock() %>개 </h4>
+                                <h4 class="price"> <%= productvo1.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
                             <div class="add-to-cart">
@@ -293,7 +289,7 @@
 
                             <div class="publication-content">
                                 <span class="category">헛개</span>
-                                <h3><a href="#" name="2"><%= product.getProduct_name() %></a></h3>
+                                <h3><a href="#" name="2"><%= productvo2.getProduct_name() %></a></h3>
                                 <ul>
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
@@ -301,8 +297,8 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price"> <%= product.getProduct_stock() %>개 </h4>
-                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>9억</span></h4>
+                                <h4 class="price"> <%= productvo2.getProduct_stock() %>개 </h4>
+                                <h4 class="price"> <%= productvo2.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
                             <div class="add-to-cart">
@@ -325,7 +321,7 @@
 
                             <div class="publication-content">
                                 <span class="category">헛개</span>
-                                <h3><a href="#" name="3"><%= product.getProduct_name() %></a></h3>
+                                <h3><a href="#" name="3"><%= productvo3.getProduct_name() %></a></h3>
                                 <ul>
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
@@ -333,8 +329,8 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price"> <%= product.getProduct_stock() %>개 </h4>
-                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>9억</span></h4>
+                                <h4 class="price"> <%= productvo3.getProduct_stock() %>개 </h4>
+                                <h4 class="price"> <%= productvo3.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
                             <div class="add-to-cart">
@@ -357,7 +353,7 @@
 
                             <div class="publication-content">
                                 <span class="category">헛개</span>
-                                <h3><a href="#" name="4"><%= product.getProduct_name() %></a></h3>
+                                <h3><a href="#" name="4"><%= productvo4.getProduct_name() %></a></h3>
                                 <ul>
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
@@ -365,8 +361,8 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price"> <%=product.getProduct_stock()%> </h4>
-                                <h4 class="price"> <%= product.getProduct_price() %> 원 <span>9억</span></h4>
+                                <h4 class="price"> <%=productvo4.getProduct_stock()%> </h4>
+                                <h4 class="price"> <%= productvo4.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
                             <div class="add-to-cart">

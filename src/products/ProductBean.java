@@ -18,8 +18,8 @@ public class ProductBean {
 	
 	private Connection getConnection() throws Exception { 
 		String jdbcUrl ="jdbc:mysql://localhost:3306/users_info?useSSL=false";
-		String dbUser = "root";
-		String dbPass = "park1001!";
+		String dbUser = "shop"; //root
+		String dbPass = "shop1001!"; //park1001!
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
@@ -27,7 +27,7 @@ public class ProductBean {
 	}
 	
 	//회원 정보 조회	
-	public ProductVO userEdit(String id) throws Exception {
+	public ProductVO productEdit(int id) throws Exception {
 		
 		Connection conn=null;
 		ResultSet rs = null;
@@ -36,10 +36,10 @@ public class ProductBean {
 		
 		try {
 			conn = getConnection();
-			String query = "select * from hut_product where product = ?";
+			String query = "select * from hut_product where product_id = ?";
 
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1,  id);
+			pstmt.setInt(1,  id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
