@@ -189,7 +189,7 @@
 	    */
 	    
 	    $("#add1, #add2, #add3, #add4").click(function(e){ 
-	    	e.preventDefault();
+	    	//e.preventDefault();
 	    	Swal.fire({
 	    		  position: 'top-end',
 	    		  icon: 'success',
@@ -223,7 +223,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">               
 <section class="our-publication pt-100 pb-70">
             <div class="container">
-                <form id="shop" class="form-horizontal" action="/product/shopPro.jsp" method="post" ">
+                <form id="shop" class="form-horizontal" action="/product/shopPro.jsp" method="post" >
             
                 <div class="section-header">
                     <i class="fa fa-book"></i>
@@ -361,7 +361,7 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price"> <%=productvo4.getProduct_stock()%> </h4>
+                                <h4 class="price"> <%=productvo4.getProduct_stock()%> °³ </h4>
                                 <h4 class="price"> <%= productvo4.getProduct_price() %> ¿ø <span>9¾ï</span></h4>
                             </div>
 

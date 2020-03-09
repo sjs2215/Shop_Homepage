@@ -1,14 +1,4 @@
-<%@ page language= "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "java.util.*" %>
-<%@ page import = "cart.*" %>
-<%@ page import="net.sf.json.util.JSONStringer"%>
-
-
-<%
-	CartBean CART = new CartBean();
-	JSONStringer js = CART.showCart();
-%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -47,7 +37,7 @@ th.ui-th-column div {
 	$(window.document).ready(function() {
 		
 	    $("#grid").jqGrid({
-	    	url: "local",
+	    	url: 'http://trirand.com/blog/phpjqgrid/examples/jsonp/getjsonp.php?callback=?&qwery=longorders',
 	        mtype: "GET",
 	        datatype : 'jsonp',     
 	        pager : '#pager',            // pager : 도구 모임이 될 div 태그를 지정한다.
@@ -70,11 +60,11 @@ th.ui-th-column div {
               
         	},
 	        caption: "My 장바구니 목록"   ,     			  // 그리드 제목 설정
-	        colNames:[ '상품명', '상품설명', '상품재고','상품 금액'],
+	        colNames:[ '주문번호', '상품번호', '주문한 날짜', '주문자','주문금액'],
 	        colModel: [
-						{ name: 'product_name', key: true, width: 75},
-	                    { name: 'product_desc', width: 150 },
-	                    { name: 'product_stock', width: 150, editable:true, 
+						{ name: 'OrderID', key: true, width: 75},
+	                    { name: 'CustomerID', width: 150 },
+	                    { name: 'OrderDate', width: 150, editable:true, 
                     		editoptions: { 
                     			dataEvents: [{ 
                     				type: 'change', 
@@ -85,7 +75,7 @@ th.ui-th-column div {
                     			},
                     			]}
                     },
-	                    { name: 'product_price', width: 150, editable:true, 
+	                    { name: 'ShipName', width: 150, editable:true, 
                     		editoptions: { 
                     			dataEvents: [{ 
                     				type: 'change', 
@@ -96,7 +86,7 @@ th.ui-th-column div {
                     			},
                     			]}
                     },
-	                    //{ name: 'Freight',index: 'Freight', width: 150, formatter: 'integer', formatoptions:{thousandsSeparator:","}, summaryType:'sum', summaryTpl: 'Totals :'}
+	                    { name: 'Freight',index: 'Freight', width: 150, formatter: 'integer', formatoptions:{thousandsSeparator:","}, summaryType:'sum', summaryTpl: 'Totals :'}
                     
                     
                     	

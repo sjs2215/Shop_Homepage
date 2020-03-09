@@ -15,7 +15,13 @@
 </jsp:useBean>
 <%
 	CartBean CART = CartBean.getInstance(); 
-	CART.insertProduct(cart); 
+	
+	String uid = (String)session.getAttribute("uid");
+	
+	int product=1;
+
+	int name = CART.get_user_name(uid);
+	CART.insertCart(cart, product , name);
 %>
 </body>
 </html>

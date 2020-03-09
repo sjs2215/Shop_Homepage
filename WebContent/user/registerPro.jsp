@@ -16,6 +16,7 @@
 <%
 	UserBean USER = UserBean.getInstance(); 
 	USER.insertUser(user); 
+	//thankyou.html 로 redirect해야됨
 %>
 </body>
 </html>
