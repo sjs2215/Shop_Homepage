@@ -186,7 +186,7 @@
 	    /*
 	    -> alert 주고 db에 insert 할 것. 
 	    -> insert 작업은 cartbean - insertCart에서
-	    */
+	   
 	    
 	    $("#add1, #add2, #add3, #add4").click(function(e){ 
 	    	//e.preventDefault();
@@ -200,7 +200,7 @@
 	    		//alert("ASDfasdf");
 	    		//return false;
 	    });   
-	    
+	    */
 	    //각 product id는 value 값을 url로 전달
 	    $("button[name=add1]").click(function () {
 

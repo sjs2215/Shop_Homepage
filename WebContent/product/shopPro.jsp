@@ -2,10 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="cart.CartBean" %>
+<%@ page import ="java.io.PrintWriter"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>장바구니 담기 처리</title>
 </head>
 <body>
@@ -24,6 +27,9 @@
 	//session에 저장된 uid(user 테이블의 user_name 컬럼)로 사용자 name(user 테이블의 user_id 컬럼)알아냄.
 	int name = CART.get_user_name(uid); 
 	CART.insertCart(cart, product_id , name);
+	PrintWriter writer=response.getWriter();
+	writer.println("<script>alert('장바구니에 저장 성공...다시 주문 페이지로 이동합니다.'); location.href='/product/shop.jsp';</script>");
+	//response.sendRedirect("/product/shop.jsp");
 %>
 </body>
 </html>
