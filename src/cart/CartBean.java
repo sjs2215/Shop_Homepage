@@ -44,7 +44,7 @@ public class CartBean {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, productid);
 			pstmt.setInt(2, userid);
-			pstmt.setInt(3, 1);
+			pstmt.setInt(3, 1); //장바구니에 담기는 개수는 항상 1개. 이후 수량 조절은 shoppingcart.jsp (jqgrid)에서 할 것.
 			pstmt.executeUpdate(); 
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close(); 

@@ -185,7 +185,7 @@
 		
 	    /*
 	    -> alert 주고 db에 insert 할 것. 
-	    -> insert 작업은 cartbean - insertProduct에서
+	    -> insert 작업은 cartbean - insertCart에서
 	    */
 	    
 	    $("#add1, #add2, #add3, #add4").click(function(e){ 
@@ -200,6 +200,50 @@
 	    		//alert("ASDfasdf");
 	    		//return false;
 	    });   
+	    
+	    //각 product id는 value 값을 url로 전달
+	    $("button[name=add1]").click(function () {
+
+            $("form[name=shop]")
+
+            .attr({ action: "shopPro.jsp?value="+$(this).val(), method: "post" })
+
+            .submit();
+
+        });
+	    
+	    $("button[name=add2]").click(function () {
+
+            $("form[name=shop]")
+
+            .attr({ action: "shopPro.jsp?value="+$(this).val(), method: "post" })
+
+            .submit();
+
+        });
+	    
+	    $("button[name=add3]").click(function () {
+
+            $("form[name=shop]")
+
+            .attr({ action: "shopPro.jsp?value="+$(this).val(), method: "post" })
+
+            .submit();
+
+        });
+	    
+	    $("button[name=add4]").click(function () {
+
+            $("form[name=shop]")
+
+            .attr({ action: "shopPro.jsp?value="+$(this).val(), method: "post" })
+
+            .submit();
+
+        });
+
+
+
 	  
 	});  
 	</script>
@@ -223,7 +267,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">               
 <section class="our-publication pt-100 pb-70">
             <div class="container">
-                <form id="shop" class="form-horizontal" action="/product/shopPro.jsp" method="post" >
+                <form id="shop" name="shop" class="form-horizontal" action="/product/shopPro.jsp" method="post" >
             
                 <div class="section-header">
                     <i class="fa fa-book"></i>
@@ -267,7 +311,7 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <button class="default-btn" id="add1">Add to Cart</button>
+                                <button class="default-btn" name="add1" id="add1" value="1" >Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -302,7 +346,7 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <button class="default-btn" id="add2">Add to Cart</button>
+                                <button class="default-btn" name="add2" id="add2" value="2">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -334,7 +378,8 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <button class="default-btn" id="add3">Add to Cart</button>
+                                <button class="default-btn" name ="add3" id="add3" value="3">Add to Cart</button>
+                                
                             </div>
                         </div>
                     </div>
@@ -366,7 +411,7 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <button class="default-btn" id="add4">Add to Cart</button>
+                                <button class="default-btn" name="add4" id="add4" value="4">Add to Cart</button>
                             </div>
                         </div>
                     </div>
