@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import advisor.UserVO;
 import net.sf.json.util.JSONStringer;
@@ -15,7 +17,7 @@ public class CartBean {
 
 	private static CartBean instance = new CartBean();
 	
-	private CartBean() {}  
+	CartBean() {}  
 	public static CartBean getInstance() {  
 	
 		return instance;
@@ -80,40 +82,66 @@ public class CartBean {
 		return(x);  
 }
 
-	//장바구니 retrieve
-//			public JSONStringer showCart() {  
-//				Connection conn=null;
-//				PreparedStatement pstmt = null;
-//				ResultSet rset = null;
-//				JSONStringer js = null;
-//				
-//				StringBuffer QUERY_STRING00 = new StringBuffer();
-//		        QUERY_STRING00
-//		        .append("   SELECT  *  FROM HUT_PRODUCT   ");
-//				
-//				try {
-//					conn = getConnection(); 	
-//					
-//		
-//					pstmt = conn.prepareStatement(QUERY_STRING00.toString());
-//					rset = pstmt.executeQuery();
-//					js = new JSONStringer();
-//					js.array();
-//					while(rset.next()){
-//						js.object()
-//						.key("product_name").value(rset.getString("product_name"))
-//						.key("product_desc").value(rset.getString("product_desc"))
-//						.key("product_stock").value(rset.getInt("product_stock"))
-//						.key("product_price").value(rset.getString("product_price"))
-//						.endObject();
-//					}
-//					js.endArray();
-//					
-//					if(pstmt != null) pstmt.close();
-//					if(conn != null) conn.close(); 
-//				} catch(Exception e) { 
-//					e.printStackTrace();
-//				}
-//				return js;
-//		}
+	  //장바구니 retrieve
+      public List<CartVO> showCart(int user_id) {
+          List<CartVO> list = new ArrayList<CartVO>();
+          Connection conn = null;
+          PreparedStatement pstmt = null;
+          ResultSet rs = null;
+          String sql="select c.orderId, p.product_name, sum(c.how_many), p.product_price*sum(c.how_many)"
+          		+ "from hut_product p, hut_user u, hut_cart c"
+          		+ "where 1 = 1"
+          		+ "and p.product_id = c.product_id"
+          		+ "and u.userid = c.userid"
+          		+ "and u.userid=?"
+          		+ "group by p.product_id, u.userid ";
+
+          try{
+              // DB 접속
+              conn = getConnection();
+              // 쿼리 명령어 설정, 보내기, 결과물 받기
+              pstmt = conn.prepareStatement(sql);
+              pstmt.setInt(1, user_id);
+              rs = pstmt.executeQuery();
+              // 결과물 편집, 리턴
+              while(rs.next()){
+            	  CartVO cart = new CartVO();
+            	  cart.setOrderId(rs.getInt("c.orderId"));
+            	  cart.setProduct_id(rs.getInt("p.product_name"));
+            	  cart.setHow_many(rs.getInt("sum(c.how_many)"));
+            	  cart.setHow_many(rs.getInt("p.product_price*sum(c.how_many)"));
+                  list.add(cart);
+              }
+          } catch(Exception e){
+              e.printStackTrace();
+          } finally {
+              // db관련  커넥션 해제
+          }
+          return list;
+      }
+      
+      // 전체 행의 수를 리턴하는 메서드
+      public int getCountRow() {
+         
+          Connection conn = null;
+          PreparedStatement pstmt = null;
+          ResultSet rs = null;
+          String sql="select count(*) from hut_cart";
+          try{
+        	  // DB 접속
+              conn = getConnection();
+              // 쿼리 명령어 설정, 보내기, 결과물 받기
+              pstmt = conn.prepareStatement(sql);
+              rs = pstmt.executeQuery();
+              // 결과물 편집, 리턴
+              if(rs.next()){
+                  return rs.getInt(1);
+              }
+          } catch(Exception e){
+              e.printStackTrace();
+          } finally {
+              // db관련  커넥션 해제
+          }
+          return 0;
+      }
 }
