@@ -1,14 +1,6 @@
-<%@ page language= "java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "java.util.*" %>
-<%@ page import = "cart.*" %>
-<%@ page import="net.sf.json.util.JSONStringer"%>
-
-
-<%
-	CartBean CART = new CartBean();
-	JSONStringer js = CART.showCart();
-%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="cart.*"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -47,7 +39,7 @@ th.ui-th-column div {
 	$(window.document).ready(function() {
 		
 	    $("#grid").jqGrid({
-	    	url: "local",
+	    	url: 'http://trirand.com/blog/phpjqgrid/examples/jsonp/getjsonp.php?callback=?&qwery=longorders',
 	        mtype: "GET",
 	        datatype : 'jsonp',     
 	        pager : '#pager',            // pager : 도구 모임이 될 div 태그를 지정한다.
@@ -55,12 +47,6 @@ th.ui-th-column div {
 	        autowidth : true,            // When autowidth is set to true the grid fits to the width of the parent container.
 	        rownumbers : true,           // rownumbers add additional column which count the rows
 	        height : '400px',            // height : 그리드의 높이를 지정한다.	
-	        /*
-	        This example demonstrate the new feature - summary row. Also a ggod thing is that the data from userData array
-			can be direct putetd in the summary row just with one option userDataOnFooter - >true.
-			Also some new methods available for manipulating this data. getCol - return the entry coll as array.
-			FooterData - method get or set a data on footer row.
-	        */
 	        footerrow : true,
 	        userDataOnFooter : true,	
 	        multiselect: true,            // 멀티 체크 기능 구현을 위한 체크박스 생성
@@ -70,11 +56,11 @@ th.ui-th-column div {
               
         	},
 	        caption: "My 장바구니 목록"   ,     			  // 그리드 제목 설정
-	        colNames:[ '상품명', '상품설명', '상품재고','상품 금액'],
+	        colNames:[ '주문번호', '상품번호', '주문한 날짜', '주문자','주문금액'],
 	        colModel: [
-						{ name: 'product_name', key: true, width: 75},
-	                    { name: 'product_desc', width: 150 },
-	                    { name: 'product_stock', width: 150, editable:true, 
+						{ name: 'OrderID', key: true, width: 75},
+	                    { name: 'CustomerID', width: 150 },
+	                    { name: 'OrderDate', width: 150, editable:true, 
                     		editoptions: { 
                     			dataEvents: [{ 
                     				type: 'change', 
@@ -85,7 +71,7 @@ th.ui-th-column div {
                     			},
                     			]}
                     },
-	                    { name: 'product_price', width: 150, editable:true, 
+	                    { name: 'ShipName', width: 150, editable:true, 
                     		editoptions: { 
                     			dataEvents: [{ 
                     				type: 'change', 
@@ -96,7 +82,7 @@ th.ui-th-column div {
                     			},
                     			]}
                     },
-	                    //{ name: 'Freight',index: 'Freight', width: 150, formatter: 'integer', formatoptions:{thousandsSeparator:","}, summaryType:'sum', summaryTpl: 'Totals :'}
+	                    { name: 'Freight',index: 'Freight', width: 150, formatter: 'integer', formatoptions:{thousandsSeparator:","}, summaryType:'sum', summaryTpl: 'Totals :'}
                     
                     
                     	
@@ -203,7 +189,16 @@ th.ui-th-column div {
 <title>jqGrid</title>
 
 </head>
-
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<jsp:useBean id="cart" class="cart.CartVO">
+	<jsp:setProperty name="cart" property="*"/>
+</jsp:useBean>
+<% 
+	CartBean CART = CartBean.getInstance();
+	CartVO cartvo = CART.showCart();
+%>
 			<body style = "font-size:70.5%;">
 			    <table id = "grid"></table>
 			    <div id = "pager"></div>
@@ -217,7 +212,8 @@ th.ui-th-column div {
 					<br>
 					<input type="submit" id="submit" name="submit" value="주문 완료하기" />
 				</div>
-			    	
+			    <%=cartvo.getOrderId() %>
+			    <%=cartvo.getHow_many() %>	
 			    수정된 데이터 history : <br>
 			    <div id="overflowTest"> 
 			    	<span id="multiPrint"></span>
@@ -235,6 +231,5 @@ th.ui-th-column div {
 			</body>
 
 </html>
-
 
 

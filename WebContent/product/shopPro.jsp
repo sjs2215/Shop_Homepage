@@ -22,7 +22,7 @@
 	int product_id = Integer.parseInt(request.getParameter("value")); //url로 준 거 받음
 	String uid = (String)session.getAttribute("uid");
 	
-	System.out.println(product_id+"수진");
+	System.out.println(product_id+"번 상품 주문. 주문한 고객 이름: "+uid);
 
 	//session에 저장된 uid(user 테이블의 user_name 컬럼)로 사용자 name(user 테이블의 user_id 컬럼)알아냄.
 	int name = CART.get_user_name(uid); 

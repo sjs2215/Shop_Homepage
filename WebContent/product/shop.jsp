@@ -306,7 +306,7 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price"> <%= productvo1.getProduct_stock() %>개 </h4>
+                                <h4 class="price"> <%= productvo1.getProduct_stock() %> 개 </h4>
                                 <h4 class="price"> <%= productvo1.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 

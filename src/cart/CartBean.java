@@ -4,12 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-
-import advisor.UserVO;
-import net.sf.json.util.JSONStringer;
-
 
 import cart.CartVO;
 
@@ -83,41 +77,34 @@ public class CartBean {
 }
 
 	  //장바구니 retrieve
-      public List<CartVO> showCart(int user_id) {
-          List<CartVO> list = new ArrayList<CartVO>();
+      public CartVO showCart() {
           Connection conn = null;
           PreparedStatement pstmt = null;
           ResultSet rs = null;
-          String sql="select c.orderId, p.product_name, sum(c.how_many), p.product_price*sum(c.how_many)"
-          		+ "from hut_product p, hut_user u, hut_cart c"
-          		+ "where 1 = 1"
-          		+ "and p.product_id = c.product_id"
-          		+ "and u.userid = c.userid"
-          		+ "and u.userid=?"
-          		+ "group by p.product_id, u.userid ";
+          CartVO cartvo = null;
+          String sql=
+"select orderId, how_many from hut_cart where orderId = 1";
 
           try{
-              // DB 접속
+
               conn = getConnection();
-              // 쿼리 명령어 설정, 보내기, 결과물 받기
+
               pstmt = conn.prepareStatement(sql);
-              pstmt.setInt(1, user_id);
+              //pstmt.setInt(1, user_id);
               rs = pstmt.executeQuery();
               // 결과물 편집, 리턴
-              while(rs.next()){
-            	  CartVO cart = new CartVO();
-            	  cart.setOrderId(rs.getInt("c.orderId"));
-            	  cart.setProduct_id(rs.getInt("p.product_name"));
-            	  cart.setHow_many(rs.getInt("sum(c.how_many)"));
-            	  cart.setHow_many(rs.getInt("p.product_price*sum(c.how_many)"));
-                  list.add(cart);
+              if(rs.next()){
+            	  cartvo = new CartVO();
+            	  cartvo.setOrderId(rs.getInt("orderId"));
+            	  cartvo.setHow_many(rs.getInt("how_many"));
               }
+  			if(rs !=null) rs.close();
+  			if(pstmt != null) pstmt.close();
+  			if(conn != null) conn.close();
           } catch(Exception e){
               e.printStackTrace();
-          } finally {
-              // db관련  커넥션 해제
-          }
-          return list;
+          } 
+          return cartvo;
       }
       
       // 전체 행의 수를 리턴하는 메서드
