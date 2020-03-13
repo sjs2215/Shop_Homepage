@@ -1,6 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="cart.*"%>
+<%
+ request.setCharacterEncoding("euc-kr");
+String jdbcUrl ="jdbc:mysql://localhost:3306/users_info?useSSL=false";
+String dbUser = "root"; //root
+String dbPass = "park1001!"; //park1001!
+
+Class.forName("com.mysql.jdbc.Driver");
+
+ResultSet rs = null;
+PreparedStatement pstmt = null;
+
+
+
+String sql= " select hut_cart.orderId, hut_product.product_id, sum(hut_cart.how_many), hut_product.product_price*sum(hut_cart.how_many) "
+  		+ " from hut_product, hut_user, hut_cart  "
+  		+ " where hut_product.product_id = hut_cart.product_id "
+  		+ " and hut_user.userid = hut_cart.userid "
+  		+ " and hut_user.userid=1 ";
+
+
+try{
+
+	Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
+
+    pstmt = conn.prepareStatement(sql);
+    //pstmt.setInt(1, user_id);
+    rs = pstmt.executeQuery();
+    
+    while(rs.next()){
+  	  int x = rs.getInt(1);
+  	  int y = rs.getInt(2);
+  	  int z = rs.getInt(3);
+  	  int q = rs.getInt(4);
+  	  
+  	  System.out.println("수진"+x+", "+y+", "+z+", "+q);
+    }
+    
+	if(rs !=null) rs.close();
+	if(pstmt != null) pstmt.close();
+	if(conn != null) conn.close();
+} catch(Exception e){
+    e.printStackTrace();
+} 
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -189,16 +233,8 @@ th.ui-th-column div {
 <title>jqGrid</title>
 
 </head>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<jsp:useBean id="cart" class="cart.CartVO">
-	<jsp:setProperty name="cart" property="*"/>
-</jsp:useBean>
-<% 
-	CartBean CART = CartBean.getInstance();
-	CartVO cartvo = CART.showCart();
-%>
+
+
 			<body style = "font-size:70.5%;">
 			    <table id = "grid"></table>
 			    <div id = "pager"></div>
@@ -212,8 +248,7 @@ th.ui-th-column div {
 					<br>
 					<input type="submit" id="submit" name="submit" value="주문 완료하기" />
 				</div>
-			    <%=cartvo.getOrderId() %>
-			    <%=cartvo.getHow_many() %>	
+
 			    수정된 데이터 history : <br>
 			    <div id="overflowTest"> 
 			    	<span id="multiPrint"></span>

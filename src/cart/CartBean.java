@@ -82,8 +82,12 @@ public class CartBean {
           PreparedStatement pstmt = null;
           ResultSet rs = null;
           CartVO cartvo = null;
-          String sql=
-"select orderId, how_many from hut_cart where orderId = 1";
+          String sql= "select c.orderId, p.product_id, sum(c.how_many), p.product_price*sum(c.how_many)"
+          		+ "from hut_product p, hut_user u, hut_cart c"
+          		+ "where 1 = 1"
+          		+ "and p.product_id = c.product_id"
+          		+ "and u.userid = c.userid"
+          		+ "and u.userid=1";
 
           try{
 
@@ -92,12 +96,16 @@ public class CartBean {
               pstmt = conn.prepareStatement(sql);
               //pstmt.setInt(1, user_id);
               rs = pstmt.executeQuery();
-              // 결과물 편집, 리턴
-              if(rs.next()){
-            	  cartvo = new CartVO();
-            	  cartvo.setOrderId(rs.getInt("orderId"));
-            	  cartvo.setHow_many(rs.getInt("how_many"));
+              
+              while(rs.next()){
+            	  int x = rs.getInt(1);
+            	  int y = rs.getInt(2);
+            	  int z = rs.getInt(3);
+            	  int q = rs.getInt(4);
+            	  
+            	  System.out.println("수진"+x+", "+y+", "+z+", "+q);
               }
+              
   			if(rs !=null) rs.close();
   			if(pstmt != null) pstmt.close();
   			if(conn != null) conn.close();
