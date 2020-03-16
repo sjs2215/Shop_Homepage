@@ -11,7 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <script > 
+    <script type="text/javascript"> 
 	$(window.document).ready(function() {
 		
 		//상품이 4개밖에 없기에 하드 코딩으로 4개 밖아둠..
@@ -33,6 +33,20 @@
 			
 		});
 		
+		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
+		$("#done0").click(function() {
+			$("#how_many0").attr("readonly", true).attr("disabled", true);
+			
+		});
+		
+		function deleteLine(obj) {
+		    var tr = $(obj).parent().parent();
+		 
+		    //라인 삭제
+		    tr.remove();
+		}
+
+
 	});
 	</script>
 
@@ -74,14 +88,20 @@
             <td><%=cart.getOrderId()%></td>
             <td><%=cart.getProduct_id() %></td>
             <td>
-            
+            <!-- for문 변수 i로 버튼 id 구분 -->
             	<input type ="text" name ="how_many" id = "how_many<%=i%>" placeholder="
-            <%=cart.getHow_many() %>" readonly> <button class="btn btn-success" id="edit<%=i%>" 
-                                name="edit" type="button">수정하기
-                                </button> 
+            	<%=cart.getHow_many() %>" readonly> 
+            	<button class="btn btn-warning" id="edit<%=i%>" 
+            	name="edit" type="button">수정하기 </button> 
+            	<button class="btn btn-success" id="done<%=i%>" 
+                name="submit" type="button">저장하기 </button> 
             </td>
             <td><%=cart.getTotal()%>원</td>
             <td><%=cart.getOrder_Credate()%></td> 
+            <td>
+            	<button class="btn btn-danger" id="delete<%=i%>" 
+                name="delete" type="button" onclick="deleteLine(this);">삭제하기 </button>
+            </td>
 
 <%
 	}
@@ -93,12 +113,14 @@
                         <div class="control-group">
                             <div class="controls">
                                  
-                                <button class="btn btn-success" id="edit" 
-                                name="edit" type="button">수정하기
+                                <button class="btn btn-info" id="clear" 
+                                name="clear" type="button">초기화하기
                                 </button> 
-                                <button class="btn btn-success" id="submit" 
-                                name="submit" type="submit">저장하기
+                                <button class="btn btn-primary" id="submit" 
+                                name="submit" type="submit">주문하기
                                 </button> 
+                                
+                                
                             </div>
                         </div>
 			
