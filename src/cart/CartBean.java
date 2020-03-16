@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import cart.CartVO;
 
@@ -76,67 +77,49 @@ public class CartBean {
 		return(x);  
 }
 
-	  //장바구니 retrieve
-      public CartVO showCart() {
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs = null;
-          CartVO cartvo = null;
-          String sql= "select c.orderId, p.product_id, sum(c.how_many), p.product_price*sum(c.how_many)"
-          		+ "from hut_product p, hut_user u, hut_cart c"
-          		+ "where 1 = 1"
-          		+ "and p.product_id = c.product_id"
-          		+ "and u.userid = c.userid"
-          		+ "and u.userid=1";
-
-          try{
-
-              conn = getConnection();
-
-              pstmt = conn.prepareStatement(sql);
-              //pstmt.setInt(1, user_id);
-              rs = pstmt.executeQuery();
-              
-              while(rs.next()){
-            	  int x = rs.getInt(1);
-            	  int y = rs.getInt(2);
-            	  int z = rs.getInt(3);
-            	  int q = rs.getInt(4);
-            	  
-            	  System.out.println("수진"+x+", "+y+", "+z+", "+q);
-              }
-              
-  			if(rs !=null) rs.close();
-  			if(pstmt != null) pstmt.close();
-  			if(conn != null) conn.close();
-          } catch(Exception e){
-              e.printStackTrace();
-          } 
-          return cartvo;
-      }
-      
-      // 전체 행의 수를 리턴하는 메서드
-      public int getCountRow() {
-         
-          Connection conn = null;
-          PreparedStatement pstmt = null;
-          ResultSet rs = null;
-          String sql="select count(*) from hut_cart";
-          try{
-        	  // DB 접속
-              conn = getConnection();
-              // 쿼리 명령어 설정, 보내기, 결과물 받기
-              pstmt = conn.prepareStatement(sql);
-              rs = pstmt.executeQuery();
-              // 결과물 편집, 리턴
-              if(rs.next()){
-                  return rs.getInt(1);
-              }
-          } catch(Exception e){
-              e.printStackTrace();
-          } finally {
-              // db관련  커넥션 해제
-          }
-          return 0;
-      }
+ 	   //장바구니 retrieve
+       public ArrayList<CartVO> showCart(int id) {
+    	   ArrayList<CartVO> list = new ArrayList<CartVO>();
+    	   Connection conn = null;
+           PreparedStatement pstmt = null;
+           ResultSet rs = null;
+           CartVO cartvo = null;
+           String sql= " select c.orderId, p.product_id, sum(c.how_many), p.product_price*sum(c.how_many), c.order_Credate "
+           		+ " from hut_product p, hut_user u, hut_cart c "
+           		+ " where 1 = 1 "
+           		+ " and p.product_id = c.product_id "
+           		+ " and u.userid = c.userid "
+           		+ " and u.userid= ? "
+           		+ " group by p.product_id, u.userid ";
+ 
+           try{
+ 
+               conn = getConnection();
+ 
+               pstmt = conn.prepareStatement(sql);
+               pstmt.setInt(1, id);
+               rs = pstmt.executeQuery();
+               
+               while(rs.next()){
+            	  cartvo = new CartVO();
+             	  cartvo.setOrderId(rs.getInt("orderId"));
+             	  cartvo.setProduct_id(rs.getInt("product_id"));
+             	  cartvo.setHow_many(rs.getInt("sum(c.how_many)"));
+             	  cartvo.setTotal(rs.getInt("p.product_price*sum(c.how_many)"));
+             	  cartvo.setOrder_Credate(rs.getDate("order_Credate"));
+             	  //int q = rs.getInt(4);
+             	  list.add(cartvo);
+             	  //System.out.println("수진"+x+", "+y+", "+z+", "+q);
+               }
+               
+   			if(rs !=null) rs.close();
+   			if(pstmt != null) pstmt.close();
+   			if(conn != null) conn.close();
+           } catch(Exception e){
+               e.printStackTrace();
+           } 
+           return list;
+       }
+       
+        
 }

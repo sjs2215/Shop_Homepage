@@ -1,50 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="cart.*"%>
-<%
- request.setCharacterEncoding("euc-kr");
-String jdbcUrl ="jdbc:mysql://localhost:3306/users_info?useSSL=false";
-String dbUser = "root"; //root
-String dbPass = "park1001!"; //park1001!
-
-Class.forName("com.mysql.jdbc.Driver");
-
-ResultSet rs = null;
-PreparedStatement pstmt = null;
-
-
-
-String sql= " select hut_cart.orderId, hut_product.product_id, sum(hut_cart.how_many), hut_product.product_price*sum(hut_cart.how_many) "
-  		+ " from hut_product, hut_user, hut_cart  "
-  		+ " where hut_product.product_id = hut_cart.product_id "
-  		+ " and hut_user.userid = hut_cart.userid "
-  		+ " and hut_user.userid=1 ";
-
-
-try{
-
-	Connection conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPass);
-
-    pstmt = conn.prepareStatement(sql);
-    //pstmt.setInt(1, user_id);
-    rs = pstmt.executeQuery();
-    
-    while(rs.next()){
-  	  int x = rs.getInt(1);
-  	  int y = rs.getInt(2);
-  	  int z = rs.getInt(3);
-  	  int q = rs.getInt(4);
-  	  
-  	  System.out.println("수진"+x+", "+y+", "+z+", "+q);
-    }
-    
-	if(rs !=null) rs.close();
-	if(pstmt != null) pstmt.close();
-	if(conn != null) conn.close();
-} catch(Exception e){
-    e.printStackTrace();
-} 
-%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -79,7 +35,7 @@ th.ui-th-column div {
 
 </style>
 
-<script > 
+<script type="text/javascript"> 
 	$(window.document).ready(function() {
 		
 	    $("#grid").jqGrid({
@@ -90,7 +46,7 @@ th.ui-th-column div {
 	        loadonce : false,            
 	        autowidth : true,            // When autowidth is set to true the grid fits to the width of the parent container.
 	        rownumbers : true,           // rownumbers add additional column which count the rows
-	        height : '400px',            // height : 그리드의 높이를 지정한다.	
+	        height : '430px',            // height : 그리드의 높이를 지정한다.	
 	        footerrow : true,
 	        userDataOnFooter : true,	
 	        multiselect: true,            // 멀티 체크 기능 구현을 위한 체크박스 생성

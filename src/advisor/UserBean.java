@@ -94,7 +94,7 @@ public class UserBean {
 				pstmt.setString(1,  id);
 				rs = pstmt.executeQuery();
 				
-				if(rs.next()){
+				while(rs.next()){
 					uservo = new UserVO();
 					uservo.setUserType(rs.getString("userType"));
 					uservo.setUserName(rs.getString("userName"));

@@ -9,7 +9,14 @@ public class CartVO {
 	private Integer userId; //user테이블. FK
 	private Integer how_many; // order할 수량
 	private Date order_Credate; //sysdate. timestamp
+	private Integer total;
 	
+	public Integer getTotal() {
+		return total;
+	}
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
 	public Integer getOrderId() {
 		return orderId;
 	}
