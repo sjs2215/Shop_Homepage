@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="advisor.UserBean" %>
+<%@ page import ="java.io.PrintWriter"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +18,10 @@
 <%
 	UserBean USER = UserBean.getInstance(); 
 	USER.insertUser(user); 
-	//thankyou.html 로 redirect해야됨
+
+	PrintWriter writer=response.getWriter();
+	writer.println("<script>alert('회원가입 성공...축하드립니다.'); location.href='/thankyou.html';</script>");
+
 %>
 </body>
 </html>
