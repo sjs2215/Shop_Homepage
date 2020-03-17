@@ -146,5 +146,60 @@ public class UserBean {
 			}
 			return(x);
 	}
+		
+	//회원 정보 조회	
+		public void updateUser(UserVO user) throws Exception {
+			
+			Connection conn=null;
+			PreparedStatement pstmt = null;
+			int re= -1;
+			try {
+				conn = getConnection();
+				String query = "update hut_user set userPass=?, userEmail=?, userContact=?, userAddress=? where userId =?";
+
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setString(1, user.getUserPass());
+				pstmt.setString(2,  user.getUserEmail());
+				pstmt.setString(3,  user.getUserContact());
+				pstmt.setString(4,  user.getUserAddress());
+				pstmt.setInt(5, user.getUserId());
+				re = pstmt.executeUpdate();
+			
+					
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e ) {
+				e.printStackTrace();
+			}  
+		}
+		
+	//username을 이용해 userid 알아내기	
+		public int get_user_name(String usernm) {
+			Connection conn=null;
+			ResultSet rs = null;
+			PreparedStatement pstmt = null;
+			int x=0;
+			
+			try {
+				conn = getConnection();
+				String query = "select userid from hut_user where username=?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1,usernm);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					x=rs.getInt("userid");
+				}
+				
+				if(rs !=null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e ) {
+				e.printStackTrace();
+			}
+			return(x);  
+	}
+
 	
 }

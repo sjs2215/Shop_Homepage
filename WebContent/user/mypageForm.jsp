@@ -46,49 +46,49 @@
             <div class="span6">
                 <div class="area">
                     
-                    <form class="form-horizontal" action="/user/registerPro.jsp" method="post">
+                    <form class="form-horizontal" action="/user/mypagePro.jsp" method="post">
                         <div class="heading">
                             <h4 class="form-heading">마이페이지</h4>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for="userType" name="userType">회원 종류: </label>
-                            <input name="userName" placeholder=
+                            <input name="userName" value=
                                 "<%=uservo.getUserType()%>" type="text" required minlength="4" readonly>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for="userName" name="userName">아이디: 
                             </label>
-                            <input name="userName" placeholder=
+                            <input name="userName" value=
                                 "<%=uservo.getUserName()%>" type="text" id="userName" required minlength="4" readonly>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for="userPass" name="userPass">비밀번호: 
                             </label>
-                            <input name="userPass" placeholder="<%=uservo.getUserPass()  %>"
+                            <input name="userPass" value="<%=uservo.getUserPass()  %>"
                                 type="password" id="userPass" required minlength="8" readonly>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
                             "userEmail" name="userEmail">Email: </label>
-                            <input name="userEmail" placeholder=
+                            <input name="userEmail" value=
                                 "<%=uservo.getUserEmail() %>" type="email" id="userEmail" required readonly>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
                             "userContact" name="userContact">전화번호: </label>
-                            <input name="userContact" placeholder=
+                            <input name="userContact" value=
                                 "<%=uservo.getUserContact() %>" type="text" id="userContact" required readonly>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for=
                             "userAddress" name="userAddress">주소: </label>
-                            <input name="userAddress" placeholder=
+                            <input name="userAddress" value=
                                 "<%=uservo.getUserAddress() %>" type="text" id="userAddress" required readonly>
                         </div>
 

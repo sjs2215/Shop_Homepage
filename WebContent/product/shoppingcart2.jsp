@@ -38,6 +38,21 @@
 			$("#how_many0").attr("readonly", true).attr("disabled", true);
 			
 		});
+		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
+		$("#done1").click(function() {
+			$("#how_many1").attr("readonly", true).attr("disabled", true);
+			
+		});
+		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
+		$("#done2").click(function() {
+			$("#how_many2").attr("readonly", true).attr("disabled", true);
+			
+		});
+		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
+		$("#done3").click(function() {
+			$("#how_many3").attr("readonly", true).attr("disabled", true);
+			
+		});
 		
 		function deleteLine(obj) {
 		    var tr = $(obj).parent().parent();
