@@ -17,50 +17,42 @@
 		//상품이 4개밖에 없기에 하드 코딩으로 4개 밖아둠..
 		//수정하기 버튼 클릭 시 특정 컬럼만 수정 가능
 		$("#edit0").click(function() {
-			$("#how_many0").attr("readonly", false).attr("disabled", false);
+			$("#sum_qty").attr("readonly", false).attr("disabled", false);
 			
 		});
 		$("#edit1").click(function() {
-			$("#how_many1").attr("readonly", false).attr("disabled", false);
+			$("#sum_qty1").attr("readonly", false).attr("disabled", false);
 			
 		});
 		$("#edit2").click(function() {
-			$("#how_many2").attr("readonly", false).attr("disabled", false);
+			$("#sum_qty2").attr("readonly", false).attr("disabled", false);
 			
 		});
 		$("#edit3").click(function() {
-			$("#how_many3").attr("readonly", false).attr("disabled", false);
+			$("#sum_qty3").attr("readonly", false).attr("disabled", false);
 			
 		});
 		
 		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
 		$("#done0").click(function() {
-			$("#how_many0").attr("readonly", true).attr("disabled", true);
+			$("#sum_qty").attr("readonly", true).attr("disabled", true);
 			
 		});
 		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
 		$("#done1").click(function() {
-			$("#how_many1").attr("readonly", true).attr("disabled", true);
+			$("#sum_qty1").attr("readonly", true).attr("disabled", true);
 			
 		});
 		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
 		$("#done2").click(function() {
-			$("#how_many2").attr("readonly", true).attr("disabled", true);
+			$("#sum_qty2").attr("readonly", true).attr("disabled", true);
 			
 		});
 		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
 		$("#done3").click(function() {
-			$("#how_many3").attr("readonly", true).attr("disabled", true);
+			$("#sum_qty3").attr("readonly", true).attr("disabled", true);
 			
 		});
-		
-		function deleteLine(obj) {
-		    var tr = $(obj).parent().parent();
-		 
-		    //라인 삭제
-		    tr.remove();
-		}
-
 
 	});
 	</script>
@@ -70,7 +62,8 @@
 <jsp:useBean id="cart" class="cart.CartVO">
 	<jsp:setProperty name="cart" property="*"/>
 </jsp:useBean>
-
+<body>
+<form id="shoppingcartForm" class="form-horizontal" action="/product/shoppingcartPro.jsp" method="post" >
 <div class="container">
 <br>
   <h2>장바구니 table</h2>
@@ -96,7 +89,7 @@
 	ArrayList<CartVO> list = CART.showCart(name);
 	for(int i=0;i<list.size();i++){
 		cart = list.get(i);
-	//out.println(list.size());
+	out.println("sdf"+cart.getHow_many());
 %>
     <tbody>
         <tr>
@@ -104,7 +97,7 @@
             <td><%=cart.getProduct_id() %></td>
             <td>
             <!-- for문 변수 i로 버튼 id 구분 -->
-            	<input type ="text" name ="how_many" id = "how_many<%=i%>" placeholder="
+            	<input type ="text" name ="sum_qty" id = "sum_qty" placeholder="
             	<%=cart.getHow_many() %>" readonly> 
             	<button class="btn btn-warning" id="edit<%=i%>" 
             	name="edit" type="button">수정하기 </button> 
@@ -115,7 +108,7 @@
             <td><%=cart.getOrder_Credate()%></td> 
             <td>
             	<button class="btn btn-danger" id="delete<%=i%>" 
-                name="delete" type="button" onclick="deleteLine(this);">삭제하기 </button>
+                name="delete" type="button">삭제하기 </button>
             </td>
 
 <%
@@ -138,7 +131,9 @@
                                 
                             </div>
                         </div>
-			
+	
+</form>
+</body>		
 </html>
 
 

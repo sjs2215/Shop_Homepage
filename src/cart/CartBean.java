@@ -41,7 +41,7 @@ public class CartBean {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, productid);
 			pstmt.setInt(2, userid);
-			pstmt.setInt(3, 1); //장바구니에 담기는 개수는 항상 1개. 이후 수량 조절은 shoppingcart.jsp (jqgrid)에서 할 것.
+			pstmt.setInt(3, 1); //장바구니에 담기는 개수는 항상 1개. 이후 수량 조절은 shoppingcart.jsp에서 할 것.
 			pstmt.executeUpdate(); 
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close(); 
@@ -121,5 +121,52 @@ public class CartBean {
            return list;
        }
        
-        
+   	    //hut_order테이블에 insert
+	   	public void insertOrder( int userId, int product_id, int sum_qty, int total_price ) {  
+	   		Connection conn=null;
+	   		PreparedStatement pstmt = null;
+	   		
+	   		try {
+	   			conn = getConnection(); 	
+	   			String query = "insert into hut_order(userId, product_id, sum_qty, total_price) values (?,?,?,?)";
+	   			
+	   			pstmt = conn.prepareStatement(query);
+	   			pstmt.setInt(1, userId);
+	   			pstmt.setInt(2, product_id);
+	   			pstmt.setInt(3, sum_qty); 
+	   			pstmt.setInt(4, total_price); 
+	   			pstmt.executeUpdate(); 
+	   			if(pstmt != null) pstmt.close();
+	   			if(conn != null) conn.close(); 
+	   		} catch(Exception e) { 
+	   			e.printStackTrace();
+	   		}
+	     }
+       
+		//product_id를 통해 product_price 알아내기	
+		public int get_product_price(int product_id) {
+			Connection conn=null;
+			ResultSet rs = null;
+			PreparedStatement pstmt = null;
+			int x=0;
+			
+			try {
+				conn = getConnection();
+				String query = "select product_price from hut_product where product_id=?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1,product_id);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					x=rs.getInt("product_price");
+				}
+				
+				if(rs !=null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e ) {
+				e.printStackTrace();
+			}
+			return(x);  
+	}        
 }
