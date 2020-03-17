@@ -182,7 +182,7 @@ a{color:inherit;text-decoration:none}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    
 	
-	 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
 	<script type="text/javascript">
