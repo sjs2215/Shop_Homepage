@@ -183,30 +183,13 @@
 	<script type="text/javascript">
 	$(document).ready(function(){  
 		
-	    /*
-	    -> alert 주고 db에 insert 할 것. 
-	    -> insert 작업은 cartbean - insertCart에서
-	   
-	    
-	    $("#add1, #add2, #add3, #add4").click(function(e){ 
-	    	//e.preventDefault();
-	    	Swal.fire({
-	    		  position: 'top-end',
-	    		  icon: 'success',
-	    		  title: '장바구니에 성공적으로 담겼습니다.',
-	    		  showConfirmButton: false,
-	    		  timer: 1200
-	    		})
-	    		//alert("ASDfasdf");
-	    		//return false;
-	    });   
-	    */
+
 	    //각 product id는 value 값을 url로 전달
 	    $("button[name=add1]").click(function () {
 
             $("form[name=shop]")
 
-            .attr({ action: "shopPro.jsp?value="+$(this).val(), method: "post" })
+            .attr({ action: "shopPro.jsp?value="+$(this).val()+$("input[name=stock1]").val(), method: "post" })
 
             .submit();
 
@@ -216,7 +199,7 @@
 
             $("form[name=shop]")
 
-            .attr({ action: "shopPro.jsp?value="+$(this).val(), method: "post" })
+            .attr({ action: "shopPro.jsp?value="+$(this).val()+$("input[name=stock2]").val(), method: "post" })
 
             .submit();
 
@@ -226,7 +209,7 @@
 
             $("form[name=shop]")
 
-            .attr({ action: "shopPro.jsp?value="+$(this).val(), method: "post" })
+            .attr({ action: "shopPro.jsp?value="+$(this).val()+$("input[name=stock3]").val(), method: "post" })
 
             .submit();
 
@@ -236,7 +219,7 @@
 
             $("form[name=shop]")
 
-            .attr({ action: "shopPro.jsp?value="+$(this).val(), method: "post" })
+            .attr({ action: "shopPro.jsp?value="+$(this).val()+$("input[name=stock4]").val(), method: "post" })
 
             .submit();
 
@@ -288,12 +271,12 @@
                                 <a href="#">
                                     <img src="https://envytheme.com/tf-demo/edusplash/assets/img/publication/1.jpg" alt="Publication Image">
                                 </a>
+                                
+							<div class="add-to-cart">
+                                <button class="default-btn" name="add1" id="add1" value="1" >Add to Cart</button>
+                            </div>
 
-                                <ul>
-                                    <li><a href="#" title="Add to Favorite"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#" title="Add to Compare"><i class="fa fa-refresh"></i></a></li>
-                                    <li><a href="#" title="Quick View"><i class="fa fa-search"></i></a></li>
-                                </ul>
+
                             </figure>
 
                             <div class="publication-content">
@@ -306,13 +289,12 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price"> <%= productvo1.getProduct_stock() %> 개 </h4>
+                                	
+                                <span class="category">수량: </span> <input  name="stock1" value=
+                                "<%= productvo1.getProduct_stock() %>" type="text" style="width:50px;"> 개
                                 <h4 class="price"> <%= productvo1.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
-                            <div class="add-to-cart">
-                                <button class="default-btn" name="add1" id="add1" value="1" >Add to Cart</button>
-                            </div>
                         </div>
                     </div>
                     
@@ -323,12 +305,11 @@
                                 <a href="#">
                                     <img src="https://envytheme.com/tf-demo/edusplash/assets/img/publication/2.jpg" alt="Publication Image">
                                 </a>
+                                
+							<div class="add-to-cart">
+                                <button class="default-btn" name="add2" id="add2" value="2" >Add to Cart</button>
+                            </div>                                
 
-                                <ul>
-                                    <li><a href="#" title="Add to Favorite"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#" title="Add to Compare"><i class="fa fa-refresh"></i></a></li>
-                                    <li><a href="#" title="Quick View"><i class="fa fa-search"></i></a></li>
-                                </ul>
                             </figure>
 
                             <div class="publication-content">
@@ -341,13 +322,11 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price"> <%= productvo2.getProduct_stock() %>개 </h4>
+                                <span class="category">수량: </span> <input  name="stock2" value=
+                                "<%= productvo2.getProduct_stock() %>" type="text" style="width:50px;"> 개
                                 <h4 class="price"> <%= productvo2.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
-                            <div class="add-to-cart">
-                                <button class="default-btn" name="add2" id="add2" value="2">Add to Cart</button>
-                            </div>
                         </div>
                     </div>
                     
@@ -356,11 +335,10 @@
                             <figure>
                                 <a href="#"><img src="https://envytheme.com/tf-demo/edusplash/assets/img/publication/3.jpg" alt="Publication Image"></a>
 
-                                <ul>
-                                    <li><a href="#" title="Add to Favorite"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#" title="Add to Compare"><i class="fa fa-refresh"></i></a></li>
-                                    <li><a href="#" title="Quick View"><i class="fa fa-search"></i></a></li>
-                                </ul>
+							<div class="add-to-cart">
+                                <button class="default-btn" name="add3" id="add3" value="3" >Add to Cart</button>
+                            </div>
+                            
                             </figure>
 
                             <div class="publication-content">
@@ -373,14 +351,12 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price"> <%= productvo3.getProduct_stock() %>개 </h4>
+                                <span class="category">수량: </span> <input  name="stock3" value=
+                                "<%= productvo3.getProduct_stock() %>" type="text" style="width:50px;"> 개
                                 <h4 class="price"> <%= productvo3.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
-                            <div class="add-to-cart">
-                                <button class="default-btn" name ="add3" id="add3" value="3">Add to Cart</button>
-                                
-                            </div>
+                
                         </div>
                     </div>
                     
@@ -389,11 +365,10 @@
                             <figure>
                                 <a href="#"><img src="https://envytheme.com/tf-demo/edusplash/assets/img/publication/4.jpg" alt="Publication Image"></a>
 
-                                <ul>
-                                    <li><a href="#" title="Add to Favorite"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#" title="Add to Compare"><i class="fa fa-refresh"></i></a></li>
-                                    <li><a href="#" title="Quick View"><i class="fa fa-search"></i></a></li>
-                                </ul>
+							<div class="add-to-cart">
+                                <button class="default-btn" name="add4" id="add4" value="4" >Add to Cart</button>
+                            </div>
+                            
                             </figure>
 
                             <div class="publication-content">
@@ -406,13 +381,11 @@
                                     <li><i class="icofont-star"></i></li>
                                     <li><i class="icofont-star"></i></li>
                                 </ul>
-                                <h4 class="price"> <%=productvo4.getProduct_stock()%> 개 </h4>
+                                <span class="category">수량: </span> <input  name="stock4" value=
+                                "<%= productvo4.getProduct_stock() %>" type="text" style="width:50px;"> 개
                                 <h4 class="price"> <%= productvo4.getProduct_price() %> 원 <span>9억</span></h4>
                             </div>
 
-                            <div class="add-to-cart">
-                                <button class="default-btn" name="add4" id="add4" value="4">Add to Cart</button>
-                            </div>
                         </div>
                     </div>
                 </div>

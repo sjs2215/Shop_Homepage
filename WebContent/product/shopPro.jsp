@@ -19,10 +19,12 @@
 <%
 	CartBean CART = CartBean.getInstance(); 
 	
-	int product_id = Integer.parseInt(request.getParameter("value")); //url로 준 거 받음
+	String id_n_num = (request.getParameter("value")); //url로 준 거 받음
+	int product_id = Integer.parseInt(id_n_num.substring(0,1)); //첫글자 - 상품갯수
+	int how_many = Integer.parseInt(id_n_num.substring(1)); //나머지 글자 - 수량
 	String uid = (String)session.getAttribute("uid");
 		
-	System.out.println(product_id+"번 상품 주문. 주문한 고객 이름: "+uid);
+	System.out.println(product_id+"번 상품을, "+how_many+"개 주문. 주문한 고객 이름: "+uid);
 
 	//session에 저장된 uid(user 테이블의 user_name 컬럼)로 사용자 name(user 테이블의 user_id 컬럼)알아냄.
 	int name = CART.get_user_name(uid); 
