@@ -2,6 +2,8 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="cart.*"%>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import ="java.io.PrintWriter"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,64 +12,45 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  	th {
+  		color:#556B2F;
+  	}
+  
+  </style>
 
     <script type="text/javascript"> 
-	$(window.document).ready(function() {
-		
-		//상품이 4개밖에 없기에 하드 코딩으로 4개 밖아둠..
-		//수정하기 버튼 클릭 시 특정 컬럼만 수정 가능
-		$("#edit0").click(function() {
-			$("#sum_qty").attr("readonly", false).attr("disabled", false);
-			
-		});
-		$("#edit1").click(function() {
-			$("#sum_qty1").attr("readonly", false).attr("disabled", false);
-			
-		});
-		$("#edit2").click(function() {
-			$("#sum_qty2").attr("readonly", false).attr("disabled", false);
-			
-		});
-		$("#edit3").click(function() {
-			$("#sum_qty3").attr("readonly", false).attr("disabled", false);
-			
-		});
-		
-		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
-		$("#done0").click(function() {
-			$("#sum_qty").attr("readonly", true).attr("disabled", true);
-			
-		});
-		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
-		$("#done1").click(function() {
-			$("#sum_qty1").attr("readonly", true).attr("disabled", true);
-			
-		});
-		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
-		$("#done2").click(function() {
-			$("#sum_qty2").attr("readonly", true).attr("disabled", true);
-			
-		});
-		//저장하기 버튼 클릭 시 수정 가능 readonly 기능 다시 block
-		$("#done3").click(function() {
-			$("#sum_qty3").attr("readonly", true).attr("disabled", true);
-			
-		});
+    $(document).ready(function(){  
+	    //초기화 버튼 클릭 시 url로 1 전달
+	    $("button[name=clear]").click(function () {
 
-	});
+            $("form[name=cart]")
+
+            .attr({ action: "shoppingcartPro.jsp?value="+$(this).val(), method: "post" })
+
+            .submit();
+
+        });	
+    });
+
+	
 	</script>
 
 <title>장바구니</title>
 </head>
+<%
+	String uid2 = (String)session.getAttribute("uid");
+%>
 <jsp:useBean id="cart" class="cart.CartVO">
 	<jsp:setProperty name="cart" property="*"/>
 </jsp:useBean>
 <body>
-<form id="shoppingcartForm" class="form-horizontal" action="/product/shoppingcartPro.jsp" method="post" >
+<form id="shoppingcartForm" name="cart" class="form-horizontal" action="/product/shoppingcartPro.jsp" method="post" >
 <div class="container">
 <br>
-  <h2>장바구니 table</h2>
-  <h4>장바구니 페이지입니다. 장바구니 초기화 후 복귀되지 않으니 주의해주세요.</h4>    
+  <h2><%=uid2 %>님의 주문 항목입니다.</h2>
+  <h4>항목을 수정하고 싶다면, 탈퇴하세요.</h4>   
+  <h4>초기화 작업은 롤백되지 않으니 주의하세요.</h4>  
   <br>
 <table class="table table-striped">
     <thead>
@@ -89,7 +72,6 @@
 	ArrayList<CartVO> list = CART.showCart(name);
 	for(int i=0;i<list.size();i++){
 		cart = list.get(i);
-	out.println("sdf"+cart.getHow_many());
 %>
     <tbody>
         <tr>
@@ -99,17 +81,18 @@
             <!-- for문 변수 i로 버튼 id 구분 -->
             	<input type ="text" name ="sum_qty" id = "sum_qty" placeholder="
             	<%=cart.getHow_many() %>" readonly> 
+            	<!--  
             	<button class="btn btn-warning" id="edit<%=i%>" 
             	name="edit" type="button">수정하기 </button> 
             	<button class="btn btn-success" id="done<%=i%>" 
-                name="submit" type="button">저장하기 </button> 
+                name="submit" type="button">저장하기 </button> -->
             </td>
             <td><%=cart.getTotal()%>원</td>
             <td><%=cart.getOrder_Credate()%></td> 
-            <td>
+            <!--  <td>
             	<button class="btn btn-danger" id="delete<%=i%>" 
                 name="delete" type="button">삭제하기 </button>
-            </td>
+            </td>-->
 
 <%
 	}
@@ -120,9 +103,11 @@
 <br>
                         <div class="control-group">
                             <div class="controls">
-                                 
-                                <button class="btn btn-info" id="clear" 
-                                name="clear" type="button">초기화하기
+                                <button class="btn btn-success" id="again" 
+                                name="clear" type="button" onClick="location.href='/product/shop.jsp'">다시 주문하러가기
+                                </button>  
+                                <button class="btn btn-info" id="clear" value="1"
+                                name="clear" >초기화하기
                                 </button> 
                                 <button class="btn btn-primary" id="submit" 
                                 name="submit" type="submit">주문하기

@@ -19,11 +19,20 @@
 <%
 	CartBean CART = CartBean.getInstance(); 
 
+	//url로 준 거 받음
+	int delete = Integer.parseInt(request.getParameter("value"));
+	
 	//session에 저장된 uid(user 테이블의 user_name 컬럼)로 사용자 name(user 테이블의 user_id 컬럼)알아냄.
 	String uid = (String)session.getAttribute("uid");
 	int name = CART.get_user_name(uid);
 	
 	ArrayList<CartVO> list = CART.showCart(name);
+	if(delete==1){
+		CART.deleteCart(name);
+		PrintWriter writer=response.getWriter();
+		writer.println("<script>alert('주문 초기화 성공...다시 주문 페이지로 이동합니다.'); location.href='/product/shop.jsp';</script>");
+
+	}
 	
 	for(int i=0;i<list.size();i++){
 		cart = list.get(i);
@@ -38,8 +47,8 @@
 		CART.insertOrder(name, product_id, sum_qty, total_price);
 
 		
-		//PrintWriter writer=response.getWriter();
-		//writer.println("<script>alert('주문 성공...다시 주문 페이지로 이동합니다.'); location.href='/product/shop.jsp';</script>");
+		PrintWriter writer=response.getWriter();
+		writer.println("<script>alert('주문 성공...다시 주문 페이지로 이동합니다.'); location.href='/product/shop.jsp';</script>");
 
 	}
 %>

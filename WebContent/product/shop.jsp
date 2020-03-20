@@ -259,7 +259,7 @@
                 </div>
                 
                 <div class="add-to-cart">
-                      <a href="/product/shoppingcart.jsp" class="default-btn">장바구니 페이지로 이동하기</a>
+                      <a href="/product/shoppingcart2.jsp" class="default-btn">장바구니 페이지로 이동하기</a>
                 </div>
                 
                 <br></br>

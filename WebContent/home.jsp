@@ -1037,7 +1037,7 @@ input,select,textarea,span{ font-family:open sans; }
 					<ul class=" nav navbar-nav navbar-right ">
 						<li class="active"><a href="index.html">홈</a></li>
 						<li class=""><a href="#services">헛개의 효능, 헛개 먹는 법</a></li>
-						<li class=""><a href="/product/shoppingcart.jsp">장바구니</a></li>
+						<li class=""><a href="/product/shoppingcart2.jsp">장바구니</a></li>
 						<li class="" id="mypage"><a href="#" onClick="mypage_check();">마이 페이지</a></li>
 						<li class=""><a href="/user/registerForm.jsp">회원가입</a></li>
 						<li class=""><a href="/user/signinForm.jsp">로그인</a></li>
@@ -1115,95 +1115,6 @@ input,select,textarea,span{ font-family:open sans; }
 		</div>
 	</div>
 </section>
-<!-- 
-<section id="men-women">
-	<div class="container-fluid pl-0 pr-0">
-		<div class="row mr-0 ml-0" >
-			<div class="col-sm-4 pl-0 pr-0">
-				<div class="men-section small text-center">
-					<h2>For Men</h2>
-					<p>Lorem ipsum dolor et..</p>
-					<a class="btn-white">Read More</a>
-				</div>
-			</div>
-			<div class="col-sm-4 pl-0 pr-0">
-				<div class="men-section main text-center">
-					<h2>Sed ut perspiciatis unde omnis iste natus error sit</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-					<a class="btn-blue">Read More</a>
-				</div>
-			</div>
-			
-			<div class="col-sm-4 pl-0 pr-0">
-				<div class="men-section small text-center">
-					<h2>For Women</h2>
-					<p>Lorem ipsum dolor et..</p>
-					<a class="btn-white">Read More</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
--->
-<!--  
-<section id="product-list">
-	<div class="container">
-		<div class="section-heading text-center">
-			<h1>저희 제품은요...</h1>
-		</div>
-		<div class="row product-list">
-			<div class="col-sm-3">
-				<div class="productw-wrap">
-					<div class="product-image">
-						<img src="img/img999.png" class="img-responsive">
-					</div>
-					<div class="prduct-text">
-						<a class="name">헛개 300g</a>
-						<a href="/product/shoppingcart.jsp">장바구니로 이동</a>
-						<ins class="price">10000원</ins>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="productw-wrap">
-					<div class="product-image">
-						<img src="img/img999.png" class="img-responsive">
-					</div>
-					<div class="prduct-text">
-						<a class="name">헛개 600g</a>
-						<a href="/product/shoppingcart.jsp">장바구니로 이동</a>
-						<ins class="price">19000원</ins>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="productw-wrap">
-					<div class="product-image">
-						<img src="img/img999.png" class="img-responsive">
-					</div>
-					<div class="prduct-text">
-						<a class="name">헛개 1kg</a>
-						<a href="/product/shoppingcart.jsp">장바구니로 이동</a>
-						<ins class="price">25000원</ins>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="productw-wrap">
-					<div class="product-image">
-						<img src="img/img999.png" class="img-responsive">
-					</div>
-					<div class="prduct-text">
-						<a class="name">헛개 5kg</a>
-						<a href="/product/shoppingcart.jsp">장바구니로 이동</a>
-						<ins class="price">60000원</ins>
-					</div>
-				</div>
-			</div>			
-		</div>
-	</div>
-</section>
--->
 <section id="services">
 	<div class="container">
 		<div class="section-heading text-center">

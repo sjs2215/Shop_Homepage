@@ -168,5 +168,25 @@ public class CartBean {
 				e.printStackTrace();
 			}
 			return(x);  
-	}        
+	}  
+
+	       
+		//장바구니 삭제하기	
+		public void deleteCart(int userid) {
+			Connection conn=null;
+			PreparedStatement pstmt = null;
+			
+			try {
+				conn = getConnection();
+				String query = "delete from hut_cart where userid = ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1,userid);
+				pstmt.executeUpdate();
+				
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e ) {
+				e.printStackTrace();
+			}
+	}		
 }
