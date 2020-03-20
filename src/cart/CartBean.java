@@ -30,7 +30,7 @@ public class CartBean {
 
 	
 	//hut_cart테이블에 클릭상품 insert
-	public void insertCart(CartVO vo, int productid, int userid) {  
+	public void insertCart(CartVO vo, int productid, int userid, int how_many) {  
 		Connection conn=null;
 		PreparedStatement pstmt = null;
 		
@@ -41,7 +41,7 @@ public class CartBean {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, productid);
 			pstmt.setInt(2, userid);
-			pstmt.setInt(3, 1); //장바구니에 담기는 개수는 항상 1개. 이후 수량 조절은 shoppingcart.jsp에서 할 것.
+			pstmt.setInt(3, how_many); 
 			pstmt.executeUpdate(); 
 			if(pstmt != null) pstmt.close();
 			if(conn != null) conn.close(); 
