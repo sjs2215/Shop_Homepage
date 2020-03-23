@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="cart.*"%>
+<%@ page import="advisor.*"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import ="java.io.PrintWriter"%>
 
@@ -21,6 +22,10 @@
 
     <script type="text/javascript"> 
     $(document).ready(function(){  
+    	
+    	//주문 확인 부분은 숨겨놓기
+    	$('.order_info').hide();
+    	
 	    //초기화 버튼 클릭 시 url로 1 전달
 	    $("button[name=clear]").click(function () {
 
@@ -30,7 +35,12 @@
 
             .submit();
 
-        });	
+        });
+	    
+	    //결제 버튼 클릭 시 보여줌.
+	    $("button[name=order]").click(function(){
+	    	$('.order_info').show();
+	    });
     });
 
 	
@@ -44,6 +54,14 @@
 <jsp:useBean id="cart" class="cart.CartVO">
 	<jsp:setProperty name="cart" property="*"/>
 </jsp:useBean>
+<jsp:useBean id="user" class="advisor.UserVO">
+	<jsp:setProperty name="user" property="*"/>
+</jsp:useBean>
+
+<%
+	UserBean USER = UserBean.getInstance(); 
+	UserVO uservo = USER.userEdit(uid2); 
+%>
 <body>
 <form id="shoppingcartForm" name="cart" class="form-horizontal" action="/product/shoppingcartPro.jsp" method="post" >
 <div class="container">
@@ -69,9 +87,11 @@
 	//session에 저장된 uid(user 테이블의 user_name 컬럼)로 사용자 name(user 테이블의 user_id 컬럼)알아냄.
 	int name = CART.get_user_name(uid); 
 
+	int total=0;
 	ArrayList<CartVO> list = CART.showCart(name);
 	for(int i=0;i<list.size();i++){
 		cart = list.get(i);
+		total += cart.getTotal();
 %>
     <tbody>
         <tr>
@@ -103,18 +123,93 @@
 <br>
                         <div class="control-group">
                             <div class="controls">
-                                <button class="btn btn-success" id="again" 
-                                name="clear" type="button" onClick="location.href='/product/shop.jsp'">다시 주문하러가기
+                                <button class="btn btn-success btn-lg" id="again" 
+                                name="again" type="button" onClick="location.href='/product/shop.jsp'">'더' 주문하러 가기
                                 </button>  
-                                <button class="btn btn-info" id="clear" value="1"
+                                <button class="btn btn-info btn-lg" id="clear" value="1"
                                 name="clear" >초기화하기
                                 </button> 
-                                <button class="btn btn-primary" id="submit" 
-                                name="submit" type="submit">주문하기
+                                <button class="btn btn-primary btn-lg" id="order" 
+                                name="order" type="button" onClick="location.href='#'">결제하러 가기
                                 </button> 
                                 
                                 
                             </div>
+                        </div>
+                        
+<br><br>                        
+                        
+                        <div class="order_info">
+                        
+                        	<h1>예약 확인 및 취소</h1>
+                        	<h3>고객님의 예약정보는 아래와 같습니다.</h3>
+							<br>
+
+						<table class="table table-striped">
+						    <thead>
+						        <tr>
+						            <th>결제 방법</th>
+						            <th>예약 상태</th>
+						            <th>예약자</th>
+						            <th>총 금액</th>
+						            
+						        </tr>
+						    </thead>
+						
+						      <tbody>
+						        <tr class="warning">
+						            <td>무통장 입금</td>
+						            <td>입금대기</td>
+						            <td><%=uid2 %>님</td> 
+						            <td><%=total%>원</td>
+						        </tr>
+						      </tbody>
+						</table>
+
+<br>
+
+            <h3>주문/배송 info</h3>
+						<table class="table table-striped">
+						    <thead>
+						        <tr>
+						            <th>판매자명</th>
+						            <th>판매자 대표번호</th>
+						            <th>예약자</th>
+						            <th>연락처</th>
+						            <th>주소</th>
+						            <th> 이메일</th>
+						        </tr>
+						    </thead>
+						
+						      <tbody>
+						        <tr class="info">
+						            <td>헛개닷컴(주)</td>
+						            <td>02-112-1562</td>
+						            <td><%=uid2 %>님</td> 
+						            <td><%=uservo.getUserContact() %></td>
+						            <td><%=uservo.getUserAddress() %></td>
+						            <td><%=uservo.getUserEmail() %></td>
+						        </tr>
+						      </tbody>
+						</table>            
+
+
+<br><br>
+<div align="right">
+<button class="btn btn-danger btn-lg" id="clear" value="1" name="clear" >주문 취소하기 </button>
+</div>
+<br><br>
+<h3>
+<%=cart.getOrder_Credate() %> 자정까지 입금완료 하지 않을 경우 자동취소 됩니다.
+
+인터넷 예약의 특성상 입금시간이 지체되면 예약이 중복 될 수 있어 빠른 입금을 부탁드립니다.<br>
+
+<span style="font-weight:bold;">입금확인이 되면. 예약완료정보(업소연락처,예약번호등)가 핸드폰으로 전송</span>됩니다.
+
+무통장입금시 반드시 예약자명으로 입금하셔야합니다. 입금확인이 되지 않을 수 있습니다.<br>
+
+예약시점 이후 <span style="font-weight:bold;">24시간</span> 이내에 입금완료 하지 않는 경우 <span style="font-weight:bold;">자동 취소</span>됩니다.<br>
+       </h3>        
                         </div>
 	
 </form>
