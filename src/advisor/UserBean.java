@@ -147,7 +147,7 @@ public class UserBean {
 			return(x);
 	}
 		
-	//회원 정보 조회	
+	//회원 정보 조회+업데이트	
 		public void updateUser(UserVO user) throws Exception {
 			
 			Connection conn=null;

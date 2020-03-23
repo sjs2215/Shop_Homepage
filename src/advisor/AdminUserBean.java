@@ -43,6 +43,7 @@ public class AdminUserBean {
 				
 				while(rs.next()){
 					uservo = new UserVO();
+					uservo.setUserId(rs.getInt("userId"));
 					uservo.setUserType(rs.getString("userType"));
 					uservo.setUserName(rs.getString("userName"));
 					uservo.setUserEmail(rs.getString("userEmail"));
@@ -59,5 +60,29 @@ public class AdminUserBean {
 			}  
 			return list;
 		}
+		
+		//(admin)회원 정보 조회+업데이트	
+		public void updateUser(int userid) throws Exception {
+			
+			Connection conn=null;
+			PreparedStatement pstmt = null;
+			int re= -1;
+			try {
+				conn = getConnection();
+				String query = "update hut_user set user_flg =1 where userId = ?";
+
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setInt(1, userid);
+				re = pstmt.executeUpdate();
+			
+					
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e ) {
+				e.printStackTrace();
+			}  
+		}
+		
 	
 }

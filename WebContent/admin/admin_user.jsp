@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>    
 <%@ page import="advisor.*"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import ="java.io.PrintWriter"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -20,6 +19,18 @@ $(window.document).ready(function() {
 	    $(this).siblings().css ("color","red");
 
 	});
+	
+	//버튼 클릭 시 해당 row의 userid도 전송
+    //각 product id는 value 값을 url로 전달
+    $("button[name=add]").click(function () {
+
+        $("form[name=admin_user]")
+
+        .attr({ action: "admin_userPro.jsp?value="+$(this).val(), method: "post" })
+
+        .submit();
+
+    });
 });
 
 </script>
@@ -137,11 +148,12 @@ h6, .h6 {
 	<jsp:setProperty name="user" property="*"/>
 </jsp:useBean>
 <body>
+<form name="admin_user" class="form-horizontal" action="/admin/admin_userPro.jsp" method="post" >
 <div class="container">
 	<div class="card shadow mb-4">
             <div class="card-header py-3">
               <div class="display-flex align-center">
-                <h6 class="m-0 font-weight-bold text-primary">Custom Table</h6>
+                <h6 class="m-0 font-weight-bold text-primary">회원 정보 테이블. 권한 승인하기</h6>
                 <div class="ml-auto display-flex align-center">
                   <input type="text" name="" class="form-control" placeholder="Search">
                   <button class="btn btn-md btn-primary ml-2">Search</button>
@@ -153,12 +165,14 @@ h6, .h6 {
                 <table id="userTable" class="table table-bordered" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>userId</th>
                       <th>userType</th>
                       <th>userName</th>
                       <th>userEmail</th>
                       <th>userContact</th>
                       <th>userRegdate</th>
                       <th>user_flg</th>
+                      <th>권한 부여</th>
                     </tr>
                   </thead>
                   
@@ -174,22 +188,29 @@ h6, .h6 {
                   
                   <tbody>
                     <tr>
+                      <td id="type0"><%=user.getUserId() %> </td>
                       <td id="type"><%=user.getUserType() %></td>
                       <td id="type2"><%=user.getUserName() %></td>
                       <td id="type3"><%=user.getUserEmail() %></td>
                       <td id="type4"><%=user.getUserContact() %></td>
                       <td id="type5"><%=user.getUserRegdate() %></td>
-                      <td id="type6"><%=user.isUser_flg() %></td>
+                      <td id="type6"> <%=user.isUser_flg() %></td>
+                      <td><button name="add" class="btn btn-success btn-lg" type="submit" value="<%=user.getUserId()%>">권한 부여하기 </button></td>
 <%
 	}
 %>                       
                     </tr>
                   </tbody>
                 </table>
+
               </div>
             </div>
           </div>
+          
+          <div align="right">    
+</div>
           <div style="text-align:center;font-size:14px;padding-top:20px;padding-bottom:20px;">Get free icon packs for your next project at <a href="http://iiicons.in/" target="_blank" style="color:#ff5e63;font-weight:bold;">www.iiicons.in</a></div>
 </div>
+</form>
 </body>
 </html>
