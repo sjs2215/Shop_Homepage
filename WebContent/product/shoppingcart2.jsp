@@ -200,15 +200,15 @@
 </div>
 <br><br>
 <h3>
-<%=cart.getOrder_Credate() %> 자정까지 입금완료 하지 않을 경우 자동취소 됩니다.
+<%=cart.getOrder_Credate() %> 자정까지 입금 완료하지 않을 경우 자동 취소됩니다.
 
-인터넷 예약의 특성상 입금시간이 지체되면 예약이 중복 될 수 있어 빠른 입금을 부탁드립니다.<br>
+인터넷 예약의 특성상 입금시간이 지체되면 예약이 중복될 수 있어 빠른 입금을 부탁드립니다.<br>
 
-<span style="font-weight:bold;">입금확인이 되면. 예약완료정보(업소연락처,예약번호등)가 핸드폰으로 전송</span>됩니다.
+<span style="font-weight:bold;">입금확인이 되면. 예약 완료 정보(판매자 연락처,예약번호 등)가 핸드폰으로 전송</span>됩니다.
 
-무통장입금시 반드시 예약자명으로 입금하셔야합니다. 입금확인이 되지 않을 수 있습니다.<br>
+무통장입금 시 반드시 예약자명으로 입금하셔야 합니다. 입금확인이 되지 않을 수 있습니다.<br>
 
-예약시점 이후 <span style="font-weight:bold;">24시간</span> 이내에 입금완료 하지 않는 경우 <span style="font-weight:bold;">자동 취소</span>됩니다.<br>
+예약 시점 이후 <span style="font-weight:bold;">24시간</span> 이내에 입금 완료하지 않는 경우 <span style="font-weight:bold;">자동 취소</span>됩니다.<br>
        </h3>        
                         </div>
 	
