@@ -986,6 +986,9 @@ input,select,textarea,span{ font-family:open sans; }
     	 
     	//admin 유저인지 체크
     	int check = USER.adminCheck(name);
+    	
+    	//admin 유저인데 승인처리 되어있는지 체크
+    	int admin_flgcheck = USER.admin_flgCheck(name);
 	%>
   
     <script type="text/javascript"> 
@@ -1009,7 +1012,7 @@ input,select,textarea,span{ font-family:open sans; }
      function mypage_check(){ 
     	 var uid = '<%=(String)session.getAttribute("uid")%>';
     	 
-     	 if(uid=="null"){ //jsp 표현식 써서 그런지 진짜 literal하게 null이라는 문자와 비교해야 if문에 들어가는 아주 황당한 사례
+     	 if(uid=="null"){ 
      		swal("로그인이 필요한 항목입니다.","회원 가입 또는 로그인을 해주세요", "error"); 
      	 }
      	 else{
@@ -1020,7 +1023,7 @@ input,select,textarea,span{ font-family:open sans; }
      function cart_check(){ 
     	 var uid = '<%=(String)session.getAttribute("uid")%>';
     	 
-     	 if(uid=="null"){ //jsp 표현식 써서 그런지 진짜 literal하게 null이라는 문자와 비교해야 if문에 들어가는 아주 황당한 사례
+     	 if(uid=="null"){ 
      		swal("로그인이 필요한 항목입니다.","회원 가입 또는 로그인을 해주세요", "error"); 
      	 }
      	 else{
@@ -1031,15 +1034,19 @@ input,select,textarea,span{ font-family:open sans; }
      function admin_check(){ 
     	 var uid = '<%=(String)session.getAttribute("uid")%>';
     	 
-    	 if(uid=="null"){ //jsp 표현식 써서 그런지 진짜 literal하게 null이라는 문자와 비교해야 if문에 들어가는 아주 황당한 사례
-     		swal("관리자 계정으로 로그인 해주세요","접속된 세션 정보가 없습니다.", "error"); 
+    	 if(uid=="null"){ //로그인 정보 없을 시
+     		swal("관리자 계정으로 로그인을 해주세요","접속된 세션 정보가 없습니다.", "error"); 
      	 }
     	 
-    	 if(uid!="null"&&<%=check%>==0){
+    	 if(uid!="null"&&<%=check%>==0){ //일반 계정으로 로그인 시
     		 swal("관리자만 접근 가능합니다.","관리자로 회원가입 후 승인을 기다려주세요.", "error"); 
     	 }
-    	 else if(uid!="null"&&<%=check%>==1){
+    	 else if(uid!="null"&&<%=check%>==1){ //admin 계정으로 로그인 시
     		 location.replace("/admin/admin.jsp");
+    	 }
+    	 
+    	 if(uid!="null"&&<%=admin_flgcheck%>==0&&<%=check%>==0){ //admin 계정으로 로그인 하였으나 아직 승인 처리 안 되었을 때
+    		 swal("승인 심사가 완료되지 않았습니다.","관리자 계정으로 회원가입을 한 경우,\n 승인 심사는 약 7일 정도 소요됩니다.\n 자세한 사항은 담당자에게 문의해주세요.\n이메일 문의: soojinsarah@naver.com", "error");
     	 }
     }
  	</script>

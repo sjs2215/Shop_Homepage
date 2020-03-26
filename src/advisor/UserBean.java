@@ -147,6 +147,38 @@ public class UserBean {
 			return(x);
 	}
 		
+		//admin 유저 - 승인 처리 여부 체크
+		public int admin_flgCheck(int userId) {
+			Connection conn=null;
+			ResultSet rs = null;
+			PreparedStatement pstmt = null;
+			boolean admin_flg;
+			int x = -1;
+			
+			try {
+				conn = getConnection();
+				String query = "SELECT USER_FLG FROM HUT_USER WHERE USERID = ?";
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1,userId);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					admin_flg=rs.getBoolean("USER_FLG");
+					if(admin_flg==true)
+						x=1;//인증 성공
+					else
+						x=0;
+				}else 
+					x=-1;
+				
+				if(rs !=null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e ) {
+				e.printStackTrace();
+			}
+			return(x);
+	}		
+		
 	//회원 정보 조회+업데이트	
 		public void updateUser(UserVO user) throws Exception {
 			
