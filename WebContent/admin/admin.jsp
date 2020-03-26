@@ -31,7 +31,7 @@
                           <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>매출 관리</a>
                         </div>
                         <div class="col-xs-6 col-md-6">
-                          <a href="#" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>사용자 관리</a>
+                          <a href="/admin/admin_user.jsp" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>사용자 관리</a>
                           <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>사진 관리</a>
                         </div>
                     </div>

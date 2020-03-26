@@ -8,6 +8,18 @@ public class UserVO {
 	private String userType;
 	private String userName;
 	private String userPass;
+	private String userEmail;
+	private String userContact;
+	private String userAddress;
+	private Date userRegdate;
+	private boolean user_flg;
+	
+	public boolean isUser_flg() {
+		return user_flg;
+	}
+	public void setUser_flg(boolean user_flg) {
+		this.user_flg = user_flg;
+	}
 	public String getUserEmail() {
 		return userEmail;
 	}
@@ -32,10 +44,6 @@ public class UserVO {
 	public void setUserRegdate(Date userRegdate) {
 		this.userRegdate = userRegdate;
 	}
-	private String userEmail;
-	private String userContact;
-	private String userAddress;
-	private Date userRegdate;
 	
 	public Integer getUserId() {
 		return userId;
