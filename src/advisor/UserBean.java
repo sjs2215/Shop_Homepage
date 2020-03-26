@@ -115,7 +115,7 @@ public class UserBean {
 
 
 	//admin 유저인지 체크
-		public int adminCheck(String userName) {
+		public int adminCheck(int userId) {
 			Connection conn=null;
 			ResultSet rs = null;
 			PreparedStatement pstmt = null;
@@ -124,9 +124,9 @@ public class UserBean {
 			
 			try {
 				conn = getConnection();
-				String query = "select userType from hut_user where userName = ?";
+				String query = "select userType from hut_user where userId = ?";
 				pstmt = conn.prepareStatement(query);
-				pstmt.setString(1,userName);
+				pstmt.setInt(1,userId);
 				rs = pstmt.executeQuery();
 				if(rs.next()){
 					user_type=rs.getString("userType");

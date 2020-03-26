@@ -26,8 +26,14 @@
 	
 	USER.userCheck(name, password); 
 
-	int user_check = USER.userCheck(name, password); //회원 정보 있는지 체크
-	int admin_check = USER.adminCheck(name);//admin인지 체크
+	//회원 정보 있는지 체크
+	int user_check = USER.userCheck(name, password); 
+
+	//변수 name(user 테이블의 user_name 컬럼)으로 (user 테이블의 user_id 컬럼)알아냄.
+	int user_id = USER.get_user_name(name); 
+	
+	//admin 유저인지 체크
+	int admin_check = USER.adminCheck(user_id);
 	
 	
 	//user_check 부분
