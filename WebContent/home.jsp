@@ -25,6 +25,8 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"> 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
 		<title>Home</title>
 
@@ -969,6 +971,93 @@ input,select,textarea,span{ font-family:open sans; }
 }
 
 /******Responsive ends Here******/
+
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Raleway');
+.align-text-left {
+  text-align: left;
+}
+
+.align-text-right {
+  text-align: right;
+}
+
+.color-white {
+  color: #FFF;
+}
+
+.padding-top-ten-px {
+  padding-top: 10px;
+}
+
+.padding-top-fiftheen-px {
+  padding-top: 15px;
+}
+
+.no-padding {
+  padding: 0;
+  margin: 0;
+}
+
+.primary {
+  border-bottom: solid 3px #E98300;
+  width: 40%;
+}
+
+.social-sharing {
+  color: #C3C3C3;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all .25s;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+}
+
+a.social-sharing:link {
+  color: #C3C3C3;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all .25s;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+}
+
+a.social-sharing:hover {
+  color: #9fc163;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all .25s;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+}
+
+footer {
+  background-color: #242424;
+  padding: 15px;
+}
+
+a.footerlink {
+  color: #C3C3C3;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all .25s;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+a.footerlink:hover {
+  color: #9fc163;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all .35s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+p,
+span {
+  font-family: 'Droid Sans', sans-serif;
+}
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -1234,54 +1323,93 @@ input,select,textarea,span{ font-family:open sans; }
 	</div>
 </section>
 
-<section id="team">
-	<div class="container">
-		<div class="section-heading dark text-center">
-			<h1>Our Team</h1>
-		</div>
-		<div class="slider-wrap">
-			<div class="carousel slide" data-ride="carousel" id="quote-carousel">
-				<!-- Bottom Carousel Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#quote-carousel" data-slide-to="0" class="active">
-						<img class="img-responsive " src="img/theme_pic.jpg" alt="">
-					</li>	
-				</ol>
-				
-				<div class="carousel-inner">
-					
-					<div class="item active">
-						<div class="row">	
-							<div class="col-sm-2">
-								<div class="img-wrap">
-									<img src="img/theme_pic.jpg" class="img-responsive">
-								</div>
-							</div>
-							<div class="col-sm-10">
-								<h2>Sarah Park</h2>
-								<p>Software Engineer</p>
-								<p>Created with <i class="fa fa-heart"></i> by <a href="https://github.com/sjs2215">Sarah Park</a></p>
-								
-							</div>
-						</div>
-					</div>
-					
-				
-				</div>
+<!-- footer start -->
+<div class="padding-top-fiftheen-px"></div>
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <a href="#" class="footerlink" rel="index,follow" title="Header 1">Header 1</a>
+          <p class="text-muted small padding-top-fiftheen-px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="align-text-right hidden-lg hidden-md hidden-sm">
+            <a href="#" id="ButtonLink" class="btn btn-warning btn-sm">more<i class="fa fa-chevron-right padding-left-five-px"></i></a>
+            <div class="clearfix"></div>
+            <hr class="color-white">
+            <div class="mouse-help"></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <a href="#" class="footerlink" rel="follow" title="Header 2">Header 2</a>
+          <p class="text-muted small padding-top-fiftheen-px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="align-text-right hidden-lg hidden-md hidden-sm">
+            <a href="#" id="ButtonLink" class="btn btn-warning btn-sm">more<i class="fa fa-chevron-right padding-left-five-px"></i></a>
+            <div class="clearfix"></div>
+            <hr class="color-white">
+            <div class="mouse-help"></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <a href="#" class="footerlink" rel="follow" title="Header 3">Header 3</a>
+          <p class="text-muted small padding-top-fiftheen-px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="align-text-right hidden-lg hidden-md hidden-sm">
+            <a href="#" id="ButtonLink" class="btn btn-warning btn-sm">more<i class="fa fa-chevron-right padding-left-five-px"></i></a>
+            <div class="clearfix"></div>
+            <div class="mouse-help"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-xs-12 clearfix hidden-lg hidden-md">
+        <div class="padding-top-fiftheen-px"></div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 column text-center">
+        <span class="social-sharing">Connect & Share</span>
+        <br> <br> <br>
+        <div class="clearfix hidden-md hidden-sm hidden-xs padding-top-fiftheen-px"></div>
+        <div class="clearfix hidden-lg hidden-md hidden-sm padding-top-ten-px"></div>
+        <div class="clearfix hidden-lg hidden-xs">
+          <hr class="primary">
+        </div>
 
-				<a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-				<a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-			</div>
-		</div>
-	</div>
-</section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <div class="col-lg-12 text-center clearfix">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 no-padding">
+            <div class="col-sm-6 col-xs-6"><a href="https://www.facebook.com/@PartnerFacebook" title="Share on Facebook" class="social-sharing" target="_blank"><i class="fa fa-2x fa-facebook-square"></i></a></div>
+            <div class="col-sm-6 col-xs-6"><a href="https://twitter.com/@PartnerTwitterHandle" title="Share on Twitter" class="social-sharing" target="_blank"><i class="fa fa-2x fa-twitter-square"></i></a></div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 no-padding">
+            <div class="col-sm-6 col-xs-6"><a href="https://www.instagram.com/@PartnerInstagram" title="Share on Instagram" rel="index,follow" class="social-sharing" target="_blank"><i class="fa fa-2x fa-instagram"></i></a></div>
+            <div class="col-sm-6 col-xs-6"><a href="https://www.linkedin.com/company/@PartnerLinkedIn" title="Share on LinkedIn" rel="index,follow" class="social-sharing" target="_blank"><i class="fa fa-2x fa-linkedin-square"></i></a></div>
+          </div>
+          <div class="col-sm-12 col-xs-12 clearfix hidden-lg hidden-md hidden-sm padding-top-eight-px"></div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 no-padding">
+            <div class="col-sm-6 col-xs-6"><a href="https://www.pinterest.com/@PartnerPinterest" title="Share on Pinterest" rel="index,follow" class="social-sharing" target="_blank"><i class="fa fa-2x fa-pinterest-square"></i></a></div>
+            <div class="col-sm-6 col-xs-6"><a href="https://www.youtube.com/" title="Share on YouTube" rel="index,follow" class="social-sharing" target="_blank"><i class="fa fa-2x fa-youtube-square"></i></a></div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 no-padding">
+            <div class="col-sm-6 col-xs-6"><a href="https://play.google.com/store/apps/details?id=com.propay.mobile" title="Download from Google Play" rel="index,follow" class="social-sharing" target="_blank"><i class="fa fa-2x fa-android"></i></a></div>
+            <div class="col-sm-6 col-xs-6"><a href="https://itunes.apple.com/us/app/propay-accept-credit-cards/id433046878?mt=8" rel="index,follow" title="Download from Apple Store" class="social-sharing" target="_blank"><i class="fa fa-2x fa-apple"></i></a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <hr>
+    <div class="col-lg-12 col-md-12 no-padding">
+      <div class="hidden-sm hidden-xs">
+        <div class="col-lg-8 col-md-8 align-text-left">
+        <a href="#" class="footerlink" rel="follow" title="Header 3">Our Location</a><br><br>
+          <span class="text-muted small">Company, Inc. | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</span>
+        </div>
+        <div class="col-lg-4 col-md-4 align-text-right">
+            <div class="col-md-4">
+		    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202404.21945343298!2d126.84946295011362!3d37.565289400000324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca28b61c565cd%3A0x858aedb4e4ea83eb!2z7ISc7Jq47Yq567OE7Iuc!5e0!3m2!1sko!2skr!4v1585294228562!5m2!1sko!2skr" sytle="" frameborder="0" style="border:0" allowfullscreen></iframe>
+		    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
 </body>
-</html>
 
-<script type="text/javascript">
 
-</script>
-</body>
-</html>
