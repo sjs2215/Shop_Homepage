@@ -16,13 +16,24 @@
 	<jsp:setProperty name="user" property="*"/>
 </jsp:useBean>
 <%
-	int id = Integer.parseInt((request.getParameter("value")));
+	String temp = (request.getParameter("value")); //url로 준 거 받음
+	int buttonid = Integer.parseInt(temp.substring(0,1)); //첫글자 - add,revert 버튼 구별
+	int userid = Integer.parseInt(temp.substring(1)); //나머지 글자 - userid
+
 	AdminUserBean A_USER = AdminUserBean.getInstance(); 
 
-	A_USER.updateUser(id); //자바빈에 VO를 넘긴다. 
+	if (buttonid==0){
+		A_USER.update_auth_user(userid);
+		PrintWriter writer=response.getWriter();
+		writer.println("<script>alert('권한 부여 성공...다시 메인 페이지로 이동합니다.'); location.href='/admin/admin_user.jsp';</script>");
+	}
+	else if (buttonid==1){
+		A_USER.revert_auth_user(userid);
+		PrintWriter writer=response.getWriter();
+		writer.println("<script>alert('권한 취소 성공...다시 메인 페이지로 이동합니다.'); location.href='/admin/admin_user.jsp';</script>");
+	}
 	
-	PrintWriter writer=response.getWriter();
-	writer.println("<script>alert('권한 부여 성공...다시 메인 페이지로 이동합니다.'); location.href='/admin/admin_user.jsp';</script>");
+
 %>
 
 </body>

@@ -12,12 +12,22 @@
 
 <script type="text/javascript">
 $(window.document).ready(function() {
-	//admin일 시 해당 행 전체 색깔 처리
+
+	//user의 경우 권한 버튼 없애기
+	$("#userTable td[id^='type']:contains('user')").each(function () {
+
+		$(this).next().next().next().next().html("");
+		$(this).next().next().next().next().next().html("불가");
+	    $(this).next().next().next().next().next().next().html("불가");
+
+	});
+	
+	//[admin이면서 user_flg가 false일 때만] 해당 행 전체 색깔 처리
 	$("#userTable td[id^='type']:contains('admin')").each(function () {
-
-	    $(this).css ("color","red");
-	    $(this).siblings().css ("color","red");
-
+		$("#userTable td[id^='type6']:contains('false')").each(function () {
+		    $(this).css ("color","red");
+		    $(this).siblings().css ("color","red");
+		});
 	});
 	
 	//버튼 클릭 시 해당 row의 userid도 전송
@@ -26,11 +36,23 @@ $(window.document).ready(function() {
 
         $("form[name=admin_user]")
 
-        .attr({ action: "admin_userPro.jsp?value="+$(this).val(), method: "post" })
+        .attr({ action: "admin_userPro.jsp?value="+$(this).attr('id')+$(this).val(), method: "post" })
 
         .submit();
 
     });
+	
+	//버튼 클릭 시 해당 row의 userid도 전송
+    //각 product id는 value 값을 url로 전달
+    $("button[name=revert]").click(function () {
+
+        $("form[name=admin_user]")
+
+        .attr({ action: "admin_userPro.jsp?value="+$(this).attr('id')+$(this).val(), method: "post" })
+
+        .submit();
+
+    });	
 });
 
 </script>
@@ -92,24 +114,7 @@ h6, .h6 {
     border-radius: 0.35rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.btn {
-    display: inline-block;
-    font-weight: 400;
-    color: #858796;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0.35rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+
 .btn-primary {
     color: #fff;
     background-color: #4e73df;
@@ -165,14 +170,14 @@ h6, .h6 {
                 <table id="userTable" class="table table-bordered" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>userId</th>
-                      <th>userType</th>
-                      <th>userName</th>
-                      <th>userEmail</th>
-                      <th>userContact</th>
-                      <th>userRegdate</th>
+                      <th>회원 구분</th>
+                      <th>회원 타입</th>
+                      <th>아이디</th>
+                      <th>이메일</th>
+                      <th>전화번호</th>
                       <th>user_flg</th>
                       <th>권한 부여</th>
+                      <th>권한 취소</th>
                     </tr>
                   </thead>
                   
@@ -193,9 +198,9 @@ h6, .h6 {
                       <td id="type2"><%=user.getUserName() %></td>
                       <td id="type3"><%=user.getUserEmail() %></td>
                       <td id="type4"><%=user.getUserContact() %></td>
-                      <td id="type5"><%=user.getUserRegdate() %></td>
                       <td id="type6"> <%=user.isUser_flg() %></td>
-                      <td><button name="add" class="btn btn-success btn-lg" type="submit" value="<%=user.getUserId()%>">권한 부여하기 </button></td>
+                      <td><button name="add" class="btn btn-success btn-lg" id="0" type="submit" value="<%=user.getUserId()%>">부여 </button></td>
+                      <td><button name="revert" class="btn btn-warning btn-lg" id="1" type="submit" value="<%=user.getUserId()%>">취소 </button></td>
 <%
 	}
 %>                       

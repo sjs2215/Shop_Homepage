@@ -61,8 +61,8 @@ public class AdminUserBean {
 			return list;
 		}
 		
-		//(admin)회원 정보 조회+업데이트	
-		public void updateUser(int userid) throws Exception {
+		//(admin)회원 정보 조회+권한 부여 - 업데이트	
+		public void update_auth_user(int userid) throws Exception {
 			
 			Connection conn=null;
 			PreparedStatement pstmt = null;
@@ -84,5 +84,26 @@ public class AdminUserBean {
 			}  
 		}
 		
-	
+		//(admin)회원 권한 취소 - 업데이트	
+		public void revert_auth_user(int userid) throws Exception {
+			
+			Connection conn=null;
+			PreparedStatement pstmt = null;
+			int re= -1;
+			try {
+				conn = getConnection();
+				String query = "update hut_user set user_flg =0 where userId = ?";
+
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setInt(1, userid);
+				re = pstmt.executeUpdate();
+			
+					
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e ) {
+				e.printStackTrace();
+			}  
+		}	
 }
