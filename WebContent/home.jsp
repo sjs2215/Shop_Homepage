@@ -1174,7 +1174,7 @@ span {
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class=" collapse navbar-collapse " id="bs-example-navbar-collapse-1">
 					<ul class=" nav navbar-nav navbar-right ">
-						<li class="active"><a href="/home.jsp">홈</a></li>
+						<li class="active"><a href="index.html">홈</a></li>
 						<li class=""><a href="#services">헛개의 효능</a></li>
 						<li class=""><a href="#" onClick="cart_check();">장바구니</a></li>
 						<li class="" id="mypage"><a href="#" onClick="mypage_check();">마이 페이지</a></li>

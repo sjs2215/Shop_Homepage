@@ -12,21 +12,12 @@ This website is a basic online store homepage created by Sarah Park.
 
 **View Live Preview**
 
-## Status
 
-jdk: 1.8
-
-eclipse
-
-tomcat
-
-mysql
 
 ## Download and Installation
 
 To begin using this website, choose one of the following options to get started:
 
-- Install via npm: 
 - Clone the repo: `git clone `
 - [Fork, Clone, or Download on GitHub](https://github.com/sjs2215/Shop-Homepage)
 
@@ -35,10 +26,6 @@ To begin using this website, choose one of the following options to get started:
 ### Basic Usage
 
 After downloading, ~
-
-### Advanced Usage
-
-After installation, ~
 
 ## Bugs and Issues
 
@@ -53,7 +40,9 @@ shop-homepage was created by and is maintained by **Sarah Park**
 
 ## Copyright and License
 
-Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/gh-pages/LICENSE) license.
+[MIT](https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/gh-pages/LICENSE) 
+
+[Bootstrap](https://getbootstrap.com/ )
 
 
 
@@ -64,16 +53,13 @@ Start Bootstrap is an open source library of free Bootstrap templates and themes
 - [https://startbootstrap.com](https://startbootstrap.com/)
 - https://twitter.com/SBootstrap
 
-Used bootstrap template 
+__Used bootstrap template __
 
-https://startbootstrap.com/templates/shop-homepage/
+main page https://bootsnipp.com/snippets/lV7Rq 
 
-https://bootsnipp.com/snippets/v2A
+log-in page https://bootsnipp.com/snippets/0ekvA
 
-log-in page
-https://bootsnipp.com/snippets/0ekvA
-
-
+admin page https://bootsnipp.com/snippets/rNZvr
 
 
 
