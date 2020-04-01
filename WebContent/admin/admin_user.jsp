@@ -53,6 +53,26 @@ $(window.document).ready(function() {
         .submit();
 
     });	
+	
+	//search 버튼 클릭 시
+	    $("button[name=search]").click(function () {
+
+        $("form[name=admin_user]")
+
+        .attr({ action: "admin_userPro.jsp?value="+$(this).attr('id')+$(this).val(), method: "post" })
+
+        .submit();
+
+    });	
+	
+	
+	//$("#search").click(function(e){
+		//if($("#text").val()==""){
+			//alert("검색 키워드를 입력하세요.");
+			
+		//}
+		//e.preventDefault();
+	//});
 });
 
 </script>
@@ -152,6 +172,7 @@ h6, .h6 {
 <jsp:useBean id="user" class="advisor.UserVO">
 	<jsp:setProperty name="user" property="*"/>
 </jsp:useBean>
+
 <body>
 <form name="admin_user" class="form-horizontal" action="/admin/admin_userPro.jsp" method="post" >
 <div class="container">
@@ -160,8 +181,14 @@ h6, .h6 {
               <div class="display-flex align-center">
                 <h6 class="m-0 font-weight-bold text-primary">회원 정보 테이블. 권한 승인하기</h6>
                 <div class="ml-auto display-flex align-center">
-                  <input type="text" name="" class="form-control" placeholder="Search">
-                  <button class="btn btn-md btn-primary ml-2">Search</button>
+                  <select class="form-control" id="keyWord" name="keyField">
+                  	<option value="0" name="keyField">--------선택--------</option>
+                  	<option value="userType">회원 타입</option>
+                  	<option value="userEmail">이메일</option>
+                  	<option value="userAddress">주소</option>
+                  </select>
+                  <input type="text" id="keyWord" name="keyWord" class="form-control" placeholder="Search">
+                  <button name="search" id="3" value="3" class="btn btn-md btn-primary ml-2">Search</button>
                 </div>
               </div>
             </div>
@@ -184,9 +211,10 @@ h6, .h6 {
 <%
 	AdminUserBean A_USER = AdminUserBean.getInstance(); 
 	String uid = (String)session.getAttribute("uid");
-	
+	ArrayList<UserVO> list;
 
-	ArrayList<UserVO> list = A_USER.allUser();
+		list = A_USER.allUser();
+
 	for(int i=0;i<list.size();i++){
 		user = list.get(i);
 %>

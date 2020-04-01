@@ -105,5 +105,39 @@ public class AdminUserBean {
 			} catch(Exception e ) {
 				e.printStackTrace();
 			}  
-		}	
+		}
+		
+		//(admin)회원 유저 페이지 - 검색 기능
+		public ArrayList<UserVO> searchUser(String keyField, String keyWord) throws Exception {
+			ArrayList<UserVO> list = new ArrayList<UserVO>();
+			Connection conn=null;
+			ResultSet rs = null;
+			PreparedStatement pstmt = null;
+			UserVO uservo = null;
+			
+			try {
+				conn = getConnection();
+				String query = "select * from hut_user where " + keyField.trim() + " like '%" + keyWord.trim() + "' or " + keyField.trim() + " like '%" +keyWord.trim() + "%' or " + keyField.trim() + " like '"+ keyWord.trim() + "%'";
+
+				pstmt = conn.prepareStatement(query);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					uservo = new UserVO();
+					uservo.setUserId(rs.getInt("userId"));
+					uservo.setUserType(rs.getString("userType"));
+					uservo.setUserName(rs.getString("userName"));
+					uservo.setUserEmail(rs.getString("userEmail"));
+					uservo.setUserContact(rs.getString("userContact"));
+					uservo.setUser_flg(rs.getBoolean("user_flg"));
+					list.add(uservo);
+				}
+				if(rs !=null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(Exception e ) {
+				e.printStackTrace();
+			}  
+			return list;
+		}		
 }
