@@ -321,6 +321,10 @@ a{color:inherit;text-decoration:none}
 					 <button class="btn btn-success" id="submit" 
                                 name="submit" type="submit">회원 가입하기
                                 </button> 
+                                
+                     <button class="btn btn-info" name="submit" type="button" 
+                     			onClick="location.href='/home.jsp'">홈으로 돌아가기
+                                </button> 
 					
 				</div>
 				
