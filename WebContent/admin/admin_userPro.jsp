@@ -42,21 +42,17 @@ AdminUserBean A_USER = AdminUserBean.getInstance();
 	if (buttonid==0){
 		A_USER.update_auth_user(userid);
 		PrintWriter writer=response.getWriter();
-		writer.println("<script>alert('권한 부여 성공...다시 메인 페이지로 이동합니다.'); location.href='/admin/admin_user.jsp';</script>");
+		writer.println("<script>alert('권한 부여 성공...다시 메인 페이지로 이동합니다.'); location.href='/admin/admin_user.jsp?value=11';</script>");
 	}
 	else if (buttonid==1){
 		A_USER.revert_auth_user(userid);
 		PrintWriter writer=response.getWriter();
-		writer.println("<script>alert('권한 취소 성공...다시 메인 페이지로 이동합니다.'); location.href='/admin/admin_user.jsp';</script>");
+		writer.println("<script>alert('권한 취소 성공...다시 메인 페이지로 이동합니다.'); location.href='/admin/admin_user.jsp?value=00';</script>");
 	}
 	else if (buttonid==3){
 		request.setCharacterEncoding("UTF-8");
 		String keyField = request.getParameter("keyField");
-		String keyWord = request.getParameter("keyWord");
-
-
-		A_USER.searchUser(keyField, keyWord);
-		PrintWriter writer=response.getWriter();
+		String keyWord = request.getParameter("keyWord");	
 
 		ArrayList<UserVO> list = A_USER.searchUser(keyField, keyWord);
 		for(int i=0;i<list.size();i++){

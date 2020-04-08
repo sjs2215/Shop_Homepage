@@ -1174,7 +1174,7 @@ span {
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class=" collapse navbar-collapse " id="bs-example-navbar-collapse-1">
 					<ul class=" nav navbar-nav navbar-right ">
-						<li class="active"><a href="index.html">홈</a></li>
+						<li class="active"><a href="/home.jsp">홈</a></li>
 						<li class=""><a href="#services">헛개의 효능</a></li>
 						<li class=""><a href="#" onClick="cart_check();">장바구니</a></li>
 						<li class="" id="mypage"><a href="#" onClick="mypage_check();">마이 페이지</a></li>
@@ -1323,93 +1323,7 @@ span {
 	</div>
 </section>
 
-<!-- footer start -->
-<div class="padding-top-fiftheen-px"></div>
-<footer id="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-          <a href="#" class="footerlink" rel="index,follow" title="Header 1">Header 1</a>
-          <p class="text-muted small padding-top-fiftheen-px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <div class="align-text-right hidden-lg hidden-md hidden-sm">
-            <a href="#" id="ButtonLink" class="btn btn-warning btn-sm">more<i class="fa fa-chevron-right padding-left-five-px"></i></a>
-            <div class="clearfix"></div>
-            <hr class="color-white">
-            <div class="mouse-help"></div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-          <a href="#" class="footerlink" rel="follow" title="Header 2">Header 2</a>
-          <p class="text-muted small padding-top-fiftheen-px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <div class="align-text-right hidden-lg hidden-md hidden-sm">
-            <a href="#" id="ButtonLink" class="btn btn-warning btn-sm">more<i class="fa fa-chevron-right padding-left-five-px"></i></a>
-            <div class="clearfix"></div>
-            <hr class="color-white">
-            <div class="mouse-help"></div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-          <a href="#" class="footerlink" rel="follow" title="Header 3">Header 3</a>
-          <p class="text-muted small padding-top-fiftheen-px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <div class="align-text-right hidden-lg hidden-md hidden-sm">
-            <a href="#" id="ButtonLink" class="btn btn-warning btn-sm">more<i class="fa fa-chevron-right padding-left-five-px"></i></a>
-            <div class="clearfix"></div>
-            <div class="mouse-help"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-12 col-xs-12 clearfix hidden-lg hidden-md">
-        <div class="padding-top-fiftheen-px"></div>
-      </div>
-      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 column text-center">
-        <span class="social-sharing">Connect & Share</span>
-        <br> <br> <br>
-        <div class="clearfix hidden-md hidden-sm hidden-xs padding-top-fiftheen-px"></div>
-        <div class="clearfix hidden-lg hidden-md hidden-sm padding-top-ten-px"></div>
-        <div class="clearfix hidden-lg hidden-xs">
-          <hr class="primary">
-        </div>
-
-        <div class="col-lg-12 text-center clearfix">
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 no-padding">
-            <div class="col-sm-6 col-xs-6"><a href="https://www.facebook.com/@PartnerFacebook" title="Share on Facebook" class="social-sharing" target="_blank"><i class="fa fa-2x fa-facebook-square"></i></a></div>
-            <div class="col-sm-6 col-xs-6"><a href="https://twitter.com/@PartnerTwitterHandle" title="Share on Twitter" class="social-sharing" target="_blank"><i class="fa fa-2x fa-twitter-square"></i></a></div>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 no-padding">
-            <div class="col-sm-6 col-xs-6"><a href="https://www.instagram.com/@PartnerInstagram" title="Share on Instagram" rel="index,follow" class="social-sharing" target="_blank"><i class="fa fa-2x fa-instagram"></i></a></div>
-            <div class="col-sm-6 col-xs-6"><a href="https://www.linkedin.com/company/@PartnerLinkedIn" title="Share on LinkedIn" rel="index,follow" class="social-sharing" target="_blank"><i class="fa fa-2x fa-linkedin-square"></i></a></div>
-          </div>
-          <div class="col-sm-12 col-xs-12 clearfix hidden-lg hidden-md hidden-sm padding-top-eight-px"></div>
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 no-padding">
-            <div class="col-sm-6 col-xs-6"><a href="https://www.pinterest.com/@PartnerPinterest" title="Share on Pinterest" rel="index,follow" class="social-sharing" target="_blank"><i class="fa fa-2x fa-pinterest-square"></i></a></div>
-            <div class="col-sm-6 col-xs-6"><a href="https://www.youtube.com/" title="Share on YouTube" rel="index,follow" class="social-sharing" target="_blank"><i class="fa fa-2x fa-youtube-square"></i></a></div>
-          </div>
-          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 no-padding">
-            <div class="col-sm-6 col-xs-6"><a href="https://play.google.com/store/apps/details?id=com.propay.mobile" title="Download from Google Play" rel="index,follow" class="social-sharing" target="_blank"><i class="fa fa-2x fa-android"></i></a></div>
-            <div class="col-sm-6 col-xs-6"><a href="https://itunes.apple.com/us/app/propay-accept-credit-cards/id433046878?mt=8" rel="index,follow" title="Download from Apple Store" class="social-sharing" target="_blank"><i class="fa fa-2x fa-apple"></i></a></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <hr>
-    <div class="col-lg-12 col-md-12 no-padding">
-      <div class="hidden-sm hidden-xs">
-        <div class="col-lg-8 col-md-8 align-text-left">
-        <a href="#" class="footerlink" rel="follow" title="Header 3">Our Location</a><br><br>
-          <span class="text-muted small">Company, Inc. | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</span>
-        </div>
-        <div class="col-lg-4 col-md-4 align-text-right">
-            <div class="col-md-4">
-		    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202404.21945343298!2d126.84946295011362!3d37.565289400000324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca28b61c565cd%3A0x858aedb4e4ea83eb!2z7ISc7Jq47Yq567OE7Iuc!5e0!3m2!1sko!2skr!4v1585294228562!5m2!1sko!2skr" sytle="" frameborder="0" style="border:0" allowfullscreen></iframe>
-		    </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</footer>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 

@@ -241,7 +241,10 @@ a{color:inherit;text-decoration:none}
 					<h3 class="bg-warning" TEXT-ALIGN=center>구글 계정으로 로그인하기</h3>
 					<div class="g-signin2" type="submit" id="google-submit" data-onsuccess="onSignIn"  align=center style="height:45px"></div>
 					<h1 id="name"></h1>
-					
+					<br><br>
+					<div class="group">
+					 <button type="button" onClick="location.href='/home.jsp'" class="button">홈으로 돌아가기</button>
+					</div>
 				</div>
 				
 				

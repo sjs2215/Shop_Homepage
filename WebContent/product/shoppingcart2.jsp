@@ -63,6 +63,8 @@
 	UserVO uservo = USER.userEdit(uid2); 
 %>
 <body>
+<jsp:include page="/header.jsp"></jsp:include>  
+<br><br><br><br><br>
 <form id="shoppingcartForm" name="cart" class="form-horizontal" action="/product/shoppingcartPro.jsp" method="post" >
 <div class="container">
 <br>
@@ -213,7 +215,10 @@
                         </div>
 	
 </form>
-</body>		
+
+
+</body>	
+
 </html>
 
 

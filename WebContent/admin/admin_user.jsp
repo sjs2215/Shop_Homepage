@@ -217,6 +217,7 @@ h6, .h6 {
 
 	for(int i=0;i<list.size();i++){
 		user = list.get(i);
+		//url 이 뒤에 33일때만 list 변경되게..
 %>
                   
                   <tbody>

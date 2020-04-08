@@ -247,7 +247,10 @@
 	ProductVO productvo4 = PRODUCT.productEdit(4);
 %>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">               
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
+<jsp:include page="/header.jsp"></jsp:include>
+              
 <section class="our-publication pt-100 pb-70">
             <div class="container">
                 <form id="shop" name="shop" class="form-horizontal" action="/product/shopPro.jsp" method="post" >
@@ -392,8 +395,7 @@
                 </form>
             </div>
         </section>
-<script type="text/javascript">
 
-</script>
+<jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>
