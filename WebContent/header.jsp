@@ -276,7 +276,7 @@ a {
     		 location.replace("/admin/admin.jsp");
     	 }
     	 
-    	 if(uid!="null"&&<%=admin_flgcheck%>==0&&<%=check%>==0){ //admin 계정으로 로그인 하였으나 아직 승인 처리 안 되었을 때
+    	 if(uid!="null"&&<%=admin_flgcheck%>==0&&<%=check%>==1){ //admin 계정으로 로그인 하였으나 아직 승인 처리 안 되었을 때
     		 swal("승인 심사가 완료되지 않았습니다.","관리자 계정으로 회원가입을 한 경우,\n 승인 심사는 약 7일 정도 소요됩니다.\n 자세한 사항은 담당자에게 문의해주세요.\n이메일 문의: soojinsarah@naver.com", "error");
     	 }
     }
