@@ -287,8 +287,8 @@ a {
 <nav class="navbar navbar-expand-xl nav_area sticky">
 	<div class="container">
 		<div class="logo">
-			<a href="" class="logo-light">Sukanta Purkayastha</a>
-			<a href="" class="logo-dark">Sukanta Purkayastha</a>
+			<a href="" class="logo-light">«Í∞≥≥Û¿Â</a>
+			<a href="" class="logo-dark">«Í∞≥≥Û¿Â</a>
 		</div>
 		<div class="collapse navbar-collapse " id="navbarNav">
 			<ul class="navbar-nav ml-auto navbar-center main_menu onepage_nav">
