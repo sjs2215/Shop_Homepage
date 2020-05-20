@@ -1130,7 +1130,7 @@ span {
     	 if(uid!="null"&&<%=check%>==0){ //일반 계정으로 로그인 시
     		 swal("관리자만 접근 가능합니다.","관리자로 회원가입 후 승인을 기다려주세요.", "error"); 
     	 }
-    	 else if(uid!="null"&&<%=check%>==1){ //admin 계정으로 로그인 시
+    	 else if(uid!="null"&&<%=admin_flgcheck%>==1&&<%=check%>==1){ //admin 계정으로 로그인 시
     		 location.replace("/admin/admin.jsp");
     	 }
     	 

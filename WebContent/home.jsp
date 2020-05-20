@@ -1129,12 +1129,11 @@ span {
     	 if(uid!="null"&&<%=check%>==0){ //일반 계정으로 로그인 시
     		 swal("관리자만 접근 가능합니다.","관리자로 회원가입 후 승인을 기다려주세요.", "error"); 
     	 }
-    	 else if(uid!="null"&&<%=check%>==1){ //admin 계정으로 로그인 시
+    	 else if(uid!="null"&&<%=admin_flgcheck%>==1&&<%=check%>==1){ //admin 계정으로 로그인 시
     		 location.replace("/admin/admin.jsp");
     	 }
     	 
     	 if(uid!="null"&&<%=admin_flgcheck%>==0&&<%=check%>==1){ //admin 계정으로 로그인 하였으나 아직 승인 처리 안 되었을 때
-    		 
     		 swal("승인 심사가 완료되지 않았습니다.","관리자 계정으로 회원가입을 한 경우,\n 승인 심사는 약 7일 정도 소요됩니다.\n 자세한 사항은 담당자에게 문의해주세요.\n이메일 문의: soojinsarah@naver.com", "error");
     	 }
     }
