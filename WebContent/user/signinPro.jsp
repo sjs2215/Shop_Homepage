@@ -42,7 +42,7 @@
 			UserVO uservo = USER.userEdit(name);
 			session.setAttribute("uid", name);
 			//out.println("<script>alert('userType" + userType + "');</script>");
-			response.sendRedirect("/admin/admin.jsp");
+			response.sendRedirect("/home.jsp");
 		}
 		else{ 
 			UserVO uservo = USER.userEdit(name);
